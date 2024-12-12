@@ -1,0 +1,72 @@
+@use "sass:math";
+
+////////////////////
+// インナー幅と余白設定
+////////////////////
+:root {
+  --inner: 1200px;
+  --padding-pc: 25px;
+  --padding-sp: 20px;
+}
+
+////////////////////
+// フォント設定
+////////////////////
+@font-face {
+  font-display: swap;
+  font-family: "Noto Serif JP";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/NotoSerifJP-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Noto Serif JP";
+  font-weight: 500;
+  font-style: normal;
+  src: url("../fonts/NotoSerifJP-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Noto Serif JP";
+  font-weight: 700;
+  font-style: normal;
+  src: url("../fonts/NotoSerifJP-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Lora";
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/Lora-Regular.woff") format("woff");
+}
+
+:root {
+  --base-font: "Noto Serif JP", sans-serif;
+  --en-font: "Lora", sans-serif;
+  --regular: 400;
+  --medium: 500;
+  --semi-bold: 600;
+  --bold: 700;
+}
+
+////////////////////
+// 色の指定
+////////////////////
+:root {
+  --black: #333;
+  --white: #fff;
+  --base: #5d5d5d;
+  --blue: #391e88;
+}
+
+////////////////////
+// グローバルスタイル
+////////////////////
+body {
+  font-family: var(--base-font);
+  color: var(--base);
+}
