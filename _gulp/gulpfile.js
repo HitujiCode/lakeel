@@ -1,23 +1,28 @@
-const { src, dest, watch, series, parallel } = require("gulp");
-const sass = require("gulp-sass")(require("sass"));
-const plumber = require("gulp-plumber");
-const notify = require("gulp-notify");
-const sassGlob = require("gulp-sass-glob-use-forward");
-const mmq = require("gulp-merge-media-queries");
-const postcss = require("gulp-postcss");
-const cssdeclsort = require("css-declaration-sorter");
-const autoprefixer = require("autoprefixer");
-const postcssPresetEnv = require("postcss-preset-env");
-const sourcemaps = require("gulp-sourcemaps");
-const imageminSvgo = require("imagemin-svgo");
-const imageminMozjpeg = require("imagemin-mozjpeg");
-const imageminPngquant = require("imagemin-pngquant");
-const browserSync = require("browser-sync").create();
-const imagemin = require("gulp-imagemin");
-const changed = require("gulp-changed");
-const del = require("del");
-const webp = require("gulp-webp");
-const terser = require("gulp-terser");
+import gulp from "gulp";
+const { src, dest, watch, series, parallel } = gulp;
+import gulpSass from "gulp-sass";
+import dartSass from "sass";
+const sass = gulpSass(dartSass);
+
+import plumber from "gulp-plumber";
+import notify from "gulp-notify";
+import sassGlob from "gulp-sass-glob-use-forward";
+import mmq from "gulp-merge-media-queries";
+import postcss from "gulp-postcss";
+import cssdeclsort from "css-declaration-sorter";
+import autoprefixer from "autoprefixer";
+import postcssPresetEnv from "postcss-preset-env";
+import sourcemaps from "gulp-sourcemaps";
+import gulpImagemin from "gulp-imagemin";
+import imageminMozjpeg from "imagemin-mozjpeg";
+import imageminPngquant from "imagemin-pngquant";
+import imageminSvgo from "imagemin-svgo";
+import browserSyncLib from "browser-sync";
+const browserSync = browserSyncLib.create();
+import changed from "gulp-changed";
+import { deleteAsync } from "del";
+import webp from "gulp-webp";
+import terser from "gulp-terser";
 
 // パス設定
 const srcPath = {
@@ -46,17 +51,17 @@ const browsers = [
 ];
 
 // HTMLコピー
-const htmlCopy = () => {
+export const htmlCopy = () => {
   return src(srcPath.html).pipe(dest(destPath.html));
 };
 
 // フォントコピー
-const fontCopy = () => {
+export const fontCopy = () => {
   return src(srcPath.font).pipe(dest(destPath.font));
 };
 
 // CSSコンパイル
-const cssSass = () => {
+export const cssSass = () => {
   return src(srcPath.css)
     .pipe(sourcemaps.init())
     .pipe(
@@ -66,7 +71,7 @@ const cssSass = () => {
     )
     .pipe(sassGlob())
     .pipe(
-      sass.sync({
+      sass({
         includePaths: ["src/sass"],
         outputStyle: "expanded",
       })
@@ -90,19 +95,25 @@ const cssSass = () => {
 };
 
 // 画像圧縮
-const imgImagemin = () => {
+export const imgImagemin = () => {
   return src(srcPath.img)
     .pipe(changed(destPath.img))
     .pipe(
-      imagemin(
+      gulpImagemin(
         [
           imageminMozjpeg({ quality: 80 }),
           imageminPngquant(),
           imageminSvgo({
-            plugins: [{ removeViewbox: false }],
+            plugins: [
+              {
+                removeViewbox: false,
+              },
+            ],
           }),
         ],
-        { verbose: true }
+        {
+          verbose: true,
+        }
       )
     )
     .pipe(dest(destPath.img))
@@ -111,7 +122,7 @@ const imgImagemin = () => {
 };
 
 // JavaScript圧縮
-const jsMinify = () => {
+export const jsMinify = () => {
   return src(srcPath.js)
     .pipe(
       plumber({
@@ -127,21 +138,23 @@ const browserSyncOption = {
   notify: false,
   server: "../dist/",
 };
-const browserSyncFunc = () => {
+
+export const browserSyncFunc = () => {
   browserSync.init(browserSyncOption);
 };
-const browserSyncReload = (done) => {
+
+export const browserSyncReload = (done) => {
   browserSync.reload();
   done();
 };
 
 // ファイル削除
-const clean = () => {
-  return del(destPath.all, { force: true });
+export const clean = () => {
+  return deleteAsync(destPath.all, { force: true });
 };
 
 // ファイル監視
-const watchFiles = () => {
+export const watchFiles = () => {
   watch(srcPath.css, series(cssSass, browserSyncReload));
   watch(srcPath.js, series(jsMinify, browserSyncReload));
   watch(srcPath.img, series(imgImagemin, browserSyncReload));
@@ -150,10 +163,10 @@ const watchFiles = () => {
 };
 
 // 開発用タスク
-exports.default = series(
+export default series(
   series(cssSass, jsMinify, imgImagemin, htmlCopy),
   parallel(watchFiles, browserSyncFunc)
 );
 
 // 本番用タスク
-exports.build = series(clean, cssSass, jsMinify, imgImagemin, htmlCopy);
+export const build = series(clean, cssSass, jsMinify, imgImagemin, htmlCopy);
