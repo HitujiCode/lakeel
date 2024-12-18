@@ -1,0 +1,74 @@
+@use "global" as *;
+
+.footer {
+  padding-block: rem(80) rem(60);
+}
+
+.layout-footer {}
+
+.footer__inner.inner {
+  padding-inline: rem(10);
+
+  @include mq("md") {
+    padding-inline: rem(40);
+  }
+}
+
+.footer__nav {
+  display: flex;
+}
+
+.footer__nav-item {}
+
+%footerLink {
+  padding-inline: rem(30);
+  font-size: rem(14);
+  font-weight: var(--semi-bold);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  padding-bottom: rem(8);
+}
+
+.footer__nav-link-blank {
+  @extend %footerLink;
+  border-right: 2px solid var(--light-gray2);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: rem(4);
+  transition: color 0.3s;
+}
+
+.footer__nav-link-blank::after {
+  content: "";
+  width: rem(20);
+  aspect-ratio: 1/1;
+  background-color: currentColor;
+  mask-image: url(../images/common/icon-blank.svg);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+.footer__nav-link {
+  @extend %footerLink;
+  display: block;
+}
+
+.footer__copylight {
+  margin-top: rem(40);
+  text-align: center;
+}
+
+.footer__copylight small {
+  font-size: rem(12);
+  font-weight: var(--semi-bold);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+@media (any-hover: hover) {
+  %footerLink:hover {
+    color: var(--primary);
+  }
+}

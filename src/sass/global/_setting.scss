@@ -46,7 +46,7 @@
 
 :root {
   --base-font: "Noto Serif JP", sans-serif;
-  --en-font: "Lora", sans-serif;
+  --poppins-font: "Lora", sans-serif;
   --regular: 400;
   --medium: 500;
   --semi-bold: 600;
@@ -58,18 +58,32 @@
 ////////////////////
 :root {
   --black: #000;
+  --black2: #1C1B1F;
   --white: #fff;
   --primary: #AC0C2D;
   --secondary: #004664;
   --tertiary: #AE8C6A;
   --brown: #B19375;
-  --light-blue: #E7F1F5
+  --light-blue: #E7F1F5;
+  --light-gray: #F5F5F5;
+  --light-gray2: #DCDFE4;
 }
+
+////////////////////
+// z-indexの指定
+////////////////////
+:root {
+  --z-index-header: 900;
+}
+
 
 ////////////////////
 // グローバルスタイル
 ////////////////////
 body {
+  background-color: var(--white);
   font-family: var(--base-font);
-  color: var(--base);
+  color: var(--black);
+  font-weight: var(--medium);
+  line-height: 1.5;
 }
