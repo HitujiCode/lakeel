@@ -94,7 +94,51 @@
   </header>
 
   <main>
+    <div class="particle-secondary-color">
+      <section class="mv">
+        <div class="mv__flag">
+          <hgroup class="mv__catchphrase">
+            <p class="mv__catchphrase-top">おかげさまで20周年！</p>
+            <h2 class="mv__catchphrase-main">
+              <span class="mv__catchphrase-large">20</span><span class="mv__catchphrase-middle">th</span><span
+                class="mv__catchphrase-text">anniversary</span>
+            </h2>
+            <p class="mv__catchphrase-bottom">2005>>>2024</p>
+          </hgroup>
+          <figure class="mv__flag-img">
+            <picture>
+              <source srcset="./assets/images/pc/flag.svg" media="(min-width: 768px)">
+              <img src="./assets/images/sp/flag.svg" alt="赤いグラデーションの旗とグレーのグラデーションの旗竿" width="600" height="600">
+            </picture>
+          </figure>
+        </div>
+        <div class="mv__countdown">
+          <div class="countdown">
+            <p class="countdown__text">
+              創業記念日まで<br>
+              あと<span class="countdown__number" id="js-countdown">10</span>日
+            </p>
+            <div class="countdown__circle">
+              <svg class="countdown__circle-en" viewBox="0 0 100 100">
+                <path id="circle" class="countdown__circle-path" d="M 0 50 A 50 50 0 1 1 0 51 z" />
+                <text class="countdown__circle-text">
+                  <textPath xlink:href="#circle">
+                    ANNIVERSARY COUNTDOWN 20th
+                  </textPath>
+                </text>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="mv__scroll">
+          <p class="mv__scroll-text">
+            scroll
+          </p>
+        </div>
+      </section>
+    </div>
   </main>
+
   <footer class="footer layout-footer">
     <div class="footer__inner inner">
       <ul class="footer__nav">

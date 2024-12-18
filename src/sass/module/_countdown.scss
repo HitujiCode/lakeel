@@ -1,0 +1,57 @@
+@use "global" as *;
+
+.countdown {
+  position: relative;
+  // margin-inline: auto;
+  // width: fit-content;
+}
+
+.countdown__text {
+  font-size: rem(18);
+  font-weight: var(--bold);
+  color: var(--secondary);
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.countdown__number {
+  font-size: rem(52);
+  font-family: var(--poppins-font);
+  line-height: 1;
+}
+
+.countdown__circle {
+  width: rem(200);
+  aspect-ratio: 1/1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // animation: circle 15s linear infinite;
+}
+
+.countdown__circle-en {
+  overflow: visible;
+}
+
+.countdown__circle-path {
+  fill: none;
+}
+
+.countdown__circle-text {
+  fill: var(--brown);
+  font-size: rem(16);
+  font-weight: var(--semi-bold);
+  line-height: calc(36/30);
+}
+
+@keyframes circle {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

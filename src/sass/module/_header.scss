@@ -1,14 +1,16 @@
 @use "global" as *;
 
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  inset-inline: 0;
   height: rem(70);
   z-index: var(--z-index-header);
   box-shadow: 0 rem(4) rem(10) rgb(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, height 0.3s ease;
 
   @include mq("md") {
+    position: sticky;
     height: rem(80);
   }
 }

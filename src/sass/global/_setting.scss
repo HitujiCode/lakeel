@@ -14,39 +14,39 @@
 ////////////////////
 @font-face {
   font-display: swap;
-  font-family: "Noto Serif JP";
-  font-weight: 400;
+  font-family: "Noto Sans JP";
+  font-weight: 500 700;
   font-style: normal;
-  src: url("../fonts/NotoSerifJP-Regular.woff") format("woff");
+  src: url("../fonts/NotoSansJP-VariableFont_wght.woff2") format(woff2) tech (variations);
 }
 
 @font-face {
   font-display: swap;
-  font-family: "Noto Serif JP";
-  font-weight: 500;
-  font-style: normal;
-  src: url("../fonts/NotoSerifJP-Medium.woff") format("woff");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Noto Serif JP";
+  font-family: "Poppins";
   font-weight: 700;
   font-style: normal;
-  src: url("../fonts/NotoSerifJP-Bold.woff") format("woff");
+  src: url("../fonts/Poppins-Bold.woff2")format(woff2);
 }
 
 @font-face {
   font-display: swap;
-  font-family: "Lora";
-  font-weight: 400;
+  font-family: "Poppins";
+  font-weight: 600;
   font-style: normal;
-  src: url("../fonts/Lora-Regular.woff") format("woff");
+  src: url("../fonts/Poppins-SemiBold.woff2") format(woff2);
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Poppins";
+  font-weight: 500;
+  font-style: normal;
+  src: url("../fonts/Poppins-Medium.woff2") format(woff2);
 }
 
 :root {
-  --base-font: "Noto Serif JP", sans-serif;
-  --poppins-font: "Lora", sans-serif;
+  --base-font: "Noto Sans JP", sans-serif;
+  --poppins-font: "Poppins", serif;
   --regular: 400;
   --medium: 500;
   --semi-bold: 600;
