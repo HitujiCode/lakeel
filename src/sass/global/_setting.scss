@@ -4,7 +4,7 @@
 // インナー幅と余白設定
 ////////////////////
 :root {
-  --inner: 1200px;
+  --inner: 1215px;
   --padding-pc: 25px;
   --padding-sp: 20px;
 }
@@ -57,10 +57,13 @@
 // 色の指定
 ////////////////////
 :root {
-  --black: #333;
+  --black: #000;
   --white: #fff;
-  --base: #5d5d5d;
-  --blue: #391e88;
+  --primary: #AC0C2D;
+  --secondary: #004664;
+  --tertiary: #AE8C6A;
+  --brown: #B19375;
+  --light-blue: #E7F1F5
 }
 
 ////////////////////

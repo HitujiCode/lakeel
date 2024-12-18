@@ -105,9 +105,8 @@ export const imgImagemin = () => {
           imageminPngquant(),
           imageminSvgo({
             plugins: [
-              {
-                removeViewbox: false,
-              },
+              { name: "preset-default" }, // プリセットを指定
+              { name: "removeViewBox", active: false }, // removeViewBox の無効化
             ],
           }),
         ],
