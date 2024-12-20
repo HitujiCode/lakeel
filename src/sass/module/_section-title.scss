@@ -3,6 +3,7 @@
 .section-title {
   position: relative;
   font-weight: var(--bold);
+  width: fit-content;
 }
 
 .section-title--white {
@@ -15,7 +16,7 @@
   width: rem(30);
   aspect-ratio: 1/1;
   top: 0;
-  left: 0;
+  left: rem(-12);
   background-color: var(--tertiary);
   border-radius: 100vmax;
 }
@@ -31,4 +32,9 @@
   font-size: rem(14);
   line-height: 1.6;
   letter-spacing: 0.05em;
+  color: currentColor;
+}
+
+.section-title__ja--white {
+  font-size: rem(16);
 }
