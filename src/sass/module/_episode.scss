@@ -1,0 +1,55 @@
+@use "global" as *;
+
+.episode {
+  overflow-x: clip;
+  padding-top: rem(14);
+}
+
+.layout-episode {
+  margin-top: rem(96);
+}
+
+.episode__inner.inner {}
+
+.episode__title {}
+
+.episode__container {
+  margin-top: rem(44);
+}
+
+.episode__read {
+  font-size: rem(18);
+  font-weight: var(--medium);
+  line-height: 1.6;
+}
+
+.episode__content {
+  margin-top: rem(30);
+  margin-inline: calc(50% - 50vw);
+  position: relative;
+}
+
+.episode__content::before {
+  content: "";
+  position: absolute;
+  top: rem(-100);
+  right: rem(-60);
+  width: rem(190);
+  aspect-ratio: 1/1;
+  background-image: url("../images/common/compass.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.episode__slider {
+  padding-block: rem(10);
+}
+
+.episode__list {
+  transition-timing-function: linear;
+}
+
+.episode__item {
+  width: rem(330);
+}

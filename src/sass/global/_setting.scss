@@ -6,7 +6,7 @@
 :root {
   --inner: 1215px;
   --padding-pc: 25px;
-  --padding-sp: 20px;
+  --padding-sp: 27.5px;
 }
 
 ////////////////////
@@ -15,7 +15,7 @@
 @font-face {
   font-display: swap;
   font-family: "Noto Sans JP";
-  font-weight: 500 700;
+  font-weight: 400 500 600 700;
   font-style: normal;
   src: url("../fonts/NotoSansJP-VariableFont_wght.woff2") format(woff2) tech (variations);
 }
@@ -63,10 +63,12 @@
   --primary: #AC0C2D;
   --secondary: #004664;
   --tertiary: #AE8C6A;
+  --light-tertiary: #F3E9DE;
   --brown: #B19375;
   --light-blue: #E7F1F5;
   --light-gray: #F5F5F5;
   --light-gray2: #DCDFE4;
+  --primary-gradation: linear-gradient(to bottom, #AC0C2D 0%, #D33556 100%);
 }
 
 ////////////////////

@@ -2,12 +2,15 @@
 
 .footer {
   padding-block: rem(80) rem(60);
+  background-color: var(--light-gray);
 }
 
-.layout-footer {}
+.layout-footer {
+  margin-top: rem(60);
+}
 
 .footer__inner.inner {
-  padding-inline: rem(10);
+  padding-inline: initial;
 
   @include mq("md") {
     padding-inline: rem(40);

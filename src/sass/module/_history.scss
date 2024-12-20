@@ -1,0 +1,35 @@
+@use "global" as *;
+
+.history {
+  padding-top: rem(57);
+}
+
+.layout-history {}
+
+.history__inner.inner {
+  padding-inline: rem(24);
+}
+
+.history__title {}
+
+.history__container {
+  background-image: url("../img/history/img_history-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@supports (background-image: url("image.webp")) {
+  .history__container {
+    background-image: url("../img/history/img_history-bg.webp");
+  }
+}
+
+.history__timeline {
+  overflow-x: auto;
+  margin-top: rem(30);
+  display: flex;
+  border-bottom: 2px solid var(--white);
+}
+
+.history__timeline-item {}

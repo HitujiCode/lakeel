@@ -57,4 +57,59 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+  // カウントダウン
+  function showRestTime() {
+    const now = new Date();
+    const goal = new Date(2025, 5, 10);
+
+    const restMillisecond = goal.getTime() - now.getTime();
+    const day = Math.ceil(restMillisecond / (1000 * 60 * 60 * 24)); // 日数を計算
+
+    const countdownElement = document.getElementById('js-countdown');
+    if (countdownElement) {
+      countdownElement.textContent = day; // 要素が存在する場合のみ更新
+    }
+  }
+
+  // 初回実行
+  showRestTime();
+
+  // 次の日付が変わるタイミングを計算
+  const now = new Date();
+  const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+  const timeUntilNextMidnight = nextMidnight.getTime() - now.getTime();
+
+  // 次の日付が変わるタイミングで最初の更新を設定
+  setTimeout(function () {
+    showRestTime(); // 日付が変わったら更新
+    setInterval(showRestTime, 24 * 60 * 60 * 1000); // 以降は24時間ごとに更新
+  }, timeUntilNextMidnight);
+
+
+  // Episodeスライダー
+  function initEpisodeSwiper(swiperName, options = {}) {
+    const defaultOptions = {
+      loop: true,
+      slidesPerView: "auto",
+      spaceBetween: 20,
+      speed: 6000,
+      autoplay: {
+        delay: 0,
+      },
+    };
+
+    const swiperOptions = { ...defaultOptions, ...options };
+    const swiper = new Swiper(swiperName, swiperOptions);
+  }
+
+  initEpisodeSwiper('.js-top-swiper');
+  initEpisodeSwiper('.js-bottom-swiper', {
+    autoplay: {
+      delay: 0,
+      reverseDirection: true,
+    },
+  });
+
 });
+

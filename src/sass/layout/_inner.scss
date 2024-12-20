@@ -4,6 +4,7 @@
   .inner {
     padding-inline: var(--padding-sp);
     margin-inline: auto;
+    max-width: 600px;
 
     @include mq("md") {
       max-width: calc(var(--inner) + strip-unit(var(--padding-pc)) * 2);

@@ -1,0 +1,101 @@
+@use "global" as *;
+
+.message {
+  overflow-x: clip;
+}
+
+.message__inner.inner {}
+
+.message__container {
+  // margin-top: rem(40);
+  display: grid;
+}
+
+.message__title {
+  text-align: center;
+}
+
+.message__top-img {
+  width: rem(144);
+}
+
+.message__top-img img {
+  aspect-ratio: 144/96;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.message__content {
+  display: grid;
+}
+
+.message__main-img {
+  margin-top: rem(25);
+  margin-left: calc(50% - rem(270));
+  width: min(430/375*100vw, rem(500));
+}
+
+.message__main-img img {
+  aspect-ratio: 430/222;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.message__bottom-img {
+  order: 2;
+  margin-top: rem(66);
+  width: rem(241);
+  // grid-column: 4;
+}
+
+.message__bottom-img img {
+  aspect-ratio: 241/161;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.message__body {
+  margin-top: rem(30);
+}
+
+.message__text-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1lh;
+}
+
+.message__text {
+  font-size: rem(16);
+  font-weight: var(--medium);
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+}
+
+.message__sign {
+  margin-top: rem(20);
+  text-align: right;
+}
+
+%messageSign {
+  font-size: rem(14);
+  font-weight: var(--regular);
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+}
+
+.message__sign-company {
+  @extend %messageSign;
+}
+
+.message__sign-title {
+  @extend %messageSign;
+}
+
+.massage__sign-name {
+  font-size: rem(16);
+  font-weight: var(--medium);
+  line-height: 1.6;
+}

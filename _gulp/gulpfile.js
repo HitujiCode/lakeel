@@ -30,6 +30,7 @@ const srcPath = {
   js: "../src/js/**/*",
   img: "../src/images/**/*",
   font: "../src/fonts/**/*",
+  library: "../src/library/**/*",
   html: ["../src/**/*.html", "!./node_modules/**"],
 };
 const destPath = {
@@ -38,6 +39,7 @@ const destPath = {
   js: "../dist/assets/js/",
   img: "../dist/assets/images/",
   font: "../dist/assets/fonts/",
+  library: "../dist/assets/library/",
   html: "../dist/",
 };
 
@@ -58,6 +60,11 @@ export const htmlCopy = () => {
 // フォントコピー
 export const fontCopy = () => {
   return src(srcPath.font).pipe(dest(destPath.font));
+};
+
+// ライブラリコピー
+export const libraryCopy = () => {
+  return src(srcPath.library).pipe(dest(destPath.library));
 };
 
 // CSSコンパイル
@@ -158,14 +165,15 @@ export const watchFiles = () => {
   watch(srcPath.js, series(jsMinify, browserSyncReload));
   watch(srcPath.img, series(imgImagemin, browserSyncReload));
   watch(srcPath.font, series(fontCopy, browserSyncReload));
+  watch(srcPath.library, series(libraryCopy, browserSyncReload));
   watch(srcPath.html, series(htmlCopy, browserSyncReload));
 };
 
 // 開発用タスク
 export default series(
-  series(cssSass, jsMinify, imgImagemin, htmlCopy),
+  series(cssSass, jsMinify, imgImagemin, htmlCopy, fontCopy, libraryCopy),
   parallel(watchFiles, browserSyncFunc)
 );
 
 // 本番用タスク
-export const build = series(clean, cssSass, jsMinify, imgImagemin, htmlCopy);
+export const build = series(clean, cssSass, jsMinify, imgImagemin, htmlCopy, fontCopy, libraryCopy);

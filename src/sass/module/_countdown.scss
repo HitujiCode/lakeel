@@ -10,25 +10,26 @@
   font-size: rem(18);
   font-weight: var(--bold);
   color: var(--secondary);
-  line-height: 1.6;
+  line-height: 1.5;
   letter-spacing: 0.05em;
   text-align: center;
 }
 
-.countdown__number {
+.countdown__num {
+  margin-inline: rem(2) rem(4);
   font-size: rem(52);
   font-family: var(--poppins-font);
-  line-height: 1;
+  letter-spacing: 0.05em;
 }
 
 .countdown__circle {
-  width: rem(200);
+  width: rem(228);
   aspect-ratio: 1/1;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  // animation: circle 15s linear infinite;
+  animation: circle 20s linear infinite;
 }
 
 .countdown__circle-en {
@@ -41,9 +42,10 @@
 
 .countdown__circle-text {
   fill: var(--brown);
-  font-size: rem(16);
+  font-size: 30px;
   font-weight: var(--semi-bold);
-  line-height: calc(36/30);
+  line-height: 1.5;
+  letter-spacing: 0.275em;
 }
 
 @keyframes circle {

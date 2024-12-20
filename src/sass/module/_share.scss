@@ -1,0 +1,38 @@
+@use "global" as *;
+
+.share {}
+
+.layout-share {}
+
+.share__inner.inner {}
+
+.share__container {}
+
+.share__read {
+  padding-block: rem(10) rem(30);
+  font-size: rem(20);
+  font-weight: var(--bold);
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  text-align: center;
+  border-bottom: 1px solid;
+}
+
+.share__list {
+  margin-top: rem(30);
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, rem(40));
+  gap: rem(40);
+}
+
+.share__item {}
+
+.share__link {
+  display: block;
+}
+
+.share__link img {
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}

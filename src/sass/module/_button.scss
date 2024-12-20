@@ -1,0 +1,38 @@
+@use "global" as *;
+
+.button {
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: 1fr rem(20);
+  gap: rem(10);
+  align-items: center;
+  padding-block: rem(14);
+  padding-inline: rem(28) rem(18);
+  background-color: var(--white);
+  border: rem(2) solid;
+  border-radius: 100vmax;
+  font-size: rem(16);
+  font-weight: var(--bold);
+  color: var(--primary);
+  line-height: calc(34/16);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s ease;
+}
+
+.button::after {
+  content: "";
+  background-color: currentColor;
+  mask-image: url(../images/common/chevron.svg);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  aspect-ratio: 1/1;
+  transition: background-color 0.3s ease;
+}
+
+@media (any-hover: hover) {
+  .button:hover {
+    color: var(--white);
+    background-color: var(--tertiary);
+    border-color: var(--tertiary);
+  }
+}
