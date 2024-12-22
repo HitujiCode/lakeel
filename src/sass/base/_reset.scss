@@ -28,7 +28,11 @@ dd {
 
 /* Set core root defaults */
 html {
-  // scroll-padding-top: 80px;
+  scroll-padding-top: 4.375rem;
+
+  @media (min-width: 768px) {
+    scroll-padding-top: 5rem;
+  }
 }
 
 /* Set core body defaults */
@@ -111,9 +115,8 @@ select::-ms-expand {
   display: none;
 }
 
-/* ホバー */
-// a {
-//   text-decoration: none;
-//   color: inherit;
+a {
+  text-decoration: none;
+  color: inherit;
 //   transition: opacity 0.3s;
-// }
+}

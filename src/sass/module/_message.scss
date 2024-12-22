@@ -3,7 +3,6 @@
 .message {
   overflow-x: clip;
   position: relative;
-  padding-bottom: rem(144);
   padding-bottom: rem(202);
 }
 
@@ -27,6 +26,7 @@
   border-radius: rem(10);
 
   @include mq("md") {
+    position: absolute;
     width: rem(144);
   }
 }
@@ -47,6 +47,10 @@
   border-radius: rem(10);
   margin-top: rem(25);
   margin-left: calc(50% - 50vw);
+
+  @include mq("md") {
+    margin-left: initial;
+  }
 }
 
 .message__main-img img {
@@ -61,7 +65,7 @@
 .message__bottom-img {
   order: 2;
   margin-top: rem(66);
-  width: min(241/375*100vw,340px);
+  width: min(241/375*100vw, 340px);
   border-radius: rem(10);
   // grid-column: 4;
 

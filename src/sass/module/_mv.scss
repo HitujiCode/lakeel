@@ -3,99 +3,18 @@
 .mv {
   overflow-x: clip;
   position: relative;
-  // height: 100vh;
-  // min-height: rem(740);
   height: clamp(rem(765), 100vh, rem(900));
   display: grid;
   place-content: center;
 
   @include mq("md") {
+    height: initial;
   }
 }
 
 .mv__flag {
   position: relative;
-  overflow-x: clip;
   height: inherit;
-}
-
-.mv__catchphrase {
-  position: absolute;
-  top: min(184 / 375* 100vw, rem(210));
-  left: calc(50% - min(90/375*100vw, rem(120)));
-  z-index: 1;
-  color: var(--white);
-  width: min-content;
-
-  @include mq("md") {
-    left: calc(50% + rem(40));
-  }
-}
-
-.mv__catchphrase-top {
-  display: inline-block;
-  font-size: rem(14);
-  font-weight: var(--bold);
-  line-height: calc(36/14);
-  letter-spacing: 0.1em;
-  border-bottom: rem(2) solid var(--white);
-
-  @include mq("md") {
-    font-size: rem(24);
-    line-height: calc(36/24);
-  }
-}
-
-.mv__catchphrase-main {
-  font-weight: var(--bold);
-  font-family: var(--poppins-font);
-  filter: drop-shadow(0 rem(4) rem(24) rgba(0, 0, 0, 0.25));
-}
-
-.mv__catchphrase-large {
-  font-size: rem(100);
-  line-height: 1;
-
-  @include mq("md") {
-    font-size: rem(200);
-  }
-}
-
-.mv__catchphrase-middle {
-  font-size: rem(70);
-  line-height: 1;
-
-  @include mq("md") {
-    font-size: rem(140);
-  }
-}
-
-.mv__catchphrase-text {
-  display: inline-block;
-  font-size: rem(25);
-  line-height: 1;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  position: relative;
-  top: rem(-8);
-  left: rem(4);
-
-  @include mq("md") {
-    font-size: rem(51);
-  }
-}
-
-.mv__catchphrase-bottom {
-  margin-top: rem(-8);
-  font-size: rem(16);
-  font-weight: var(--medium);
-  font-family: var(--poppins-font);
-  line-height: 1.5;
-  text-align: center;
-
-  @include mq("md") {
-    font-size: rem(20);
-  }
 }
 
 .mv__flag-img {
@@ -104,21 +23,105 @@
   left: calc(50% - min(205/375*100vw, rem(250)));
 
   @include mq("md") {
-    width: rem(888);
-    left: calc(50% - rem(360));
+    height: inherit;
+    width: clamp(580px, 890/1440*100vw, 890px);
+    left: min(63/1440*100vw, 63px);
   }
 }
 
 .mv__flag-img img {
   aspect-ratio: 508/757;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: contain;
 
   @include mq("md") {
-    aspect-ratio: 888/1110;
+    aspect-ratio: 890/1111;
   }
 }
+
+// .mv__catchphrase {
+//   position: absolute;
+//   top: min(184 / 375* 100vw, rem(210));
+//   left: calc(50% - min(90/375*100vw, rem(120)));
+//   z-index: 1;
+//   color: var(--white);
+//   width: min-content;
+
+//   @include mq("md") {
+//     top: min(190/1440*100vw);
+//     left: calc(50% - min(170/1440*100vw));
+//     display: inline-grid;
+//     place-items: center;
+//   }
+// }
+
+// .mv__catchphrase-top {
+//   display: inline-block;
+//   font-size: rem(14);
+//   font-weight: var(--bold);
+//   line-height: calc(36/14);
+//   letter-spacing: 0.1em;
+//   border-bottom: rem(2) solid var(--white);
+
+//   @include mq("md") {
+//     font-size: rem(24);
+//     line-height: calc(36/24);
+//   }
+// }
+
+// .mv__catchphrase-main {
+//   font-weight: var(--bold);
+//   font-family: var(--poppins-font);
+//   filter: drop-shadow(0 rem(4) rem(24) rgba(0, 0, 0, 0.25));
+// }
+
+// .mv__catchphrase-large {
+//   font-size: rem(100);
+//   line-height: 1;
+
+//   @include mq("md") {
+//     font-size: rem(200);
+//   }
+// }
+
+// .mv__catchphrase-middle {
+//   font-size: rem(70);
+//   line-height: 1;
+
+//   @include mq("md") {
+//     font-size: rem(140);
+//   }
+// }
+
+// .mv__catchphrase-text {
+//   display: inline-block;
+//   font-size: rem(25);
+//   line-height: 1;
+//   letter-spacing: 0.05em;
+//   text-transform: uppercase;
+//   position: relative;
+//   top: rem(-8);
+//   left: rem(4);
+
+//   @include mq("md") {
+//     top: rem(-12);
+//     font-size: rem(51);
+//   }
+// }
+
+// .mv__catchphrase-bottom {
+//   margin-top: rem(-8);
+//   font-size: rem(16);
+//   font-weight: var(--medium);
+//   font-family: var(--poppins-font);
+//   line-height: 1.5;
+//   text-align: center;
+
+//   @include mq("md") {
+//     font-size: rem(20);
+//   }
+// }
 
 .mv__countdown {
   position: absolute;
@@ -126,8 +129,9 @@
   right: min(86/375*100vw, rem(90));
 
   @include mq("md") {
-    right: rem(100);
-    bottom: 25%;
+    right: calc(50% - min(578 / 1440* 100vw, 600px));
+    top: initial;
+    bottom: calc(456/1440*100vw);
   }
 }
 
@@ -138,7 +142,7 @@
 
   @include mq("md") {
     bottom: initial;
-    top: 50%;
+    top: 51.5%;
     transform: translateY(-50%);
     left: rem(43);
   }

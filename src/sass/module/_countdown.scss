@@ -20,6 +20,10 @@
   font-size: rem(52);
   font-family: var(--poppins-font);
   letter-spacing: 0.05em;
+
+  @include mq("md") {
+    margin-inline: initial;
+  }
 }
 
 .countdown__circle {

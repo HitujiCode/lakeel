@@ -1,42 +1,47 @@
 /* リキッドレイアウト対応 */
 @use "global" as *;
 
-html {
+@if $startFrom ==sp {
 
-  //~375px
-  @media (max-width: 375px) {
-    font-size: calc(16 / 375 * 100vw);
-  }
-
-  //375px~787px
-  // font-size: 16px;
-
-  @include mq("md") {
-    font-size: calc(16 / var(--inner) * 100vw);
-  }
-
-  //inner~max-screen
-  @media (min-width: var(--inner)) {
+  // スマホファースト
+  html {
+    // 通常のプロパティは先に記述
     font-size: 16px;
+
+    // ネストされたルールをその後に記述
+    @media (max-width: 375px) {
+      font-size: vw(375, 16);
+    }
+
+    @include mq("md") {
+      font-size: vw(strip-unit($inner), 16);
+    }
+
+    @media (min-width: $inner) {
+      font-size: 16px;
+    }
   }
+
 }
 
-/* pcの電話番号発信対応 */
-a[href^="tel:"] {
-  @include mq("md") {
-    pointer-events: none;
+@else {
+
+  // PCファースト
+  html {
+    // 通常のプロパティは先に記述
+    font-size: 16px;
+
+    // ネストされたルールをその後に記述
+    @media (max-width: $inner) {
+      font-size: vw(strip-unit($inner), 16);
+    }
+
+    @include mq("md") {
+      font-size: 16px;
+    }
+
+    @media (max-width: 375px) {
+      font-size: vw(375, 16);
+    }
   }
-}
-
-/* ホバー */
-a {
-  text-decoration: none;
-  color: inherit;
-  // transition: opacity 0.3s;
-
-  // @include mq("md") {
-  //   &:hover {
-  //     opacity: 0.8;
-  //   }
-  // }
 }

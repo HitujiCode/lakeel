@@ -82,10 +82,15 @@
   display: grid;
   align-items: center;
   font-size: rem(16);
+  font-family: var(--poppins-font);
   font-weight: var(--semi-bold);
   line-height: 1.4;
   padding-inline: rem(15);
   transition: color 0.3s;
+
+  @include mq("md") {
+    letter-spacing: 0.02em;
+  }
 }
 
 .header__hamburger {

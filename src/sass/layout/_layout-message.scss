@@ -2,4 +2,8 @@
 
 .layout-message {
   margin-top: rem(58);
+
+  @include mq("md") {
+    margin-top: rem(-186);
+  }
 }

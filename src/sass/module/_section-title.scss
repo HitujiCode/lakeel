@@ -24,6 +24,10 @@
   left: rem(-12);
   background-color: var(--tertiary);
   border-radius: 50%;
+
+  @include mq("md") {
+    width: rem(40);
+  }
 }
 
 .section-title--episode::before {
@@ -36,6 +40,11 @@
   font-size: rem(50);
   font-family: var(--poppins-font);
   line-height: 1.1;
+
+  @include mq("md") {
+    font-size: rem(90);
+    line-height: 1.2;
+  }
 }
 
 .section-title__ja {
@@ -47,4 +56,10 @@
 
 .section-title__ja--white {
   font-size: rem(16);
+}
+
+.section-title__ja--message {
+  @include mq("md") {
+    margin-top: rem(-13);
+  }
 }

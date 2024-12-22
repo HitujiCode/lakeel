@@ -2,7 +2,7 @@
 
 .character {
   overflow-x: clip;
-  padding-top: rem(138);
+  padding-top: rem(97);
   padding-bottom: rem(90);
   position: relative;
 }
@@ -18,7 +18,7 @@
 
 .character__img1 {
   @extend %characterImg;
-  top: rem(30);
+  top: rem(-10);
   left: 0;
   left: calc(50% - min(188/375*100vw, rem(370)));
   width: rem(200);
@@ -27,8 +27,8 @@
 
 .character__img2 {
   @extend %characterImg;
-  top: rem(32);
-  right: calc(50% - min(187 / 375* 100vw, rem(350)));
+  top: rem(-11);
+  right: calc(50% - min(187 / 375* 100vw, rem(375)));
   width: rem(180);
   aspect-ratio: 180/156;
 }
