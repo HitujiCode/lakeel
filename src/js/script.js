@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   // ページトップへ戻る
-  const topBtn = document.querySelector('.js-pageTop');
+  const topBtn = document.querySelector('.js-totop');
   if (topBtn) {
     topBtn.addEventListener('click', function (event) {
       event.preventDefault();
@@ -58,6 +58,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // パーティクル
+  // document.addEventListener('DOMContentLoaded', function () {
+  //   (function initSecondaryParticles() {
+  //     Particles.init({
+  //       selector: '.particle-secondary-color',
+  //       maxParticles: 50,
+  //       sizeVariations: 20,
+  //       color: ['#004664', '#002F43', '#E7F1F5', '#CCDAE0'],
+  //     });
+  //   })();
+
+  //   (function initPrimaryParticles() {
+  //     Particles.init({
+  //       selector: '.particle-primary-color',
+  //       maxParticles: 50,
+  //       sizeVariations: 20,
+  //       color: ['#AC0C2D', '#c5556c', '#b72a47', '#EDCCD4'],
+  //     });
+  //   })();
+  // });
+
   // カウントダウン
   function showRestTime() {
     const now = new Date();
@@ -111,5 +132,122 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-});
+  // ドラッグスクロール有効化
+  function enableSmoothMouseDragScroll(targetSelector) {
+    const elements = document.querySelectorAll(targetSelector);
+    let target = null;
+    let velocity = { x: 0, y: 0 };
+    let isDragging = false;
 
+    function animateScroll() {
+      if (target && !isDragging) {
+        // 慣性を減速
+        velocity.x *= 0.8;
+        velocity.y *= 0.8;
+
+        target.element.scrollLeft += velocity.x;
+        target.element.scrollTop += velocity.y;
+
+        if (Math.abs(velocity.x) < 0.1 && Math.abs(velocity.y) < 0.1) {
+          velocity = { x: 0, y: 0 };
+          return;
+        }
+
+        requestAnimationFrame(animateScroll);
+      }
+    }
+
+    elements.forEach((element) => {
+      element.addEventListener("mousedown", (event) => {
+        event.preventDefault();
+        isDragging = true;
+        target = {
+          element: element,
+          startX: event.clientX,
+          startY: event.clientY,
+          scrollLeft: element.scrollLeft,
+          scrollTop: element.scrollTop,
+        };
+      });
+
+      element.addEventListener("mousemove", (event) => {
+        if (isDragging && target) {
+          event.preventDefault();
+          const moveX = target.startX - event.clientX;
+          const moveY = target.startY - event.clientY;
+
+          // 最小移動距離で慣性を無効化
+          if (Math.abs(moveX) < 2 && Math.abs(moveY) < 2) {
+            velocity = { x: 0, y: 0 };
+            return;
+          }
+
+          velocity.x = moveX;
+          velocity.y = moveY;
+
+          target.element.scrollLeft = target.scrollLeft + moveX;
+          target.element.scrollTop = target.scrollTop + moveY;
+        }
+      });
+
+      element.addEventListener("mouseup", () => {
+        isDragging = false;
+        velocity = { x: 0, y: 0 };
+        if (target) {
+          requestAnimationFrame(animateScroll);
+        }
+      });
+
+      element.addEventListener("mouseleave", () => {
+        isDragging = false;
+        velocity = { x: 0, y: 0 };
+        if (target) {
+          requestAnimationFrame(animateScroll);
+        }
+      });
+    });
+
+    document.addEventListener("mouseup", () => {
+      isDragging = false;
+      velocity = { x: 0, y: 0 };
+      if (target) {
+        requestAnimationFrame(animateScroll);
+      }
+    });
+  }
+
+  enableSmoothMouseDragScroll(".js-scroll");
+
+  // パーティクル
+  function initializeParticlesJS(elementId, colors) {
+    particlesJS(elementId, {
+      "particles": {
+        "number": {
+          "value": 30,
+          "density": {
+            "enable": true,
+            "value_area": 3000
+          }
+        },
+        "color": {
+          "value": colors
+        },
+        "size": {
+          "value": 25,
+          "random": true
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "out_mode": "out"
+        }
+      },
+      "retina_detect": true
+    });
+  }
+
+  initializeParticlesJS("js-particle-secondary", ['#004664', '#002F43', '#E7F1F5', '#CCDAE0']);
+
+  initializeParticlesJS("js-particle-primary", ['#AC0C2D', '#c5556c', '#b72a47', '#EDCCD4']);
+
+});

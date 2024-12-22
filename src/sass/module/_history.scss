@@ -3,13 +3,14 @@
 .history {
   overflow-x: clip;
   position: relative;
-  padding-top: rem(57);
+  padding-block: rem(57);
 }
 
 .history::after {
   content: "";
   position: absolute;
-  right: rem(8);
+  right: calc(8/375*100vw);
+  right: calc(50% - min(180/375*100vw, rem(348)));
   top: rem(-84);
   background-image: url(../images/common/ship.svg);
   background-repeat: no-repeat;
@@ -19,17 +20,42 @@
   aspect-ratio: 112/113;
 }
 
-.history__inner.inner {}
+.history__inner.inner {
+  position: relative;
+}
+
+%historyWaveReverse {
+  content: "";
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.history__inner::before {
+  @extend %historyWaveReverse;
+  bottom: max(-52/375*100vw, rem(-70));
+  left: calc(50% - min(260/378*100vw, rem(480)));
+  width: min(326/375*100vw, rem(500));
+  aspect-ratio: 326/42;
+  background-image: url(../images/sp/bg-wave-sub-secondary-bottom.svg);
+}
+
+.history__inner::after {
+  @extend %historyWaveReverse;
+  bottom: rem(-56);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max(100vw, 700px);
+  aspect-ratio: 700/58;
+  background-image: url(../images/sp/bg-wave-secondary-bottom.svg);
+}
 
 .history__container {
   position: relative;
   margin-inline: calc(50% - 50vw);
   padding-block: rem(30);
   background-image: var(--secondary-gradation);
-  // background-image: url("../img/history/img_history-bg.jpg");
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // background-size: cover;
 }
 
 @supports (background-image: url("image.webp")) {
@@ -50,7 +76,7 @@
   @extend %historyWave;
   top: rem(-66);
   right: rem(-60);
-  width: rem(326);
+  width: min(326/375*100vw, 390px);
   aspect-ratio: 326/56;
   background-image: url(../images/sp/bg-wave-sub-secondary.svg);
 }
@@ -60,84 +86,77 @@
   top: rem(-56);
   left: 50%;
   transform: translateX(-50%);
-  width: rem(700);
+  width: max(100vw, 700px);
   aspect-ratio: 700/58;
   background-image: url(../images/sp/bg-wave-secondary.svg);
 }
 
 .history__title {
+  max-width: 600px;
+  margin-inline: auto;
   padding-inline: rem(24);
 }
 
-// .history__content {
-//   padding-top: rem(40);
-//   padding-bottom: rem(107);
-//   overflow-x: auto;
-// }
+.history__wrapper {
+  position: relative;
+}
 
-// .history__timeline {
-//   margin-top: rem(30);
-//   display: flex;
-//   border-bottom: 2px solid var(--white);
-//   width: max-content;
-//   cursor: ew-resize;
-// }
-
-// .history__timeline-item {
-//   width: rem(1237);
-//   flex-shrink: 0;
-// }
-
-// .history__timeline-img {
-// }
-
-// .history__timeline-img img {
-//   object-fit: contain;
-// }
-
-// .history__timeline-year {}
-
-
-// test
-.history__content {}
-
-.history__timeline {
-  display: flex;
-  padding-top: rem(40);
-  padding-bottom: rem(107);
-  padding-inline: rem(70);
-  overflow-x: scroll;
+.history__wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background-image: url("../images/pc/img_history-bg.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: cover;
-  cursor: ew-resize;
+  background-size: rem(1920) rem(811);
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
-.history__timeline-wrap {
-  flex-shrink: 0;
+.history__content {
+  margin-top: rem(30);
+  padding-top: rem(40);
+  padding-bottom: rem(107);
+  overflow-x: auto;
+  scrollbar-width: none;
 }
 
-.history__timeline-year {}
-
-.history__timeline-months {
-  margin-top: rem(60);
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, rem(100)));
+.history__content::-webkit-scrollbar {
+  display: none;
 }
 
-.history__timeline-label {
+.history__timeline {
   position: relative;
+  display: flex;
+  border-bottom: 2px solid rgb(255, 255, 255, 0.5);
+  width: max-content;
+  cursor: ew-resize;
+  padding-inline: rem(70);
+}
+
+.history__timeline-item {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--width);
+  margin-left: var(--marginLeft);
+  z-index: var(--z-index);
+}
+
+.history__timeline-img {
   display: grid;
-  border-left: 1px solid var(--white);
-  height: 600px;
+  gap: rem(4);
 }
 
-.history__timeline-month {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -100%);
+.history__timeline-img img {
+  object-fit: contain;
 }
 
-.history__timeline-num {}
+.history__timeline-year {
+  width: fit-content;
+  font-size: rem(36);
+  font-weight: var(--bold);
+  font-family: var(--poppins-font);
+  color: var(--white);
+  line-height: 1.5;
+  transform: translateX(-33%);
+}

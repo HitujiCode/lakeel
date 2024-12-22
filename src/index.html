@@ -36,6 +36,7 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script defer src="./assets/library/swiper-bundle.min.js"></script>
+  <script defer src="./assets/library/particles2.min.js"></script>
   <script defer src="./assets/js/script.js"></script>
 </head>
 
@@ -95,7 +96,8 @@
   </header>
 
   <main>
-    <div class="particle-secondary-color">
+    <div class="particle">
+      <div class="particle__bg" id="js-particle-secondary"></div>
       <!-- MV -->
       <section class="mv">
         <div class="mv__flag">
@@ -193,7 +195,7 @@
       </section>
     </div>
     <!-- History -->
-    <section class="history layout-history">
+    <section id="history" class="history layout-history">
       <div class="history__inner inner">
         <div class="history__container">
           <div class="history__title">
@@ -202,127 +204,200 @@
               <p class="section-title__ja section-title__ja--white">ラキールの年表</p>
             </hgroup>
           </div>
-          <!-- test -->
-          <div class="history__content">
-            <ul class="history__timeline">
-              <li class="history__timeline-wrap">
-                <p class="history__timeline-year">2005</p>
-                <ul class="history__timeline-months">
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">1</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">2</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">3</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">4</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">5</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">6</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">7</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">8</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">9</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">10</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">11</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">12</span>月</p>
-                  </li>
-                </ul>
-              </li>
-              <li class="history__timeline-wrap">
-                <p class="history__timeline-year">2006</p>
-                <ul class="history__timeline-months">
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">1</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">2</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">3</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">4</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">5</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">6</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">7</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">8</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">9</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">10</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">11</span>月</p>
-                  </li>
-                  <li class="history__timeline-label">
-                    <p class="history__timeline-month"><span class="history__timeline-num">12</span>月</p>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+          <div class="history__wrapper">
+            <div class="history__content js-scroll">
+              <ul class="history__timeline">
+                <li class="history__timeline-item" style="--width: 1237px; --marginLeft: 0px; --z-index: 1;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2005</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2005.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2005.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1173px; --marginLeft: -35px; --z-index: initial;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2006</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2006.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2006.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1289px; --marginLeft: 29px; --z-index: 1;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2007</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2007.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2007.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1151px; --marginLeft: -97px; --z-index: initial;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2008</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2008.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2008.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1173px; --marginLeft: 62px; --z-index: initial;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2009</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2009.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2009.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1138px; --marginLeft: 25px; --z-index: initial;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2010</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2010.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2010.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1298px; --marginLeft: 62px; --z-index: 1;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2011</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2011.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2011.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1138px; --marginLeft: -98px; --z-index: initial;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2012</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2012.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2012.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1138px; --marginLeft: 62px; --z-index: initial;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2013</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2013.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2013.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1138px; --marginLeft: 62px; --z-index: initial;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2014</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2014.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2014.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1138px; --marginLeft: 48px; --z-index: initial;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2015</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2015.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2015.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1140px; --marginLeft: 62px; --z-index: initial;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2016</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2016.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2016.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1238px; --marginLeft: 62px; --z-index: 2;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2017</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2017.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2017.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1510px; --marginLeft: -38px; --z-index: 1;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2018</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2018.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2018.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1142px; --marginLeft: -310px; --z-index: initial;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2019</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2019.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2019.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1140px; --marginLeft: 60px; --z-index: initial;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2020</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2020.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2020.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1398px; --marginLeft: 62px; --z-index: 3;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2021</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2021.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2021.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1325px; --marginLeft: -198px; --z-index: 2;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2022</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2022.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2022.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1263px; --marginLeft: -125px; --z-index: 1;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2023</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2023.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2023.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+                <li class="history__timeline-item" style="--width: 1207px; --marginLeft: -63px; --z-index: initial;">
+                  <figure class="history__timeline-img">
+                    <figcaption class="history__timeline-year">2024</figcaption>
+                    <picture>
+                      <source srcset="./assets/images/pc/history2024.webp" type="image/webp">
+                      <img src="./assets/images/pc/history2024.png" alt="" width="" height="" loading="lazy" />
+                    </picture>
+                  </figure>
+                </li>
+              </ul>
+            </div>
           </div>
-          <!-- test -->
-          <!-- <div class="history__content">
-            <ul class="history__timeline">
-              <li class="history__timeline-item">
-                <figure class="history__timeline-img">
-                  <figcaption class="history__timeline-year">2005</figcaption>
-                  <picture>
-                    <source srcset="./assets/images/pc/history2005.webp" type="image/webp">
-                    <img src="./assets/images/pc/history2005.png" alt="" width="" height="" loading="lazy" />
-                  </picture>
-                </figure>
-              </li>
-              <li class="history__timeline-item">
-                <picture>
-                  <source srcset="./assets/images/pc/history2006.webp" type="image/webp">
-                  <img src="./assets/images/pc/history2006.png" alt="" width="" height="" loading="lazy" />
-                </picture>
-              </li>
-              <li class="history__timeline-item">
-                <picture>
-                  <source srcset="./assets/images/pc/history2007.webp" type="image/webp">
-                  <img src="./assets/images/pc/history2007.png" alt="" width="" height="" loading="lazy" />
-                </picture>
-              </li>
-            </ul>
-          </div> -->
         </div>
       </div>
     </section>
     <!-- Episode -->
-    <section class="episode layout-episode">
+    <section id="episode" class="episode layout-episode">
       <div class="episode__inner inner">
         <div class="episode__title">
-          <hgroup class="section-title">
+          <hgroup class="section-title section-title--episode">
             <h2 class="section-title__en">Episode</h2>
             <p class="section-title__ja">ラキールの「変化を創り出す」エピソード</p>
           </hgroup>
@@ -624,7 +699,7 @@
       </div>
     </section>
     <!-- Character -->
-    <section class="character layout-character">
+    <section id="character" class="character layout-character">
       <figure class="character__img1">
         <picture>
           <source srcset="./assets/images/common/character-02.webp" type="image/webp">
@@ -654,7 +729,7 @@
           <div class="character__title">
             <hgroup class="section-title section-title--white">
               <h2 class="section-title__en">Character</h2>
-              <p class="section-title__ja">20周年記念キャラクター</p>
+              <p class="section-title__ja section-title__ja--white">20周年記念キャラクター</p>
             </hgroup>
           </div>
           <figure class="character__main-img">
@@ -697,12 +772,13 @@
         </figure>
       </div>
       <h2 class="special__title">
-        <span class="special__title-text"><span class="special__tilte-num">20</span>th <br class="sp">Special
-          Contents</span>
+        <span class="special__title-text"><span class="special__tilte-num">20</span>th <br class="sp">Special <br
+            class="sp">Contents</span>
       </h2>
     </section>
     <!-- Coming soon -->
-    <div class="particle-primary-color">
+    <div class="particle">
+      <div class="particle__bg" id="js-particle-primary"></div>
       <div class="coming-soon">
         <div class="coming-soon__inner inner">
           <div class="coming-soon__bubble">
@@ -746,7 +822,7 @@
     </div>
   </main>
 
-  <footer class="footer layout-footer">
+  <footer class="footer">
     <div class="footer__inner inner">
       <ul class="footer__nav">
         <li class="footer__nav-item">
@@ -759,6 +835,11 @@
       <div class="footer__copylight">
         <small>Copyrights © LaKeel, Inc. All Rights Reserved.</small>
       </div>
+    </div>
+    <div class="footer__totop">
+      <button class="footer__totop-button js-totop">
+        <img src="./assets/images/common/totop.svg" alt="ページトップボタン" width="50" height="50" loading="lazy" />
+      </button>
     </div>
   </footer>
 </body>

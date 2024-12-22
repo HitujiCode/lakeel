@@ -10,6 +10,11 @@
   color: var(--white);
 }
 
+.section-title--episode {
+  display: grid;
+  gap: rem(8);
+}
+
 .section-title::before {
   content: "";
   position: absolute;
@@ -18,7 +23,12 @@
   top: 0;
   left: rem(-12);
   background-color: var(--tertiary);
-  border-radius: 100vmax;
+  border-radius: 50%;
+}
+
+.section-title--episode::before {
+  top: rem(-4);
+  left: rem(-10);
 }
 
 .section-title__en {

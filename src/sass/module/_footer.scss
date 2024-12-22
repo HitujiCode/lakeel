@@ -1,12 +1,9 @@
 @use "global" as *;
 
 .footer {
+  position: relative;
   padding-block: rem(80) rem(60);
   background-color: var(--light-gray);
-}
-
-.layout-footer {
-  margin-top: rem(60);
 }
 
 .footer__inner.inner {
@@ -19,6 +16,7 @@
 
 .footer__nav {
   display: flex;
+  justify-content: center;
 }
 
 .footer__nav-item {}
@@ -59,7 +57,7 @@
 }
 
 .footer__copylight {
-  margin-top: rem(40);
+  margin-top: rem(36);
   text-align: center;
 }
 
@@ -74,4 +72,20 @@
   %footerLink:hover {
     color: var(--primary);
   }
+}
+
+.footer__totop {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.footer__totop-button {
+  width: rem(50);
+}
+
+.footer__totop-button img {
+  aspect-ratio: 1/1;
+  object-fit: contain;
 }

@@ -1,0 +1,10 @@
+@use "global" as *;
+
+.particle {
+  position: relative;
+}
+
+.particle__bg {
+  position: absolute;
+  inset: 0;
+}

@@ -1,7 +1,8 @@
 @use "global" as *;
 
 .coming-soon {
-  padding-block: rem(128);
+  position: relative;
+  padding-block: rem(325) rem(130);
 }
 
 .coming-soon__inner.inner {
@@ -39,7 +40,7 @@
 }
 
 .coming-soon__img {
-  margin-top: rem(30);
+  margin-top: rem(46);
   margin-inline: auto;
   width: min(100%, rem(268));
 }

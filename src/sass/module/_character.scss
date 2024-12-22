@@ -7,10 +7,6 @@
   position: relative;
 }
 
-.layout-character {
-  margin-top: rem(65);
-}
-
 %characterImg {
   position: absolute;
   z-index: 1;
@@ -22,32 +18,34 @@
 
 .character__img1 {
   @extend %characterImg;
-  top: 0;
+  top: rem(30);
   left: 0;
+  left: calc(50% - min(188/375*100vw, rem(370)));
   width: rem(200);
   aspect-ratio: 200/173;
 }
 
 .character__img2 {
   @extend %characterImg;
-  top: 0;
-  right: 0;
+  top: rem(32);
+  right: calc(50% - min(187 / 375* 100vw, rem(350)));
   width: rem(180);
   aspect-ratio: 180/156;
 }
 
 .character__img3 {
   @extend %characterImg;
-  bottom: 0;
-  left: 0;
+  bottom: rem(11);
+  left: rem(-18);
+  left: calc(50% - min(206 / 375* 100vw, rem(360)));
   width: rem(150);
   aspect-ratio: 150/129;
 }
 
 .character__img4 {
   @extend %characterImg;
-  bottom: 0;
-  right: 0;
+  bottom: rem(-2);
+  right: calc(50% - min(187 / 375* 100vw, rem(370)));
   width: rem(180);
   aspect-ratio: 180/156;
 }
@@ -61,6 +59,7 @@
   padding-inline: calc(50vw - 50%);
   padding-block: rem(80);
   display: grid;
+  // place-items: center;
   color: var(--white);
   background-image: var(--primary-gradation);
   position: relative;
@@ -79,16 +78,17 @@
   top: rem(-52);
   left: rem(-60);
   width: rem(326);
+  width: min(326/375*100vw, 420px);
   aspect-ratio: 326/42;
   background-image: url(../images/sp/bg-wave-sub-primary.svg);
 }
 
 .character__container::after {
   @extend %characterWave;
-  top: rem(-50);
+  top: rem(-48);
   left: 50%;
   transform: translateX(-50%);
-  width: rem(700);
+  width: max(100vw, 700px);
   aspect-ratio: 700/58;
   background-image: url(../images/sp/bg-wave-primary.svg);
 }
@@ -98,9 +98,11 @@
 
 .character__main-img {
   margin-top: rem(30);
+  margin-inline: auto;
   position: relative;
+  top: rem(-3);
+  left: rem(3);
   width: rem(320);
-  // margin-inline: rem(-20);
 }
 
 .character__main-img img {
@@ -111,8 +113,8 @@
 .character__main-img::before {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 47%;
+  left: 48.5%;
   transform: translate(-50%, -50%);
   background-image: url(../images/common/blob.svg);
   background-repeat: no-repeat;

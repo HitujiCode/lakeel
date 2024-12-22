@@ -95,14 +95,14 @@
 
 .flip-card__title::before {
   @extend %flipPseudo;
-  top: rem(-8);
+  top: 0;
   left: rem(-30);
 }
 
 .flip-card__title::after {
   @extend %flipPseudo;
-  bottom: rem(8);
-  right: rem(-30);
+  bottom: rem(12);
+  right: rem(-28);
   transform: scale(-1, -1);
 }
 

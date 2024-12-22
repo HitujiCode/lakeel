@@ -1,6 +1,8 @@
 @use "global" as *;
 
-.share {}
+.share {
+  padding-bottom: rem(60);
+}
 
 .layout-share {}
 
@@ -9,7 +11,7 @@
 .share__container {}
 
 .share__read {
-  padding-block: rem(10) rem(30);
+  padding-block: rem(8) rem(27);
   font-size: rem(20);
   font-weight: var(--bold);
   line-height: 1.5;

@@ -2,10 +2,8 @@
 
 .special {
   overflow-x: clip;
-}
-
-.layout-special {
-  margin-top: rem(60);
+  position: relative;
+  // padding-bottom: rem(195);
 }
 
 .special__slider {
@@ -23,23 +21,23 @@
 }
 
 .special__title {
-  margin-top: -30%;
   text-align: center;
-  position: relative;
+  position: absolute;
+  top: 66.5%;
+  inset-inline: 0;
   display: inline-grid;
   justify-items: center;
   grid-template-rows: auto rem(100);
 }
 
 .special__title-text {
-  font-size: rem(57);
+  font-size: rem(58);
   font-weight: var(--bold);
   font-family: var(--poppins-font);
   color: var(--tertiary);
   line-height: 1;
   letter-spacing: 0.02em;
-  -webkit-text-stroke: rem(4) var(--white);
-  text-stroke: rem(4) var(--white);
+  -webkit-text-stroke: rem(6) var(--white);
   paint-order: stroke;
 }
 
