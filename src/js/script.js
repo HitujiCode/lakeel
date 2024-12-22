@@ -59,25 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // パーティクル
-  // document.addEventListener('DOMContentLoaded', function () {
-  //   (function initSecondaryParticles() {
-  //     Particles.init({
-  //       selector: '.particle-secondary-color',
-  //       maxParticles: 50,
-  //       sizeVariations: 20,
-  //       color: ['#004664', '#002F43', '#E7F1F5', '#CCDAE0'],
-  //     });
-  //   })();
-
-  //   (function initPrimaryParticles() {
-  //     Particles.init({
-  //       selector: '.particle-primary-color',
-  //       maxParticles: 50,
-  //       sizeVariations: 20,
-  //       color: ['#AC0C2D', '#c5556c', '#b72a47', '#EDCCD4'],
-  //     });
-  //   })();
-  // });
 
   // カウントダウン
   function showRestTime() {
@@ -85,15 +66,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const goal = new Date(2025, 5, 10);
 
     const restMillisecond = goal.getTime() - now.getTime();
-    const day = Math.ceil(restMillisecond / (1000 * 60 * 60 * 24)); // 日数を計算
+    const day = Math.ceil(restMillisecond / (1000 * 60 * 60 * 24));
 
     const countdownElement = document.getElementById('js-countdown');
     if (countdownElement) {
-      countdownElement.textContent = day; // 要素が存在する場合のみ更新
+      countdownElement.textContent = day;
     }
   }
 
-  // 初回実行
   showRestTime();
 
   // 次の日付が変わるタイミングを計算
@@ -118,6 +98,11 @@ document.addEventListener("DOMContentLoaded", function () {
       autoplay: {
         delay: 0,
       },
+      breakpoints: {
+        768: {
+          spaceBetween: 24,
+        },
+      },
     };
 
     const swiperOptions = { ...defaultOptions, ...options };
@@ -131,6 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
       reverseDirection: true,
     },
   });
+
 
   // ドラッグスクロール有効化
   function enableSmoothMouseDragScroll(targetSelector) {
@@ -249,5 +235,27 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeParticlesJS("js-particle-secondary", ['#004664', '#002F43', '#E7F1F5', '#CCDAE0']);
 
   initializeParticlesJS("js-particle-primary", ['#AC0C2D', '#c5556c', '#b72a47', '#EDCCD4']);
+
+
+
+
+  // json読み込み
+  // 基本のrem変換関数
+  const pxToRem = (px, base = 16) => px / base + "rem";
+
+  // JSONファイルをフェッチして値を適用（開発時のみ有効）
+  if (process.env.NODE_ENV === "development") {
+    fetch("./src/data/timeline-data.json") // JSONのパスを開発環境用に設定
+      .then(response => response.json())
+      .then(data => {
+        data.timelineItems.forEach(item => {
+          const element = document.querySelector(`.history__timeline-item[data-id="${item.id}"]`);
+          if (element) {
+            element.style.setProperty("--width", pxToRem(item.width));
+          }
+        });
+      })
+      .catch(error => console.error("JSONの読み込みに失敗しました:", error));
+  }
 
 });

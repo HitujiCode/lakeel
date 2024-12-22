@@ -3,7 +3,6 @@
 .special {
   overflow-x: clip;
   position: relative;
-  // padding-bottom: rem(195);
 }
 
 .special__slider {
@@ -14,6 +13,11 @@
   width: rem(4337);
   flex-shrink: 0;
   animation: loop 54s linear infinite;
+
+  @include mq("md") {
+    width: rem(4407);
+    animation-duration: 80s;
+  }
 }
 
 .special__img img {
@@ -28,6 +32,11 @@
   display: inline-grid;
   justify-items: center;
   grid-template-rows: auto rem(100);
+
+  @include mq("md") {
+    top: 74.5%;
+    padding-inline: $padding-pc;
+  }
 }
 
 .special__title-text {
@@ -39,10 +48,20 @@
   letter-spacing: 0.02em;
   -webkit-text-stroke: rem(6) var(--white);
   paint-order: stroke;
+
+  @include mq("md") {
+    font-size: rem(110);
+    line-height: 1.5;
+    -webkit-text-stroke: rem(10) var(--white);
+  }
 }
 
 .special__tilte-num {
   font-size: rem(70);
+
+  @include mq("md") {
+    font-size: rem(130);
+  }
 }
 
 .special__title::before {

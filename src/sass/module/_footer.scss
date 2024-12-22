@@ -83,6 +83,10 @@
 
 .footer__totop-button {
   width: rem(50);
+
+  @include mq("md") {
+    width: rem(80);
+  }
 }
 
 .footer__totop-button img {

@@ -1,9 +1,9 @@
 @use "global" as *;
 
-.layout-character {
+.layout-episode {
   margin-top: rem(96);
 
   @include mq("md") {
-    margin-top: rem(88);
+    margin-top: rem(112);
   }
 }

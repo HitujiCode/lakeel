@@ -5,35 +5,27 @@
   padding-top: rem(14);
 }
 
-.layout-episode {
-  margin-top: rem(96);
+.episode__inner.inner {
+  @include mq("md") {
+    @include mq("md") {
+      max-width: calc(1226px + 2 * $padding-pc);
+    }
+  }
 }
-
-.episode__inner.inner {}
 
 .episode__title {}
 
 .episode__container {
   margin-top: rem(44);
-}
-
-.episode__read {
-  font-size: rem(18);
-  font-weight: var(--medium);
-  line-height: 1.6;
-}
-
-.episode__content {
-  margin-top: rem(20);
-  margin-inline: calc(50% - 50vw);
   position: relative;
 }
 
-.episode__content::before {
+.episode__container::before {
   content: "";
   position: absolute;
-  top: rem(-108);
-  right: rem(-44);
+  top: calc(50% - min(290 / 375* 100vw, 300px));
+  right: calc(50% - min(230 / 375* 100vw, 380px));
+  z-index: -1;
   width: rem(190);
   aspect-ratio: 1/1;
   background-image: url("../images/common/compass.svg");
@@ -41,6 +33,13 @@
   background-position: center;
   background-size: contain;
   animation: 10s linear infinite rotateCompass;
+
+  @include mq("md") {
+    width: rem(380);
+    top: rem(-204);
+    right: rem(-120);
+    right: calc(50% - min(731 / 1440* 100vw, 731px));
+  }
 }
 
 @keyframes rotateCompass {
@@ -49,8 +48,31 @@
   }
 }
 
+.episode__read {
+  font-size: rem(18);
+  font-weight: var(--medium);
+  line-height: 1.6;
+
+  @include mq("md") {
+    margin-top: rem(58);
+  }
+}
+
+.episode__content {
+  margin-top: rem(20);
+  margin-inline: calc(50% - 50vw);
+
+  @include mq("md") {
+    margin-top: rem(50);
+  }
+}
+
 .episode__slider {
   padding-block: rem(10);
+
+  @include mq("md") {
+    padding-block: rem(12);
+  }
 }
 
 .episode__list {

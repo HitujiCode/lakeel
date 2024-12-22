@@ -3,6 +3,10 @@
 .coming-soon {
   position: relative;
   padding-block: rem(325) rem(130);
+
+  @include mq("md") {
+    padding-block: rem(296) rem(260);
+  }
 }
 
 .coming-soon__inner.inner {
@@ -15,6 +19,12 @@
   padding: rem(56) rem(84.5);
   border-radius: 50%;
   position: relative;
+  width: fit-content;
+  margin-inline: auto;
+
+  @include mq("md") {
+    padding: rem(90) rem(76);
+  }
 }
 
 .coming-soon__bubble::after {
@@ -37,15 +47,23 @@
   font-family: var(--poppins-font);
   line-height: 1.1;
   text-transform: uppercase;
+
+  @include mq("md") {
+    font-size: rem(70);
+    line-height: 1;
+  }
 }
 
 .coming-soon__img {
   margin-top: rem(46);
   margin-inline: auto;
   width: min(100%, rem(268));
+
+  @include mq("md") {
+    margin-top: rem(50);
+  }
 }
 
 .coming-soon__img img {
   object-fit: contain;
 }
-

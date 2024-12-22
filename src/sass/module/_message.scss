@@ -4,12 +4,25 @@
   overflow-x: clip;
   position: relative;
   padding-bottom: rem(202);
+
+  @include mq("md") {
+    padding-bottom: rem(217);
+  }
 }
 
-.message__inner.inner {}
+.message__inner.inner {
+  @include mq("md") {
+    max-width: 1440px;
+    padding-inline: initial;
+  }
+}
 
 .message__container {
   display: grid;
+
+  @include mq("md") {
+    display: contents;
+  }
 }
 
 .message__title {
@@ -26,8 +39,15 @@
   border-radius: rem(10);
 
   @include mq("md") {
+    margin-top: initial;
     position: absolute;
-    width: rem(144);
+    right: calc(50% - min(610/1440*100vw, 610px));
+    top: rem(30);
+    width: rem(241);
+  }
+
+  @include mq("xl") {
+    top: rem(68);
   }
 }
 
@@ -41,6 +61,20 @@
 
 .message__content {
   display: grid;
+
+  @include mq("md") {
+    margin-top: rem(60);
+    grid-template-columns: 1fr calc(798/1440*100%);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "main-img text"
+      "bottom-img text";
+    column-gap: rem(23);
+  }
+
+  @include mq("xl") {
+    margin-top: 97px;
+  }
 }
 
 .message__main-img {
@@ -49,7 +83,8 @@
   margin-left: calc(50% - 50vw);
 
   @include mq("md") {
-    margin-left: initial;
+    margin: initial;
+    grid-area: main-img;
   }
 }
 
@@ -60,6 +95,11 @@
   height: 100%;
   object-fit: cover;
   object-position: right;
+
+  @include mq("md") {
+    aspect-ratio: 619/320;
+    object-position: initial;
+  }
 }
 
 .message__bottom-img {
@@ -67,10 +107,14 @@
   margin-top: rem(66);
   width: min(241/375*100vw, 340px);
   border-radius: rem(10);
-  // grid-column: 4;
 
   @include mq("md") {
+    margin-top: initial;
+    margin-left: rem(113);
     width: rem(241);
+    grid-area: bottom-img;
+    align-self: flex-end;
+    padding-bottom: rem(20);
   }
 }
 
@@ -84,6 +128,12 @@
 
 .message__body {
   margin-top: rem(30);
+
+  @include mq("md") {
+    margin-top: rem(67);
+    padding-right: min(207/798*100%);
+    grid-area: text;
+  }
 }
 
 .message__text-wrap {
@@ -91,6 +141,10 @@
   grid-template-columns: 1fr;
   line-height: 1.6;
   gap: rem(30);
+
+  @include mq("md") {
+    gap: rem(28);
+  }
 }
 
 .message__text {
@@ -99,11 +153,19 @@
   line-height: 1.6;
   letter-spacing: 0.05em;
   line-break: strict;
+
+  @include mq("md") {
+    font-feature-settings: "pwid";
+  }
 }
 
 .message__sign {
   margin-top: rem(20);
   text-align: right;
+
+  @include mq("md") {
+    margin-top: rem(14);
+  }
 }
 
 %messageSign {

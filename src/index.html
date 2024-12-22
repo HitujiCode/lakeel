@@ -146,9 +146,9 @@
         <div class="message__inner inner">
           <div class="message__container">
             <div class="message__title">
-              <hgroup class="section-title">
-                <h2 class="section-title__en">Message</h2>
-                <p class="section-title__ja section-title__ja--message">トップメッセージ</p>
+              <hgroup class="section-title section-title--message">
+                <h2 class="section-title__en"><span class="section-title__circle">Message</span></h2>
+                <p class="section-title__ja section-title__ja">トップメッセージ</p>
               </hgroup>
             </div>
             <figure class="message__top-img">
@@ -199,15 +199,15 @@
       <div class="history__inner inner">
         <div class="history__container">
           <div class="history__title">
-            <hgroup class="section-title section-title--white">
-              <h2 class="section-title__en">History</h2>
-              <p class="section-title__ja section-title__ja--white">ラキールの年表</p>
+            <hgroup class="section-title section-title--history">
+              <h2 class="section-title__en"><span class="section-title__circle">History</span></h2>
+              <p class="section-title__ja section-title__ja">ラキールの年表</p>
             </hgroup>
           </div>
           <div class="history__wrapper">
             <div class="history__content js-scroll">
               <ul class="history__timeline">
-                <li class="history__timeline-item" style="--width: 1237px; --marginLeft: 0px; --z-index: 1;">
+                <li data-id="2005" class="history__timeline-item" style="--width: 1237px; --marginLeft: 0px; --z-index: 1;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2005</figcaption>
                     <picture>
@@ -216,7 +216,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1173px; --marginLeft: -35px; --z-index: initial;">
+                <li data-id="2006" class="history__timeline-item" style="--width: 1173px; --marginLeft: -35px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2006</figcaption>
                     <picture>
@@ -225,7 +225,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1289px; --marginLeft: 29px; --z-index: 1;">
+                <li data-id="2007" class="history__timeline-item" style="--width: 1289px; --marginLeft: 29px; --z-index: 1;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2007</figcaption>
                     <picture>
@@ -234,7 +234,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1151px; --marginLeft: -97px; --z-index: initial;">
+                <li data-id="2008" class="history__timeline-item" style="--width: 1151px; --marginLeft: -97px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2008</figcaption>
                     <picture>
@@ -243,7 +243,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1173px; --marginLeft: 62px; --z-index: initial;">
+                <li data-id="2009" class="history__timeline-item" style="--width: 1173px; --marginLeft: 62px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2009</figcaption>
                     <picture>
@@ -252,7 +252,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1138px; --marginLeft: 25px; --z-index: initial;">
+                <li data-id="2010" class="history__timeline-item" style="--width: 1138px; --marginLeft: 25px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2010</figcaption>
                     <picture>
@@ -261,7 +261,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1298px; --marginLeft: 62px; --z-index: 1;">
+                <li data-id="2011" class="history__timeline-item" style="--width: 1298px; --marginLeft: 62px; --z-index: 1;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2011</figcaption>
                     <picture>
@@ -270,7 +270,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1138px; --marginLeft: -98px; --z-index: initial;">
+                <li data-id="2012" class="history__timeline-item" style="--width: 1138px; --marginLeft: -98px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2012</figcaption>
                     <picture>
@@ -279,7 +279,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1138px; --marginLeft: 62px; --z-index: initial;">
+                <li data-id="2013" class="history__timeline-item" style="--width: 1138px; --marginLeft: 62px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2013</figcaption>
                     <picture>
@@ -288,7 +288,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1138px; --marginLeft: 62px; --z-index: initial;">
+                <li data-id="2014" class="history__timeline-item" style="--width: 1138px; --marginLeft: 62px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2014</figcaption>
                     <picture>
@@ -297,7 +297,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1138px; --marginLeft: 48px; --z-index: initial;">
+                <li data-id="2015" class="history__timeline-item" style="--width: 1138px; --marginLeft: 48px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2015</figcaption>
                     <picture>
@@ -306,7 +306,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1140px; --marginLeft: 62px; --z-index: initial;">
+                <li data-id="2016" class="history__timeline-item" style="--width: 1140px; --marginLeft: 62px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2016</figcaption>
                     <picture>
@@ -315,7 +315,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1238px; --marginLeft: 62px; --z-index: 2;">
+                <li data-id="2017" class="history__timeline-item" style="--width: 1238px; --marginLeft: 62px; --z-index: 2;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2017</figcaption>
                     <picture>
@@ -324,7 +324,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1510px; --marginLeft: -38px; --z-index: 1;">
+                <li data-id="2018" class="history__timeline-item" style="--width: 1510px; --marginLeft: -38px; --z-index: 1;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2018</figcaption>
                     <picture>
@@ -333,7 +333,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1142px; --marginLeft: -310px; --z-index: initial;">
+                <li data-id="2019" class="history__timeline-item" style="--width: 1142px; --marginLeft: -310px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2019</figcaption>
                     <picture>
@@ -342,7 +342,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1140px; --marginLeft: 60px; --z-index: initial;">
+                <li data-id="2020" class="history__timeline-item" style="--width: 1140px; --marginLeft: 60px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2020</figcaption>
                     <picture>
@@ -351,7 +351,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1398px; --marginLeft: 62px; --z-index: 3;">
+                <li data-id="2021" class="history__timeline-item" style="--width: 1398px; --marginLeft: 62px; --z-index: 3;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2021</figcaption>
                     <picture>
@@ -360,7 +360,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1325px; --marginLeft: -198px; --z-index: 2;">
+                <li data-id="2022" class="history__timeline-item" style="--width: 1325px; --marginLeft: -198px; --z-index: 2;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2022</figcaption>
                     <picture>
@@ -369,7 +369,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1263px; --marginLeft: -125px; --z-index: 1;">
+                <li data-id="2023" class="history__timeline-item" style="--width: 1263px; --marginLeft: -125px; --z-index: 1;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2023</figcaption>
                     <picture>
@@ -378,7 +378,7 @@
                     </picture>
                   </figure>
                 </li>
-                <li class="history__timeline-item" style="--width: 1207px; --marginLeft: -63px; --z-index: initial;">
+                <li data-id="2024" class="history__timeline-item" style="--width: 1207px; --marginLeft: -63px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2024</figcaption>
                     <picture>
@@ -398,7 +398,7 @@
       <div class="episode__inner inner">
         <div class="episode__title">
           <hgroup class="section-title section-title--episode">
-            <h2 class="section-title__en">Episode</h2>
+            <h2 class="section-title__en"><span class="section-title__circle">Episode</span></h2>
             <p class="section-title__ja">ラキールの「変化を創り出す」エピソード</p>
           </hgroup>
         </div>
@@ -726,12 +726,6 @@
       </figure>
       <div class="character__inner inner">
         <div class="character__container">
-          <div class="character__title">
-            <hgroup class="section-title section-title--white">
-              <h2 class="section-title__en">Character</h2>
-              <p class="section-title__ja section-title__ja--white">20周年記念キャラクター</p>
-            </hgroup>
-          </div>
           <figure class="character__main-img">
             <picture>
               <source srcset="./assets/images/common/character-01.webp" type="image/webp">
@@ -741,15 +735,23 @@
               <p class="character__name">キャラクター名</p>
             </figcaption>
           </figure>
-          <p class="character__text">
-            こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。約200文字
-          </p>
-          <div class="character__buttons">
-            <div class="character__button">
-              <a href="" class="button" target="_blank" rel="noopener noreferrer">キャラクター誕生物語</a>
+          <div class="character__body">
+            <div class="character__title">
+              <hgroup class="section-title section-title--character">
+                <h2 class="section-title__en"><span class="section-title__circle">Character</span></h2>
+                <p class="section-title__ja section-title__ja">20周年記念キャラクター</p>
+              </hgroup>
             </div>
-            <div class="character__button">
-              <a href="" class="button" target="_blank" rel="noopener noreferrer">LINEスタンプのダウンロードはこちら</a>
+            <p class="character__text">
+              こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。こちらに説明文が入ります。約200文字
+            </p>
+            <div class="character__buttons">
+              <div class="character__button">
+                <a href="" class="button" target="_blank" rel="noopener noreferrer">キャラクター誕生物語</a>
+              </div>
+              <div class="character__button">
+                <a href="" class="button" target="_blank" rel="noopener noreferrer">LINEスタンプのダウンロードはこちら</a>
+              </div>
             </div>
           </div>
         </div>

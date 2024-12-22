@@ -27,6 +27,10 @@
     width: clamp(580px, 890/1440*100vw, 890px);
     left: min(63/1440*100vw, 63px);
   }
+
+  @include mq("xl") {
+    left: 0;
+  }
 }
 
 .mv__flag-img img {
@@ -129,9 +133,9 @@
   right: min(86/375*100vw, rem(90));
 
   @include mq("md") {
-    right: calc(50% - min(578 / 1440* 100vw, 600px));
+    right: calc(50% - min(578 / 1440* 100vw, 578px));
     top: initial;
-    bottom: calc(456/1440*100vw);
+    bottom: min(456/1440*100vw, 456px);
   }
 }
 
@@ -144,7 +148,7 @@
     bottom: initial;
     top: 51.5%;
     transform: translateY(-50%);
-    left: rem(43);
+    left: calc(44/1440*100vw);
   }
 }
 
