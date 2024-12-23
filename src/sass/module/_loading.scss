@@ -1,0 +1,31 @@
+@use "global" as *;
+
+.loading {
+  position: fixed;
+  inset: 0;
+  background-color: var(--primary);
+  z-index: calc(infinity);
+  display: grid;
+  place-items: center;
+  clip-path: inset(0);
+  display: none;
+}
+
+.loading__logo {
+  opacity: 0;
+  position: relative;
+  left: -1%;
+  transform: translateY(30%);
+  width: min(260/375*100vw, 360px);
+
+  @include mq("md") {
+    width: max(360px, 433/1440*100vw);
+  }
+}
+
+.loading__logo img {
+  aspect-ratio: 433/113;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

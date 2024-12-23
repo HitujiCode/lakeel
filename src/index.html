@@ -19,7 +19,8 @@
   <meta property="og:site_name" content="" />
   <meta property="og:description" content="" />
   <!-- ファビコン -->
-  <link rel="icon" href="" />
+  <link rel="icon" href="./assets/images/common/favicon.ico" />
+  <link rel="apple-touch-icon" href="./assets/images/common/favicon.ico" />
   <!-- GoogleFonts -->
   <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,10 +34,10 @@
   <link rel="stylesheet" href="./assets/css/style.css?ver=1.0.0" />
   <!-- JavaScript -->
   <script defer src="https://code.jquery.com/jquery-3.7.1.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="./assets/library/gsap.min.js"></script>
+  <script defer src="./assets/library/ScrollTrigger.min.js"></script>
   <script defer src="./assets/library/swiper-bundle.min.js"></script>
-  <script defer src="./assets/library/particles2.min.js"></script>
+  <script defer src="./assets/library/particles.min.js"></script>
   <script defer src="./assets/js/script.js"></script>
 </head>
 
@@ -96,23 +97,22 @@
   </header>
 
   <main>
+    <div class="loading js-loading">
+      <figure class="loading__logo">
+        <img src="./assets/images/common/logo-white.svg" alt="LaKeelロゴ" width="117" height="31">
+      </figure>
+    </div>
+
     <div class="particle">
-      <div class="particle__bg" id="js-particle-secondary"></div>
+      <div class="particle__bg  js-particle-mv" id="js-particle-secondary"></div>
       <!-- MV -->
-      <section class="mv">
+      <section class="mv js-fade-mv">
         <div class="mv__flag">
-          <!-- <hgroup class="mv__catchphrase">
-            <p class="mv__catchphrase-top">おかげさまで20周年！</p>
-            <h2 class="mv__catchphrase-main">
-              <span class="mv__catchphrase-large">20</span><span class="mv__catchphrase-middle">th</span><span
-                class="mv__catchphrase-text">anniversary</span>
-            </h2>
-            <p class="mv__catchphrase-bottom">2005>>>2024</p>
-          </hgroup> -->
           <figure class="mv__flag-img">
             <picture>
               <source srcset="./assets/images/pc/mv-flag.svg" media="(min-width: 768px)">
-              <img src="./assets/images/sp/mv-flag.svg" alt="おかげさまで20周年！20thAnniversary2005>>>2024" width="600" height="600">
+              <img src="./assets/images/sp/mv-flag.svg" alt="おかげさまで20周年！20thAnniversary2005>>>2024" width="600"
+                height="600">
             </picture>
           </figure>
         </div>
@@ -141,8 +141,9 @@
           </p>
         </div>
       </section>
+
       <!-- Message -->
-      <section id="message" class="message layout-message">
+      <section id="message" class="message layout-message js-fade-message">
         <div class="message__inner inner">
           <div class="message__container">
             <div class="message__title">
@@ -195,7 +196,7 @@
       </section>
     </div>
     <!-- History -->
-    <section id="history" class="history layout-history">
+    <section id="history" class="history layout-history js-fade-history">
       <div class="history__inner inner">
         <div class="history__container">
           <div class="history__title">
@@ -207,7 +208,8 @@
           <div class="history__wrapper">
             <div class="history__content js-scroll">
               <ul class="history__timeline">
-                <li data-id="2005" class="history__timeline-item" style="--width: 1237px; --marginLeft: 0px; --z-index: 1;">
+                <li data-id="2005" class="history__timeline-item"
+                  style="--width: 1237px; --marginLeft: 0px; --z-index: 1;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2005</figcaption>
                     <picture>
@@ -216,7 +218,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2006" class="history__timeline-item" style="--width: 1173px; --marginLeft: -35px; --z-index: initial;">
+                <li data-id="2006" class="history__timeline-item"
+                  style="--width: 1173px; --marginLeft: -35px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2006</figcaption>
                     <picture>
@@ -225,7 +228,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2007" class="history__timeline-item" style="--width: 1289px; --marginLeft: 29px; --z-index: 1;">
+                <li data-id="2007" class="history__timeline-item"
+                  style="--width: 1289px; --marginLeft: 29px; --z-index: 1;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2007</figcaption>
                     <picture>
@@ -234,7 +238,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2008" class="history__timeline-item" style="--width: 1151px; --marginLeft: -97px; --z-index: initial;">
+                <li data-id="2008" class="history__timeline-item"
+                  style="--width: 1151px; --marginLeft: -97px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2008</figcaption>
                     <picture>
@@ -243,7 +248,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2009" class="history__timeline-item" style="--width: 1173px; --marginLeft: 62px; --z-index: initial;">
+                <li data-id="2009" class="history__timeline-item"
+                  style="--width: 1173px; --marginLeft: 62px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2009</figcaption>
                     <picture>
@@ -252,7 +258,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2010" class="history__timeline-item" style="--width: 1138px; --marginLeft: 25px; --z-index: initial;">
+                <li data-id="2010" class="history__timeline-item"
+                  style="--width: 1138px; --marginLeft: 25px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2010</figcaption>
                     <picture>
@@ -261,7 +268,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2011" class="history__timeline-item" style="--width: 1298px; --marginLeft: 62px; --z-index: 1;">
+                <li data-id="2011" class="history__timeline-item"
+                  style="--width: 1298px; --marginLeft: 62px; --z-index: 1;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2011</figcaption>
                     <picture>
@@ -270,7 +278,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2012" class="history__timeline-item" style="--width: 1138px; --marginLeft: -98px; --z-index: initial;">
+                <li data-id="2012" class="history__timeline-item"
+                  style="--width: 1138px; --marginLeft: -98px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2012</figcaption>
                     <picture>
@@ -279,7 +288,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2013" class="history__timeline-item" style="--width: 1138px; --marginLeft: 62px; --z-index: initial;">
+                <li data-id="2013" class="history__timeline-item"
+                  style="--width: 1138px; --marginLeft: 62px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2013</figcaption>
                     <picture>
@@ -288,7 +298,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2014" class="history__timeline-item" style="--width: 1138px; --marginLeft: 62px; --z-index: initial;">
+                <li data-id="2014" class="history__timeline-item"
+                  style="--width: 1138px; --marginLeft: 62px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2014</figcaption>
                     <picture>
@@ -297,7 +308,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2015" class="history__timeline-item" style="--width: 1138px; --marginLeft: 48px; --z-index: initial;">
+                <li data-id="2015" class="history__timeline-item"
+                  style="--width: 1138px; --marginLeft: 48px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2015</figcaption>
                     <picture>
@@ -306,7 +318,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2016" class="history__timeline-item" style="--width: 1140px; --marginLeft: 62px; --z-index: initial;">
+                <li data-id="2016" class="history__timeline-item"
+                  style="--width: 1140px; --marginLeft: 62px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2016</figcaption>
                     <picture>
@@ -315,7 +328,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2017" class="history__timeline-item" style="--width: 1238px; --marginLeft: 62px; --z-index: 2;">
+                <li data-id="2017" class="history__timeline-item"
+                  style="--width: 1238px; --marginLeft: 62px; --z-index: 2;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2017</figcaption>
                     <picture>
@@ -324,7 +338,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2018" class="history__timeline-item" style="--width: 1510px; --marginLeft: -38px; --z-index: 1;">
+                <li data-id="2018" class="history__timeline-item"
+                  style="--width: 1510px; --marginLeft: -38px; --z-index: 1;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2018</figcaption>
                     <picture>
@@ -333,7 +348,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2019" class="history__timeline-item" style="--width: 1142px; --marginLeft: -310px; --z-index: initial;">
+                <li data-id="2019" class="history__timeline-item"
+                  style="--width: 1142px; --marginLeft: -310px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2019</figcaption>
                     <picture>
@@ -342,7 +358,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2020" class="history__timeline-item" style="--width: 1140px; --marginLeft: 60px; --z-index: initial;">
+                <li data-id="2020" class="history__timeline-item"
+                  style="--width: 1140px; --marginLeft: 60px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2020</figcaption>
                     <picture>
@@ -351,7 +368,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2021" class="history__timeline-item" style="--width: 1398px; --marginLeft: 62px; --z-index: 3;">
+                <li data-id="2021" class="history__timeline-item"
+                  style="--width: 1398px; --marginLeft: 62px; --z-index: 3;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2021</figcaption>
                     <picture>
@@ -360,7 +378,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2022" class="history__timeline-item" style="--width: 1325px; --marginLeft: -198px; --z-index: 2;">
+                <li data-id="2022" class="history__timeline-item"
+                  style="--width: 1325px; --marginLeft: -198px; --z-index: 2;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2022</figcaption>
                     <picture>
@@ -369,7 +388,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2023" class="history__timeline-item" style="--width: 1263px; --marginLeft: -125px; --z-index: 1;">
+                <li data-id="2023" class="history__timeline-item"
+                  style="--width: 1263px; --marginLeft: -125px; --z-index: 1;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2023</figcaption>
                     <picture>
@@ -378,7 +398,8 @@
                     </picture>
                   </figure>
                 </li>
-                <li data-id="2024" class="history__timeline-item" style="--width: 1207px; --marginLeft: -63px; --z-index: initial;">
+                <li data-id="2024" class="history__timeline-item"
+                  style="--width: 1207px; --marginLeft: -63px; --z-index: initial;">
                   <figure class="history__timeline-img">
                     <figcaption class="history__timeline-year">2024</figcaption>
                     <picture>
@@ -389,12 +410,16 @@
                 </li>
               </ul>
             </div>
+            <figure class="history__scroll-guide">
+              <img src="./assets/images/common/scroll-arrow.svg" alt="左右にスクロールできることを促すアイコン" width="98" height="37"
+                loading="lazy">
+            </figure>
           </div>
         </div>
       </div>
     </section>
     <!-- Episode -->
-    <section id="episode" class="episode layout-episode">
+    <section id="episode" class="episode layout-episode js-fade-episode">
       <div class="episode__inner inner">
         <div class="episode__title">
           <hgroup class="section-title section-title--episode">
@@ -408,6 +433,147 @@
           <div class="episode__content">
             <div class="episode__slider swiper js-top-swiper">
               <ul class="episode__list swiper-wrapper">
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <!-- loop -->
                 <li class="episode__item swiper-slide">
                   <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
                     <div class="flip-card__inner">
@@ -692,14 +858,158 @@
                     </div>
                   </a>
                 </li>
+                <!-- loop -->
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+                <li class="episode__item swiper-slide">
+                  <a href="" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card__inner">
+                      <div class="flip-card__front">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title">ピンチはチャンス</p>
+                      </div>
+                      <div class="flip-card__back">
+                        <p class="flip-card__year">2005</p>
+                        <p class="flip-card__title flip-card__title--back">ピンチはチャンス裏</p>
+                      </div>
+                    </div>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
+          <figure class="episode__compass">
+            <img src="./assets/images/common/compass.svg" alt="金茶のコンパス" width="" height="" loading="lazy" />
+          </figure>
         </div>
       </div>
     </section>
     <!-- Character -->
-    <section id="character" class="character layout-character">
+    <section id="character" class="character layout-character js-fade-character">
       <figure class="character__img1">
         <picture>
           <source srcset="./assets/images/common/character-02.webp" type="image/webp">
@@ -783,10 +1093,10 @@
       <div class="particle__bg" id="js-particle-primary"></div>
       <div class="coming-soon">
         <div class="coming-soon__inner inner">
-          <div class="coming-soon__bubble">
+          <div class="coming-soon__bubble js-fade-in">
             <p class="coming-soon__text">coming <wbr>soon!</p>
           </div>
-          <figure class="coming-soon__img">
+          <figure class="coming-soon__img js-fade-in">
             <picture>
               <source srcset="./assets/images/common/character-06.webp" type="image/webp">
               <img src="./assets/images/common/character-06.jpg" alt="" width="" height="" loading="lazy" />
@@ -796,7 +1106,7 @@
       </div>
       <div class="share layout-share">
         <div class="share__inner inner">
-          <div class="share__container">
+          <div class="share__container js-fade-in">
             <p class="share__read">SNSで<span class="text-block">LaKeel20周年サイトをシェア！</span></p>
             <ul class="share__list">
               <li class="share__item">
@@ -839,9 +1149,7 @@
       </div>
     </div>
     <div class="footer__totop">
-      <button class="footer__totop-button js-totop">
-        <img src="./assets/images/common/totop.svg" alt="ページトップボタン" width="50" height="50" loading="lazy" />
-      </button>
+      <button class="footer__totop-button js-totop"></button>
     </div>
   </footer>
 </body>

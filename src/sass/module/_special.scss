@@ -1,8 +1,9 @@
 @use "global" as *;
 
 .special {
-  overflow-x: clip;
   position: relative;
+  z-index: 1;
+  overflow-x: clip;
 }
 
 .special__slider {
@@ -12,11 +13,14 @@
 .special__img {
   width: rem(4337);
   flex-shrink: 0;
-  animation: loop 54s linear infinite;
+  animation: loop 76s linear infinite;
 
   @include mq("md") {
+    animation-duration: 90s;
+  }
+
+  @include mq("xl") {
     width: rem(4407);
-    animation-duration: 80s;
   }
 }
 
@@ -50,7 +54,7 @@
   paint-order: stroke;
 
   @include mq("md") {
-    font-size: rem(110);
+    font-size: min(110/1440*100vw, 110px);
     line-height: 1.5;
     -webkit-text-stroke: rem(10) var(--white);
   }

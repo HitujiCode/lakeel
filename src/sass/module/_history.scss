@@ -192,12 +192,19 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: rem(1920) rem(811);
-  // mix-blend-mode: multiply;
   pointer-events: none;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.7s, opacity 0.7s;
 
   @include mq("md") {
     background-size: rem(1920) rem(800);
   }
+}
+
+.history__wrapper.js-fade-bg::before {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 @supports (background-image: url("image.webp")) {
@@ -208,13 +215,10 @@
 
 .history__content {
   padding-top: rem(40);
-  padding-bottom: rem(107);
   overflow-x: auto;
   scrollbar-width: none;
 
-  @include mq("md") {
-    padding-bottom: rem(96);
-  }
+  @include mq("md") {}
 }
 
 .history__content::-webkit-scrollbar {
@@ -265,4 +269,28 @@
   color: var(--white);
   line-height: 1.5;
   transform: translateX(-33%);
+
+  @include mq("md") {
+    font-size: 36px;
+    font-size: clamp(32px, calc(36 / 1440 * 100vw), 36px);
+    ;
+  }
+}
+
+.history__scroll-guide {
+  margin-top: rem(40);
+  margin-inline: auto;
+  padding-bottom: rem(40);
+  position: relative;
+  width: rem(98);
+
+  @include mq("md") {
+    margin-top: rem(30);
+    padding-bottom: rem(30);
+  }
+}
+
+.history__scroll-guide img {
+  aspect-ratio: 98/37;
+  object-fit: contain;
 }
