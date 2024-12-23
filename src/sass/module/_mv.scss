@@ -3,18 +3,10 @@
 .mv {
   overflow-x: clip;
   position: relative;
-  height: clamp(rem(765), 100vh, rem(900));
-  display: grid;
-  place-content: center;
-
-  @include mq("md") {
-    height: initial;
-  }
 }
 
 .mv__flag {
   position: relative;
-  height: inherit;
 }
 
 .mv__flag-img {
@@ -129,19 +121,21 @@
 
 .mv__countdown {
   position: absolute;
-  top: calc(50% + min(182/375*100vw, rem(200)));
-  right: min(86/375*100vw, rem(90));
+  // bottom: rem(64);
+  right: min(85/375*100vw, rem(120));
+      top: calc(50% + min(210 / 375* 100vw, 210px));
 
   @include mq("md") {
     right: calc(50% - min(578 / 1440* 100vw, 578px));
     top: initial;
     bottom: min(456/1440*100vw, 456px);
+    bottom: 8.3%;
   }
 }
 
 .mv__scroll {
   position: absolute;
-  bottom: rem(78);
+  bottom: rem(23);
   left: rem(15);
 
   @include mq("md") {

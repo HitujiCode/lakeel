@@ -1,10 +1,70 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // ローディング
+  // ===== GSAP・ScrollTrigger 初期化 =====
   gsap.registerPlugin(ScrollTrigger);
 
+  // ===== 初回ロード制御 =====
   const isFirstLoad = sessionStorage.getItem('isFirstLoad');
 
-  // ページの読み込みが完了したときに実行される関数
+  // ===== ローディング後に実行するアニメーション =====
+  function runMvAnimation() {
+    const header = document.querySelector('.header');
+    const particleMv = document.querySelector('.particle__bg');
+    const mvFlag = document.querySelector('.mv__flag');
+    const mvScroll = document.querySelector('.mv__scroll');
+    const mvCountdown = document.querySelector('.mv__countdown');
+
+    if (!header || !particleMv || !mvFlag || !mvScroll || !mvCountdown) return;
+
+    // 初期値リセット
+    header.style.opacity = 0;
+    particleMv.style.opacity = 0;
+
+    const tl = gsap.timeline();
+
+    tl.fromTo(header, {
+      opacity: 0,
+    }, {
+      duration: 1,
+      opacity: 1,
+      ease: "power3.inOut",
+    })
+      .fromTo(particleMv, {
+        opacity: 0,
+      }, {
+        duration: 1,
+        opacity: 1,
+        ease: "power3.inOut",
+      }, "-=0.8")
+      .fromTo(mvFlag, {
+        opacity: 0,
+        y: 40,
+      }, {
+        y: 0,
+        duration: 0.8,
+        opacity: 1,
+        ease: "power2.out",
+      }, "-=0.3")
+      .fromTo(mvScroll, {
+        opacity: 0,
+        y: 40,
+      }, {
+        y: 0,
+        duration: 0.8,
+        opacity: 1,
+        ease: "power2.out",
+      }, "-=0.1")
+      .fromTo(mvCountdown, {
+        opacity: 0,
+        y: 40,
+      }, {
+        y: 0,
+        duration: 0.8,
+        opacity: 1,
+        ease: "power3.out",
+      }, "-=0.8");
+  }
+
+  // ===== ページ読込時ローディングアニメーション =====
   window.addEventListener('load', function () {
     const loader = document.querySelector('.js-loading');
     const loaderLogo = document.querySelector('.loading__logo');
@@ -20,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!isFirstLoad) {
       loader.style.display = "grid";
-
       const tl = gsap.timeline();
 
       tl.to(loaderLogo, {
@@ -39,65 +98,13 @@ document.addEventListener("DOMContentLoaded", function () {
             sessionStorage.setItem('isFirstLoad', true);
           },
         });
-
-      sessionStorage.setItem('isFirstLoad', true);
     } else {
       loader.style.display = "none";
       runMvAnimation();
     }
-
-    // ローディング後に実行するアニメーション
-    function runMvAnimation() {
-      const tl = gsap.timeline();
-
-      header.style.opacity = 0;
-      particleMv.style.opacity = 0;
-
-      tl.fromTo(header, {
-        opacity: 0,
-      }, {
-        duration: 1,
-        opacity: 1,
-        ease: "power3.inOut",
-      })
-        .fromTo(particleMv, {
-          opacity: 0,
-        }, {
-          duration: 1,
-          opacity: 1,
-          ease: "power3.inOut",
-        }, "-=0.8")
-        .fromTo(mvFlag, {
-          opacity: 0,
-          y: 40,
-        }, {
-          y: 0,
-          duration: 0.8,
-          opacity: 1,
-          ease: "power2.out",
-        }, "-=0.3")
-        .fromTo(mvScroll, {
-          opacity: 0,
-          y: 40,
-        }, {
-          y: 0,
-          duration: 0.8,
-          opacity: 1,
-          ease: "power2.out",
-        }, "-=0.1")
-        .fromTo(mvCountdown, {
-          opacity: 0,
-          y: 40,
-        }, {
-          y: 0,
-          duration: 0.8,
-          opacity: 1,
-          ease: "power3.out",
-        }, "-=0.8");
-    }
   });
 
-  // ページトップへ戻る
+  // ===== ページトップへ戻る =====
   const topBtn = document.querySelector('.js-totop');
   if (topBtn) {
     topBtn.addEventListener('click', function (event) {
@@ -106,53 +113,62 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ハンバーガーメニュー
+  // ===== ハンバーガーメニュー =====
   const hamburger = document.querySelector(".js-hamburger");
   const drawer = document.querySelector(".js-drawer");
   const header = document.querySelector(".js-header");
 
+  // ハンバーガーメニューを閉じる処理
+  function closeHamburgerMenu() {
+    document.body.classList.remove("is-noscroll");
+    hamburger.classList.remove("is-open");
+    drawer.classList.remove("is-open");
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("aria-label", "メニューを開く");
+  }
+
   if (hamburger && drawer && header) {
+    // ハンバーガーボタンのクリックイベント
     hamburger.addEventListener("click", function () {
-      if (drawer.classList.contains("is-open")) {
+      const isOpen = drawer.classList.contains("is-open");
+      if (isOpen) {
         document.body.classList.remove("is-noscroll");
+        hamburger.setAttribute("aria-expanded", "false");
+        hamburger.setAttribute("aria-label", "メニューを開く");
       } else {
         document.body.classList.add("is-noscroll");
+        hamburger.setAttribute("aria-expanded", "true");
+        hamburger.setAttribute("aria-label", "メニューを閉じる");
       }
-
       hamburger.classList.toggle("is-open");
       drawer.classList.toggle("is-open");
     });
 
+    // ドロワー全体をクリックした場合に閉じる
     drawer.addEventListener("click", function () {
-      document.body.classList.remove("is-noscroll");
-      hamburger.classList.remove("is-open");
-      drawer.classList.remove("is-open");
+      closeHamburgerMenu();
     });
 
+    // ドロワー内のリンクをクリックした場合に閉じる
     const drawerLinks = drawer.querySelectorAll("a[href]");
     drawerLinks.forEach(link => {
       link.addEventListener("click", function () {
-        document.body.classList.remove("is-noscroll");
-        hamburger.classList.remove("is-open");
-        drawer.classList.remove("is-open");
+        closeHamburgerMenu();
       });
     });
   }
 
-  // カウントダウン
+  // ===== カウントダウン =====
   function showRestTime() {
     const now = new Date();
     const goal = new Date(2025, 5, 10);
-
     const restMillisecond = goal.getTime() - now.getTime();
     const day = Math.ceil(restMillisecond / (1000 * 60 * 60 * 24));
-
     const countdownElement = document.getElementById('js-countdown');
     if (countdownElement) {
       countdownElement.textContent = day;
     }
   }
-
   showRestTime();
 
   // 次の日付が変わるタイミングを計算
@@ -160,14 +176,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
   const timeUntilNextMidnight = nextMidnight.getTime() - now.getTime();
 
-  // 次の日付が変わるタイミングで最初の更新を設定
+  // 日付が変わるタイミングでカウントダウン更新
   setTimeout(function () {
-    showRestTime(); // 日付が変わったら更新
-    setInterval(showRestTime, 24 * 60 * 60 * 1000); // 以降は24時間ごとに更新
+    showRestTime();
+    setInterval(showRestTime, 24 * 60 * 60 * 1000);
   }, timeUntilNextMidnight);
 
-
-  // Episodeスライダー
+  // ===== Episodeスライダー =====
   function initEpisodeSwiper(swiperName, options = {}) {
     const defaultOptions = {
       loop: true,
@@ -187,8 +202,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const swiperOptions = { ...defaultOptions, ...options };
     const swiper = new Swiper(swiperName, swiperOptions);
-
     const swiperElement = document.querySelector(swiperName);
+
     if (swiperElement) {
       let currentTranslate = 0;
 
@@ -207,7 +222,6 @@ document.addEventListener("DOMContentLoaded", function () {
           const marginLeft = parseFloat(slideStyle.marginLeft) || 0;
           const marginRight = parseFloat(slideStyle.marginRight) || 0;
           const totalSlideWidth = slideWidth + marginLeft + marginRight;
-
           const isReverse = swiperOptions.autoplay.reverseDirection === true;
           const directionMultiplier = isReverse ? 1 : -1;
 
@@ -218,13 +232,12 @@ document.addEventListener("DOMContentLoaded", function () {
           swiper.setTranslate(currentTranslate + diff);
           swiper.setTransition(swiperOptions.speed * diffTime);
         }
-
         swiper.autoplay.start();
       });
     }
   }
 
-  // 初期化
+  // スライダー初期化
   initEpisodeSwiper('.js-top-swiper');
   initEpisodeSwiper('.js-bottom-swiper', {
     autoplay: {
@@ -233,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 
-  // ドラッグスクロール有効化
+  // ===== ドラッグスクロール有効化 =====
   function enableSmoothMouseDragScroll(targetSelector) {
     const elements = document.querySelectorAll(targetSelector);
     let target = null;
@@ -242,10 +255,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function animateScroll() {
       if (target && !isDragging) {
-        // 慣性を減速
         velocity.x *= 0.8;
         velocity.y *= 0.8;
-
         target.element.scrollLeft += velocity.x;
         target.element.scrollTop += velocity.y;
 
@@ -253,7 +264,6 @@ document.addEventListener("DOMContentLoaded", function () {
           velocity = { x: 0, y: 0 };
           return;
         }
-
         requestAnimationFrame(animateScroll);
       }
     }
@@ -277,7 +287,6 @@ document.addEventListener("DOMContentLoaded", function () {
           const moveX = target.startX - event.clientX;
           const moveY = target.startY - event.clientY;
 
-          // 最小移動距離で慣性を無効化
           if (Math.abs(moveX) < 2 && Math.abs(moveY) < 2) {
             velocity = { x: 0, y: 0 };
             return;
@@ -285,7 +294,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
           velocity.x = moveX;
           velocity.y = moveY;
-
           target.element.scrollLeft = target.scrollLeft + moveX;
           target.element.scrollTop = target.scrollTop + moveY;
         }
@@ -316,10 +324,9 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
-
   enableSmoothMouseDragScroll(".js-scroll");
 
-  // パーティクル
+  // ===== パーティクル初期化 =====
   function initializeParticlesJS(elementId, colors) {
     particlesJS(elementId, {
       "particles": {
@@ -348,13 +355,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   initializeParticlesJS("js-particle-secondary", ['#004664', '#002F43', '#E7F1F5', '#CCDAE0']);
-
   initializeParticlesJS("js-particle-primary", ['#AC0C2D', '#c5556c', '#b72a47', '#EDCCD4']);
 
-  // ヘッダーの現在地表示
+  // ===== ヘッダーの現在地表示 =====
   window.addEventListener("scroll", function () {
-    const currentPosition =
-      window.scrollY + document.querySelector(".js-header").offsetHeight + 200;
+    const currentPosition = window.scrollY + document.querySelector(".js-header").offsetHeight + 200;
 
     document.querySelectorAll("section").forEach(function (section) {
       const sectionTop = section.offsetTop;
@@ -364,16 +369,12 @@ document.addEventListener("DOMContentLoaded", function () {
         : document.body.scrollHeight;
 
       if (currentPosition >= sectionTop && currentPosition < nextSectionTop) {
-        document
-          .querySelectorAll(".header__nav-item")
-          .forEach(function (item) {
-            item.classList.remove("is-current");
-          });
+        document.querySelectorAll(".header__nav-item").forEach(function (item) {
+          item.classList.remove("is-current");
+        });
 
         const id = section.getAttribute("id");
-        const currentLink = document.querySelector(
-          `.header__nav-item a[href="#${id}"]`
-        );
+        const currentLink = document.querySelector(`.header__nav-item a[href="#${id}"]`);
         if (currentLink) {
           currentLink.parentElement.classList.add("is-current");
         }
@@ -381,11 +382,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // ページ内リンクのスムーススクロール
+  // ===== ページ内リンクのスムーススクロール =====
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener("click", function (event) {
       event.preventDefault();
-
       const headerHeight = document.querySelector(".js-header").offsetHeight;
       const href = anchor.getAttribute("href");
       const target = href === "#" || href === "" ? document.documentElement : document.querySelector(href);
@@ -397,7 +397,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // フェードインメッセージ
+  // ===== メッセージ関連フェードイン =====
   const messageTitle = document.querySelector(".message__title");
   const messageText = document.querySelector(".message__text-wrap");
   const messageTopImg = document.querySelector(".message__top-img");
@@ -425,7 +425,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .from(messageBottomImg, { stagger: 0.2 }, "-=0.5");
   }
 
-  // フェードインヒストリー
+  // ===== ヒストリー関連フェードイン =====
   const historyTitle = document.querySelector(".history__title");
   const historyBg = document.querySelector(".history__wrapper");
   const historyIcon = document.querySelector(".history__scroll-guide");
@@ -453,6 +453,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .from(historyList, { duration: 0.9 }, "-=0.3");
   }
 
+  // ===== エピソード関連フェードイン =====
   const episodeTitle = document.querySelector(".episode__title");
   const episodeText = document.querySelector(".episode__read");
   const episodeCompass = document.querySelector(".episode__container");
@@ -477,7 +478,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .from(episodeContent, { stagger: 0.1 }, "-=0.5");
   }
 
-  // フェードインキャラクター
+  // ===== キャラクター関連フェードイン =====
   const characterImg = document.querySelector(".character__main-img");
   const characterTitle = document.querySelector(".character__title");
   const characterText = document.querySelector(".character__text");
@@ -503,15 +504,12 @@ document.addEventListener("DOMContentLoaded", function () {
       .from(characterButton, { stagger: 0.2 }, "-=0.4");
   }
 
+  // ===== その他フェードイン =====
   const fadeIns = document.querySelectorAll('.js-fade-in');
-
   fadeIns.forEach(fadeIn => {
     gsap.fromTo(
       fadeIn,
-      {
-        opacity: 0,
-        y: 30,
-      },
+      { opacity: 0, y: 30 },
       {
         opacity: 1,
         y: 0,
@@ -520,9 +518,8 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTrigger: {
           trigger: fadeIn,
           start: 'top 70%',
-        }
+        },
       }
     );
   });
-
 });

@@ -55,9 +55,16 @@
 
 .share__link {
   display: block;
+  transition: filter 0.3s ease;
 }
 
 .share__link img {
   aspect-ratio: 1/1;
   object-fit: contain;
+}
+
+@media (any-hover: hover) {
+  .share__link:hover {
+    filter: brightness(0.7);
+  }
 }

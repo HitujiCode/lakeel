@@ -28,6 +28,7 @@
   line-height: 1.4;
   letter-spacing: 0.02em;
   padding-bottom: rem(8);
+  transition: color 0.3s ease;
 }
 
 .footer__nav-link-blank {
@@ -37,7 +38,6 @@
   display: grid;
   grid-template-columns: 1fr auto;
   gap: rem(4);
-  transition: color 0.3s;
 }
 
 .footer__nav-link-blank::after {
