@@ -474,8 +474,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     tl.from(episodeTitle, {})
-      .from([episodeText, episodeCompass], {}, "-=0.5")
-      .from(episodeContent, { stagger: 0.1 }, "-=0.5");
+      .from([episodeText, episodeCompass], {}, "-=0.4")
+      .from(episodeContent, {}, "-=0.3");
   }
 
   // ===== キャラクター関連フェードイン =====
@@ -485,10 +485,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const characterButton = document.querySelector(".character__buttons");
 
   if (characterImg && characterTitle && characterText && characterButton) {
+    const isSP = window.matchMedia("(max-width: 767px)").matches;
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: characterImg,
-        start: "top 70%",
+        start: "top 80%",
       },
       defaults: {
         y: 30,
@@ -498,10 +500,17 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
 
-    tl.from(characterImg, {})
-      .from(characterTitle, { stagger: 0.2 }, "-=0.4")
-      .from(characterText, { stagger: 0.2 }, "-=0.4")
-      .from(characterButton, { stagger: 0.2 }, "-=0.4");
+    if (isSP) {
+      tl.from(characterTitle, {})
+        .from(characterImg, { stagger: 0.2 }, "-=0.4")
+        .from(characterText, { stagger: 0.2 }, "-=0.4")
+        .from(characterButton, { stagger: 0.2 }, "-=0.4");
+    } else {
+      tl.from(characterImg, {})
+        .from(characterTitle, { stagger: 0.2 }, "-=0.4")
+        .from(characterText, { stagger: 0.2 }, "-=0.4")
+        .from(characterButton, { stagger: 0.2 }, "-=0.4");
+    }
   }
 
   // ===== その他フェードイン =====
@@ -517,7 +526,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power2.out",
         scrollTrigger: {
           trigger: fadeIn,
-          start: 'top 70%',
+          start: 'top 80%',
         },
       }
     );

@@ -4,7 +4,6 @@
   margin-top: rem(58);
 
   @include mq("md") {
-    margin-top: rem(-186);
     margin-top: max(-186/1440*100vw, -226px);
   }
 }

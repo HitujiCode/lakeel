@@ -86,7 +86,7 @@
   }
 
   @include mq("xl") {
-    right: calc(50% - min(882 / 1920* 100vw));
+    right: calc(50% - min(882 / 1920* 100vw, 970px));
   }
 }
 

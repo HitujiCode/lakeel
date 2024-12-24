@@ -32,6 +32,10 @@
     top: rem(-204);
     right: calc(50% - min(731 / 1440* 100vw, 731px));
   }
+
+  @include mq("xl") {
+    right: calc(50% - min(731 / 1920* 100vw, 900px));
+  }
 }
 
 .episode__compass img {
@@ -81,4 +85,5 @@
 
 .episode__item {
   width: rem(330);
+  height: auto;
 }

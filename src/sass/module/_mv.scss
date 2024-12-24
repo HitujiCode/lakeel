@@ -3,10 +3,18 @@
 .mv {
   overflow-x: clip;
   position: relative;
+  height: clamp(rem(765), 100vh, rem(900));
+  display: grid;
+  place-content: center;
+
+  @include mq("md") {
+    height: initial;
+  }
 }
 
 .mv__flag {
   position: relative;
+  height: inherit;
 }
 
 .mv__flag-img {
@@ -22,6 +30,7 @@
 
   @include mq("xl") {
     left: 0;
+    width: min(890/1920*100vw, 1200px);
   }
 }
 
@@ -121,28 +130,25 @@
 
 .mv__countdown {
   position: absolute;
-  // bottom: rem(64);
-  right: min(85/375*100vw, rem(120));
-      top: calc(50% + min(210 / 375* 100vw, 210px));
+  top: calc(50% + min(182/375*100vw, rem(200)));
+  right: min(86/375*100vw, rem(90));
 
   @include mq("md") {
     right: calc(50% - min(578 / 1440* 100vw, 578px));
     top: initial;
     bottom: min(456/1440*100vw, 456px);
-    bottom: 8.3%;
   }
 }
 
 .mv__scroll {
   position: absolute;
-  bottom: rem(23);
+  bottom: rem(78);
   left: rem(15);
 
   @include mq("md") {
     bottom: initial;
-    top: 51.5%;
-    transform: translateY(-50%);
-    left: calc(44/1440*100vw);
+    top: 43.6%;
+    left: calc(43/1440*100vw);
   }
 }
 

@@ -2,8 +2,6 @@
 
 .countdown {
   position: relative;
-  // margin-inline: auto;
-  // width: fit-content;
 }
 
 .countdown__text {
@@ -34,6 +32,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   animation: circle 20s linear infinite;
+
+  @include mq("xl") {
+    width: min(228/1920*100vw, 300px);
+  }
 }
 
 .countdown__circle-en {

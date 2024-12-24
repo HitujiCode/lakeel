@@ -27,6 +27,11 @@
     right: calc(50% - min(650/1440*100vw, 650px));
     top: rem(-80);
   }
+
+  @include mq("xl") {
+    right: calc(50% - min(650/1920*100vw, 750px));
+    top: calc(-80/1920*100vw);
+  }
 }
 
 .history__inner.inner {
@@ -134,6 +139,8 @@
 
   @include mq("xxl") {
     width: calc(754/1920*100vw);
+    top: calc(-120/1920*100vw);
+    ;
   }
 }
 
