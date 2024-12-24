@@ -4,7 +4,7 @@
   position: fixed;
   inset: 0;
   background-color: var(--primary);
-  z-index: calc(infinity);
+  z-index: 9999;
   display: grid;
   place-items: center;
   clip-path: inset(0);

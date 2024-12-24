@@ -88,6 +88,16 @@
   }
 }
 
+.section-title--history .section-title__circle::before {
+  top: 0;
+  left: rem(-12);
+
+  @include mq("md") {
+    // top: rem(6);
+    // left: rem(-16);
+  }
+}
+
 .section-title--history .section-title__ja {
   font-size: rem(16);
 
@@ -105,7 +115,7 @@
 }
 
 .section-title--episode .section-title__circle::before {
-  top: rem(4);
+  top: rem(-2);
   left: rem(-10);
 
   @include mq("md") {
@@ -136,6 +146,8 @@
 }
 
 .section-title--character .section-title__circle::before {
+  top: 0;
+
   @include mq("md") {
     top: rem(6);
     left: rem(-16);

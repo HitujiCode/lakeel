@@ -198,14 +198,14 @@
   background-image: url("../images/pc/img_history-bg.jpg");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: rem(1920) rem(811);
+  background-size: 1920px 811px;
   pointer-events: none;
   opacity: 0;
   transform: translateY(30px);
   transition: transform 0.7s, opacity 0.7s;
 
   @include mq("md") {
-    background-size: rem(1920) rem(800);
+    background-size: 1920px 800px;
   }
 }
 
@@ -285,7 +285,7 @@
 }
 
 .history__scroll-guide {
-  margin-top: rem(40);
+  margin-top: rem(29);
   margin-inline: auto;
   padding-bottom: rem(40);
   position: relative;

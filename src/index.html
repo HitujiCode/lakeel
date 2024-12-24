@@ -21,9 +21,21 @@
   <!-- ファビコン -->
   <link rel="icon" href="./assets/images/common/favicon.ico" />
   <link rel="apple-touch-icon" href="./assets/images/common/favicon.ico" />
+  <!-- preload -->
+  <link rel="preload" as="image" href="./assets/images/common/logo-white.svg" />
+  <link rel="preload" as="image" href="./assets/images/pc/mv-flag.svg" />
+  <link rel="preload" as="image" href="./assets/images/sp/mv-flag.webp" />
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" fetchpriority="high"
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400..700&family=Poppins:wght@400;500;600;700&display=swap">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400..700&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet" media="all" onload="this.media='all'" />
   <!-- css -->
   <link rel="stylesheet" href="./assets/library/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="./assets/css/style.css?ver=1.0.0" />
+  <link rel="stylesheet" href="./assets/css/style.css?ver=1.0.2" />
   <!-- JavaScript -->
   <script defer src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script defer src="./assets/library/gsap.min.js"></script>
@@ -103,7 +115,8 @@
           <figure class="mv__flag-img">
             <picture>
               <source srcset="./assets/images/pc/mv-flag.svg" media="(min-width: 768px)" width="890" height="1111">
-              <img src="./assets/images/sp/mv-flag.svg" alt="おかげさまで20周年！20thAnniversary2005>>>2024" width="508"
+              <source srcset="./assets/images/sp/mv-flag.webp" type="image/webp" width="508" height="757">
+              <img src="./assets/images/sp/mv-flag.png" alt="おかげさまで20周年！20thAnniversary2005>>>2024" width="508"
                 height="757">
             </picture>
           </figure>
@@ -115,7 +128,7 @@
               あと<span class="countdown__num" id="js-countdown">10</span>日
             </p>
             <div class="countdown__circle">
-              <svg class="countdown__circle-en" viewBox="0 0 228 228">
+              <svg class="countdown__circle-en" viewBox="0 0 229 228">
                 <path id="circle" class="countdown__circle-path"
                   d="M 114,114 m -114,0 a 114,114 0 1,1 228,0 a 114,114 0 1,1 -228,0" />
                 <text class="countdown__circle-text">

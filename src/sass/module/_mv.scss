@@ -130,8 +130,8 @@
 
 .mv__countdown {
   position: absolute;
-  top: calc(50% + min(182/375*100vw, rem(200)));
-  right: min(86/375*100vw, rem(90));
+  top: calc(50% + rem(183));
+  right: min(88/375*100vw, rem(115));
 
   @include mq("md") {
     right: calc(50% - min(578 / 1440* 100vw, 578px));

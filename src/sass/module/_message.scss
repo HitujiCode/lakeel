@@ -139,6 +139,7 @@
 .message__text-wrap {
   display: grid;
   grid-template-columns: 1fr;
+  font-size: rem(16);
   line-height: 1.6;
   gap: rem(30);
 

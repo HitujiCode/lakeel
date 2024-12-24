@@ -29,6 +29,8 @@
   letter-spacing: 0.05em;
   text-align: center;
   border-bottom: 1px solid;
+  width: fit-content;
+  margin-inline: auto;
 
   @include mq("md") {
     padding-block: rem(10);
