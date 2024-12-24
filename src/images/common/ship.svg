@@ -31,11 +31,11 @@
 <stop stop-color="#C9BC9C"/>
 <stop offset="1" stop-color="#C9A063"/>
 </linearGradient>
-<linearGradient id="paint5_linear_262_902" x1="145.566" y1="14.0036" x2="117.93" y2="-4.05821" gradientUnits="userSpaceOnUse">
+<linearGradient class="vapor-top" id="paint5_linear_262_902" x1="145.566" y1="14.0036" x2="117.93" y2="-4.05821" gradientUnits="userSpaceOnUse">
 <stop offset="0.03" stop-color="#C4A976"/>
 <stop offset="1" stop-color="#EFEFEF"/>
 </linearGradient>
-<linearGradient id="paint6_linear_262_902" x1="125.213" y1="38.0819" x2="82.4913" y2="10.1513" gradientUnits="userSpaceOnUse">
+<linearGradient class="vapor-bottom" id="paint6_linear_262_902" x1="125.213" y1="38.0819" x2="82.4913" y2="10.1513" gradientUnits="userSpaceOnUse">
 <stop offset="0.03" stop-color="#C4A976"/>
 <stop offset="1" stop-color="#EFEFEF"/>
 </linearGradient>

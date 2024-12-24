@@ -21,6 +21,7 @@
   background-size: contain;
   width: rem(112);
   aspect-ratio: 112/113;
+  animation: ship 3s infinite;
 
   @include mq("md") {
     width: rem(156);
@@ -207,6 +208,10 @@
   @include mq("md") {
     background-size: 1920px 800px;
   }
+
+  @include mq("xxl") {
+    background-size: 100% auto;
+  }
 }
 
 .history__wrapper.js-fade-bg::before {
@@ -224,8 +229,6 @@
   padding-top: rem(40);
   overflow-x: auto;
   scrollbar-width: none;
-
-  @include mq("md") {}
 }
 
 .history__content::-webkit-scrollbar {
