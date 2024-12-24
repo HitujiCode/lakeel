@@ -2,107 +2,107 @@ document.addEventListener("DOMContentLoaded", function () {
   // ===== GSAP・ScrollTrigger 初期化 =====
   gsap.registerPlugin(ScrollTrigger);
 
-  // ===== 初回ロード制御 =====
-  const isFirstLoad = sessionStorage.getItem('isFirstLoad');
+  // // // ===== 初回ロード制御 =====
+  // const isFirstLoad = sessionStorage.getItem('isFirstLoad');
 
-  // ===== ローディング後に実行するアニメーション =====
-  function runMvAnimation() {
-    const header = document.querySelector('.header');
-    const particleMv = document.querySelector('.particle__bg');
-    const mvFlag = document.querySelector('.mv__flag');
-    const mvScroll = document.querySelector('.mv__scroll');
-    const mvCountdown = document.querySelector('.mv__countdown');
+  // // ===== ローディング後に実行するアニメーション =====
+  // function runMvAnimation() {
+  //   const header = document.querySelector('.header');
+  //   const particleMv = document.querySelector('.particle__bg');
+  //   const mvFlag = document.querySelector('.mv__flag');
+  //   const mvScroll = document.querySelector('.mv__scroll');
+  //   const mvCountdown = document.querySelector('.mv__countdown');
 
-    if (!header || !particleMv || !mvFlag || !mvScroll || !mvCountdown) return;
+  //   if (!header || !particleMv || !mvFlag || !mvScroll || !mvCountdown) return;
 
-    // 初期値リセット
-    header.style.opacity = 0;
-    particleMv.style.opacity = 0;
+  //   // 初期値リセット
+  //   header.style.opacity = 0;
+  //   particleMv.style.opacity = 0;
 
-    const tl = gsap.timeline();
+  //   const tl = gsap.timeline();
 
-    tl.fromTo(header, {
-      opacity: 0,
-    }, {
-      duration: 1,
-      opacity: 1,
-      ease: "power3.inOut",
-    })
-      .fromTo(particleMv, {
-        opacity: 0,
-      }, {
-        duration: 1,
-        opacity: 1,
-        ease: "power3.inOut",
-      }, "-=0.8")
-      .fromTo(mvFlag, {
-        opacity: 0,
-        y: 40,
-      }, {
-        y: 0,
-        duration: 0.8,
-        opacity: 1,
-        ease: "power2.out",
-      }, "-=0.3")
-      .fromTo(mvScroll, {
-        opacity: 0,
-        y: 40,
-      }, {
-        y: 0,
-        duration: 0.8,
-        opacity: 1,
-        ease: "power2.out",
-      }, "-=0.1")
-      .fromTo(mvCountdown, {
-        opacity: 0,
-        y: 40,
-      }, {
-        y: 0,
-        duration: 0.8,
-        opacity: 1,
-        ease: "power3.out",
-      }, "-=0.8");
-  }
+  //   tl.fromTo(header, {
+  //     opacity: 0,
+  //   }, {
+  //     duration: 1,
+  //     opacity: 1,
+  //     ease: "power3.inOut",
+  //   })
+  //     .fromTo(particleMv, {
+  //       opacity: 0,
+  //     }, {
+  //       duration: 1,
+  //       opacity: 1,
+  //       ease: "power3.inOut",
+  //     }, "-=0.8")
+  //     .fromTo(mvFlag, {
+  //       opacity: 0,
+  //       y: 40,
+  //     }, {
+  //       y: 0,
+  //       duration: 0.8,
+  //       opacity: 1,
+  //       ease: "power2.out",
+  //     }, "-=0.3")
+  //     .fromTo(mvScroll, {
+  //       opacity: 0,
+  //       y: 40,
+  //     }, {
+  //       y: 0,
+  //       duration: 0.8,
+  //       opacity: 1,
+  //       ease: "power2.out",
+  //     }, "-=0.1")
+  //     .fromTo(mvCountdown, {
+  //       opacity: 0,
+  //       y: 40,
+  //     }, {
+  //       y: 0,
+  //       duration: 0.8,
+  //       opacity: 1,
+  //       ease: "power3.out",
+  //     }, "-=0.8");
+  // }
 
-  // ===== ページ読込時ローディングアニメーション =====
-  window.addEventListener('load', function () {
-    const loader = document.querySelector('.js-loading');
-    const loaderLogo = document.querySelector('.loading__logo');
-    const header = document.querySelector('.header');
-    const particleMv = document.querySelector('.js-particle-mv');
-    const mvFlag = document.querySelector('.mv__flag');
-    const mvScroll = document.querySelector('.mv__scroll');
-    const mvCountdown = document.querySelector('.mv__countdown');
+  // // ===== ページ読込時ローディングアニメーション =====
+  // window.addEventListener('load', function () {
+  //   const loader = document.querySelector('.js-loading');
+  //   const loaderLogo = document.querySelector('.loading__logo');
+  //   const header = document.querySelector('.header');
+  //   const particleMv = document.querySelector('.js-particle-mv');
+  //   const mvFlag = document.querySelector('.mv__flag');
+  //   const mvScroll = document.querySelector('.mv__scroll');
+  //   const mvCountdown = document.querySelector('.mv__countdown');
 
-    if (!loader || !loaderLogo || !header || !particleMv || !mvFlag || !mvScroll || !mvCountdown) return;
+  //   if (!loader || !loaderLogo || !header || !particleMv || !mvFlag || !mvScroll || !mvCountdown) return;
 
-    gsap.set([header, particleMv, mvFlag, mvScroll, mvCountdown], { opacity: 0 });
+  //   gsap.set([header, particleMv, mvFlag, mvScroll, mvCountdown], { opacity: 0 });
 
-    if (!isFirstLoad) {
-      loader.style.display = "grid";
-      const tl = gsap.timeline();
+  //   if (!isFirstLoad) {
+  //     loader.style.display = "grid";
+  //     const tl = gsap.timeline();
 
-      tl.to(loaderLogo, {
-        duration: 1.3,
-        opacity: 1,
-        translateY: 0,
-        ease: "power3.out",
-      })
-        .to(loader, {
-          duration: 1,
-          clipPath: "inset(0% 100% 0% 0%)",
-          ease: "power2.inOut",
-          onComplete: () => {
-            loader.style.display = "none";
-            runMvAnimation();
-            sessionStorage.setItem('isFirstLoad', true);
-          },
-        });
-    } else {
-      loader.style.display = "none";
-      runMvAnimation();
-    }
-  });
+  //     tl.to(loaderLogo, {
+  //       duration: 1.3,
+  //       opacity: 1,
+  //       translateY: 0,
+  //       ease: "power3.out",
+  //     })
+  //       .to(loader, {
+  //         duration: 1,
+  //         clipPath: "inset(0% 100% 0% 0%)",
+  //         ease: "power2.inOut",
+  //         onComplete: () => {
+  //           loader.style.display = "none";
+  //           runMvAnimation();
+  //           sessionStorage.setItem('isFirstLoad', true);
+  //         },
+  //       });
+  //   } else {
+  //     loader.style.display = "none";
+  //     runMvAnimation();
+  //   }
+  // });
 
   // ===== ページトップへ戻る =====
   const topBtn = document.querySelector('.js-totop');

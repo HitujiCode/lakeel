@@ -5,10 +5,9 @@
   inset: 0;
   background-color: var(--primary);
   z-index: 9999;
-  display: grid;
+  display: none;
   place-items: center;
   clip-path: inset(0);
-  display: none;
 }
 
 .loading__logo {
