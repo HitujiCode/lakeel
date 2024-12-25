@@ -2,107 +2,111 @@ document.addEventListener("DOMContentLoaded", function () {
   // ===== GSAP・ScrollTrigger 初期化 =====
   gsap.registerPlugin(ScrollTrigger);
 
-  // // // ===== 初回ロード制御 =====
-  // const isFirstLoad = sessionStorage.getItem('isFirstLoad');
+  // ===== 初回ロード制御 =====
+  const isFirstLoad = sessionStorage.getItem('isFirstLoad');
 
-  // // ===== ローディング後に実行するアニメーション =====
-  // function runMvAnimation() {
-  //   const header = document.querySelector('.header');
-  //   const particleMv = document.querySelector('.particle__bg');
-  //   const mvFlag = document.querySelector('.mv__flag');
-  //   const mvScroll = document.querySelector('.mv__scroll');
-  //   const mvCountdown = document.querySelector('.mv__countdown');
+  // ===== 初期要素取得 =====
+  function getElements() {
+    return {
+      loader: document.querySelector('.js-loading'),
+      loaderLogo: document.querySelector('.loading__logo'),
+      outer: document.querySelector('.outer'),
+      header: document.querySelector('.header'),
+      particleMv: document.querySelector('.particle__bg'),
+      mvFlag: document.querySelector('.mv__flag'),
+      mvScroll: document.querySelector('.mv__scroll'),
+      mvCountdown: document.querySelector('.mv__countdown'),
+    };
+  }
 
-  //   if (!header || !particleMv || !mvFlag || !mvScroll || !mvCountdown) return;
+  // ===== ローディング後に実行するアニメーション =====
+  function runMvAnimation(elements) {
+    const { outer, header, particleMv, mvFlag, mvScroll, mvCountdown } = elements;
 
-  //   // 初期値リセット
-  //   header.style.opacity = 0;
-  //   particleMv.style.opacity = 0;
+    if (!outer || !header || !particleMv || !mvFlag || !mvScroll || !mvCountdown) return;
 
-  //   const tl = gsap.timeline();
+    // 初期値リセット
+    outer.style.opacity = 1;
 
-  //   tl.fromTo(header, {
-  //     opacity: 0,
-  //   }, {
-  //     duration: 1,
-  //     opacity: 1,
-  //     ease: "power3.inOut",
-  //   })
-  //     .fromTo(particleMv, {
-  //       opacity: 0,
-  //     }, {
-  //       duration: 1,
-  //       opacity: 1,
-  //       ease: "power3.inOut",
-  //     }, "-=0.8")
-  //     .fromTo(mvFlag, {
-  //       opacity: 0,
-  //       y: 40,
-  //     }, {
-  //       y: 0,
-  //       duration: 0.8,
-  //       opacity: 1,
-  //       ease: "power2.out",
-  //     }, "-=0.3")
-  //     .fromTo(mvScroll, {
-  //       opacity: 0,
-  //       y: 40,
-  //     }, {
-  //       y: 0,
-  //       duration: 0.8,
-  //       opacity: 1,
-  //       ease: "power2.out",
-  //     }, "-=0.1")
-  //     .fromTo(mvCountdown, {
-  //       opacity: 0,
-  //       y: 40,
-  //     }, {
-  //       y: 0,
-  //       duration: 0.8,
-  //       opacity: 1,
-  //       ease: "power3.out",
-  //     }, "-=0.8");
-  // }
+    const tl = gsap.timeline();
 
-  // // ===== ページ読込時ローディングアニメーション =====
-  // window.addEventListener('load', function () {
-  //   const loader = document.querySelector('.js-loading');
-  //   const loaderLogo = document.querySelector('.loading__logo');
-  //   const header = document.querySelector('.header');
-  //   const particleMv = document.querySelector('.js-particle-mv');
-  //   const mvFlag = document.querySelector('.mv__flag');
-  //   const mvScroll = document.querySelector('.mv__scroll');
-  //   const mvCountdown = document.querySelector('.mv__countdown');
+    tl.fromTo(header, {
+      opacity: 0,
+    }, {
+      duration: 1,
+      opacity: 1,
+      ease: "power3.inOut",
+    })
+      .fromTo(particleMv, {
+        opacity: 0,
+      }, {
+        duration: 1,
+        opacity: 1,
+        ease: "power3.inOut",
+      }, "-=0.8")
+      .fromTo(mvFlag, {
+        opacity: 0,
+        y: 40,
+      }, {
+        y: 0,
+        duration: 0.8,
+        opacity: 1,
+        ease: "power2.out",
+      }, "-=0.3")
+      .fromTo(mvScroll, {
+        opacity: 0,
+        y: 40,
+      }, {
+        y: 0,
+        duration: 0.8,
+        opacity: 1,
+        ease: "power2.out",
+      }, "-=0.1")
+      .fromTo(mvCountdown, {
+        opacity: 0,
+        y: 40,
+      }, {
+        y: 0,
+        duration: 0.8,
+        opacity: 1,
+        ease: "power3.out",
+      }, "-=0.8");
+  }
 
-  //   if (!loader || !loaderLogo || !header || !particleMv || !mvFlag || !mvScroll || !mvCountdown) return;
+  // ===== ページ読込時ローディングアニメーション =====
+  window.addEventListener('load', function () {
+    const elements = getElements();
+    const { loader, loaderLogo, header, particleMv, mvFlag, mvScroll, mvCountdown } = elements;
 
-  //   gsap.set([header, particleMv, mvFlag, mvScroll, mvCountdown], { opacity: 0 });
+    if (!loader || !loaderLogo || !header || !particleMv || !mvFlag || !mvScroll || !mvCountdown) return;
 
-  //   if (!isFirstLoad) {
-  //     loader.style.display = "grid";
-  //     const tl = gsap.timeline();
+    gsap.set([header, particleMv, mvFlag, mvScroll, mvCountdown], { opacity: 0 });
 
-  //     tl.to(loaderLogo, {
-  //       duration: 1.3,
-  //       opacity: 1,
-  //       translateY: 0,
-  //       ease: "power3.out",
-  //     })
-  //       .to(loader, {
-  //         duration: 1,
-  //         clipPath: "inset(0% 100% 0% 0%)",
-  //         ease: "power2.inOut",
-  //         onComplete: () => {
-  //           loader.style.display = "none";
-  //           runMvAnimation();
-  //           sessionStorage.setItem('isFirstLoad', true);
-  //         },
-  //       });
-  //   } else {
-  //     loader.style.display = "none";
-  //     runMvAnimation();
-  //   }
-  // });
+    if (!isFirstLoad) {
+      loader.style.display = "grid";
+      const tl = gsap.timeline();
+
+      tl.to(loaderLogo, {
+        duration: 1.3,
+        opacity: 1,
+        translateY: 0,
+        ease: "power3.out",
+      })
+        .to(loader, {
+          duration: 1,
+          clipPath: "inset(0% 100% 0% 0%)",
+          ease: "power2.inOut",
+          onComplete: () => {
+            loader.style.display = "none";
+            runMvAnimation(elements);
+            sessionStorage.setItem('isFirstLoad', true);
+          },
+        });
+    } else {
+      loader.style.display = "none";
+      runMvAnimation(elements);
+    }
+  });
 
   // ===== ページトップへ戻る =====
   const topBtn = document.querySelector('.js-totop');
@@ -114,49 +118,77 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ===== ハンバーガーメニュー =====
-  const hamburger = document.querySelector(".js-hamburger");
-  const drawer = document.querySelector(".js-drawer");
-  const header = document.querySelector(".js-header");
+  // ===== 初期要素取得 =====
+  function getHamburgerElements() {
+    return {
+      hamburger: document.querySelector(".js-hamburger"),
+      drawer: document.querySelector(".js-drawer"),
+      header: document.querySelector(".js-header"),
+      drawerLinks: document.querySelectorAll(".js-drawer a[href]"),
+    };
+  }
 
-  // ハンバーガーメニューを閉じる処理
-  function closeHamburgerMenu() {
+  function closeHamburgerMenu(elements) {
+    const { hamburger, drawer } = elements;
+
+    // フォーカスをハンバーガーボタンに戻す
+    hamburger.focus();
+
     document.body.classList.remove("is-noscroll");
     hamburger.classList.remove("is-open");
     drawer.classList.remove("is-open");
     hamburger.setAttribute("aria-expanded", "false");
     hamburger.setAttribute("aria-label", "メニューを開く");
+
+    // inert 属性でアクセシビリティを確保
+    drawer.setAttribute("inert", "");
+    drawer.removeAttribute("aria-hidden");
   }
 
-  if (hamburger && drawer && header) {
-    // ハンバーガーボタンのクリックイベント
-    hamburger.addEventListener("click", function () {
-      const isOpen = drawer.classList.contains("is-open");
-      if (isOpen) {
-        document.body.classList.remove("is-noscroll");
-        hamburger.setAttribute("aria-expanded", "false");
-        hamburger.setAttribute("aria-label", "メニューを開く");
-      } else {
-        document.body.classList.add("is-noscroll");
-        hamburger.setAttribute("aria-expanded", "true");
-        hamburger.setAttribute("aria-label", "メニューを閉じる");
-      }
-      hamburger.classList.toggle("is-open");
-      drawer.classList.toggle("is-open");
-    });
+  function openHamburgerMenu(elements) {
+    const { hamburger, drawer } = elements;
 
-    // ドロワー全体をクリックした場合に閉じる
-    drawer.addEventListener("click", function () {
-      closeHamburgerMenu();
-    });
+    document.body.classList.add("is-noscroll");
+    hamburger.classList.add("is-open");
+    drawer.classList.add("is-open");
+    hamburger.setAttribute("aria-expanded", "true");
+    hamburger.setAttribute("aria-label", "メニューを閉じる");
 
-    // ドロワー内のリンクをクリックした場合に閉じる
-    const drawerLinks = drawer.querySelectorAll("a[href]");
-    drawerLinks.forEach(link => {
-      link.addEventListener("click", function () {
-        closeHamburgerMenu();
+    // inert 属性を解除
+    drawer.removeAttribute("inert");
+    drawer.setAttribute("aria-hidden", "false");
+  }
+
+  function initHamburgerMenu() {
+    const elements = getHamburgerElements();
+    const { hamburger, drawer, drawerLinks } = elements;
+
+    if (hamburger && drawer) {
+      // ハンバーガーボタンのクリックイベント
+      hamburger.addEventListener("click", function () {
+        const isOpen = drawer.classList.contains("is-open");
+        if (isOpen) {
+          closeHamburgerMenu(elements);
+        } else {
+          openHamburgerMenu(elements);
+        }
       });
-    });
+
+      // ドロワー全体をクリックした場合に閉じる
+      drawer.addEventListener("click", function () {
+        closeHamburgerMenu(elements);
+      });
+
+      // ドロワー内のリンクをクリックした場合に閉じる
+      drawerLinks.forEach(link => {
+        link.addEventListener("click", function () {
+          closeHamburgerMenu(elements);
+        });
+      });
+    }
   }
+
+  initHamburgerMenu();
 
   // ===== カウントダウン =====
   function showRestTime() {
@@ -364,7 +396,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelectorAll("section").forEach(function (section) {
       const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
       const nextSectionTop = section.nextElementSibling
         ? section.nextElementSibling.offsetTop
         : document.body.scrollHeight;
@@ -399,16 +430,24 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ===== メッセージ関連フェードイン =====
-  const messageTitle = document.querySelector(".message__title");
-  const messageText = document.querySelector(".message__text-wrap");
-  const messageTopImg = document.querySelector(".message__top-img");
-  const messageMainImg = document.querySelector(".message__main-img");
-  const messageBottomImg = document.querySelector(".message__bottom-img");
+  const messageElements = {
+    title: document.querySelector(".message__title"),
+    text: document.querySelector(".message__text-wrap"),
+    topImg: document.querySelector(".message__top-img"),
+    mainImg: document.querySelector(".message__main-img"),
+    bottomImg: document.querySelector(".message__bottom-img"),
+  };
 
-  if (messageTitle && messageText && messageTopImg && messageMainImg && messageBottomImg) {
+  if (
+    messageElements.title &&
+    messageElements.text &&
+    messageElements.topImg &&
+    messageElements.mainImg &&
+    messageElements.bottomImg
+  ) {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: messageTitle,
+        trigger: messageElements.title,
         start: "top 80%",
       },
       defaults: {
@@ -419,23 +458,25 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
 
-    tl.from(messageTitle, {})
-      .from(messageMainImg, { stagger: 0.2 }, "-=0.5")
-      .from(messageText, { stagger: 0.1 }, "-=0.5")
-      .from(messageTopImg, { stagger: 0.2 }, "-=0.5")
-      .from(messageBottomImg, { stagger: 0.2 }, "-=0.5");
+    tl.from(messageElements.title, {})
+      .from(messageElements.mainImg, { }, "-=0.5")
+      .from(messageElements.text, { }, "-=0.5")
+      .from(messageElements.topImg, { }, "-=0.5")
+      .from(messageElements.bottomImg, { }, "-=0.5");
   }
 
   // ===== ヒストリー関連フェードイン =====
-  const historyTitle = document.querySelector(".history__title");
-  const historyBg = document.querySelector(".history__wrapper");
-  const historyIcon = document.querySelector(".history__scroll-guide");
-  const historyList = document.querySelector(".history__timeline");
+  const historyElements = {
+    title: document.querySelector(".history__title"),
+    bg: document.querySelector(".history__wrapper"),
+    icon: document.querySelector(".history__scroll-guide"),
+    list: document.querySelector(".history__timeline"),
+  };
 
-  if (historyTitle && historyBg && historyIcon && historyList) {
+  if (historyElements.title && historyElements.bg && historyElements.icon && historyElements.list) {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: historyTitle,
+        trigger: historyElements.title,
         start: "top 80%",
       },
       defaults: {
@@ -446,24 +487,27 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
 
-    tl.from(historyTitle, {})
+    tl.from(historyElements.title, {})
       .add(() => {
-        historyBg.classList.add("js-fade-bg");
+        historyElements.bg.classList.add("js-fade-bg");
       }, "-=0.5")
-      .from(historyIcon, {}, "-=0.5")
-      .from(historyList, { duration: 0.9 }, "-=0.3");
+      .from(historyElements.icon, {}, "-=0.6")
+      .from(historyElements.list, {}, "-=0.2");
   }
+
 
   // ===== エピソード関連フェードイン =====
-  const episodeTitle = document.querySelector(".episode__title");
-  const episodeText = document.querySelector(".episode__read");
-  const episodeCompass = document.querySelector(".episode__container");
-  const episodeContent = document.querySelector(".episode__content");
+  const episodeElements = {
+    title: document.querySelector(".episode__title"),
+    text: document.querySelector(".episode__read"),
+    compass: document.querySelector(".episode__container"),
+    content: document.querySelector(".episode__content"),
+  };
 
-  if (episodeTitle && episodeText && episodeCompass && episodeContent) {
+  if (episodeElements.title && episodeElements.text && episodeElements.compass && episodeElements.content) {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: episodeTitle,
+        trigger: episodeElements.title,
         start: "top 80%",
       },
       defaults: {
@@ -474,23 +518,26 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
 
-    tl.from(episodeTitle, {})
-      .from([episodeText, episodeCompass], {}, "-=0.4")
-      .from(episodeContent, {}, "-=0.3");
+    tl.from(episodeElements.title, {})
+      .from([episodeElements.text, episodeElements.compass], {}, "-=0.4")
+      .from(episodeElements.content, {}, "-=0.3");
   }
 
-  // ===== キャラクター関連フェードイン =====
-  const characterImg = document.querySelector(".character__main-img");
-  const characterTitle = document.querySelector(".character__title");
-  const characterText = document.querySelector(".character__text");
-  const characterButton = document.querySelector(".character__buttons");
 
-  if (characterImg && characterTitle && characterText && characterButton) {
+  // ===== キャラクター関連フェードイン =====
+  const characterElements = {
+    img: document.querySelector(".character__main-img"),
+    title: document.querySelector(".character__title"),
+    text: document.querySelector(".character__text"),
+    button: document.querySelector(".character__buttons"),
+  };
+
+  if (characterElements.img && characterElements.title && characterElements.text && characterElements.button) {
     const isSP = window.matchMedia("(max-width: 767px)").matches;
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: characterImg,
+        trigger: characterElements.img,
         start: "top 80%",
       },
       defaults: {
@@ -501,17 +548,15 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
 
-    if (isSP) {
-      tl.from(characterTitle, {})
-        .from(characterImg, { stagger: 0.2 }, "-=0.4")
-        .from(characterText, { stagger: 0.2 }, "-=0.4")
-        .from(characterButton, { stagger: 0.2 }, "-=0.4");
-    } else {
-      tl.from(characterImg, {})
-        .from(characterTitle, { stagger: 0.2 }, "-=0.4")
-        .from(characterText, { stagger: 0.2 }, "-=0.4")
-        .from(characterButton, { stagger: 0.2 }, "-=0.4");
-    }
+    // アニメーションの順番を設定
+    const animationOrder = isSP
+      ? [characterElements.title, characterElements.img, characterElements.text, characterElements.button]
+      : [characterElements.img, characterElements.title, characterElements.text, characterElements.button];
+
+    // アニメーションを順番に適用
+    animationOrder.forEach((element, index) => {
+      tl.from(element, {}, index === 0 ? undefined : "-=0.4");
+    });
   }
 
   // ===== 船のフェードイン =====
