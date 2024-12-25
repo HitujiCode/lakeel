@@ -391,28 +391,34 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeParticlesJS("js-particle-primary", ['#AC0C2D', '#c5556c', '#b72a47', '#EDCCD4']);
 
   // ===== ヘッダーの現在地表示 =====
-  window.addEventListener("scroll", function () {
-    const currentPosition = window.scrollY + document.querySelector(".js-header").offsetHeight + 200;
+  const sections = document.querySelectorAll('section');
+  const navItems = document.querySelectorAll('.header__nav-item');
 
-    document.querySelectorAll("section").forEach(function (section) {
-      const sectionTop = section.offsetTop;
-      const nextSectionTop = section.nextElementSibling
-        ? section.nextElementSibling.offsetTop
-        : document.body.scrollHeight;
+  const updateCurrentNav = () => {
+    let currentSection = null;
 
-      if (currentPosition >= sectionTop && currentPosition < nextSectionTop) {
-        document.querySelectorAll(".header__nav-item").forEach(function (item) {
-          item.classList.remove("is-current");
-        });
-
-        const id = section.getAttribute("id");
-        const currentLink = document.querySelector(`.header__nav-item a[href="#${id}"]`);
-        if (currentLink) {
-          currentLink.parentElement.classList.add("is-current");
-        }
+    // 現在のセクションを検出
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+        currentSection = section.id;
       }
     });
-  });
+
+    navItems.forEach((item) => {
+      const link = item.querySelector('a');
+      if (link && link.getAttribute('href').substring(1) === currentSection) {
+        item.classList.add('is-current');
+      } else {
+        item.classList.remove('is-current');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', updateCurrentNav);
+  window.addEventListener('resize', updateCurrentNav);
+
+  updateCurrentNav();
 
   // ===== ページ内リンクのスムーススクロール =====
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
@@ -459,10 +465,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     tl.from(messageElements.title, {})
-      .from(messageElements.mainImg, { }, "-=0.5")
-      .from(messageElements.text, { }, "-=0.5")
-      .from(messageElements.topImg, { }, "-=0.5")
-      .from(messageElements.bottomImg, { }, "-=0.5");
+      .from(messageElements.mainImg, {}, "-=0.5")
+      .from(messageElements.text, {}, "-=0.5")
+      .from(messageElements.topImg, {}, "-=0.5")
+      .from(messageElements.bottomImg, {}, "-=0.5");
   }
 
   // ===== ヒストリー関連フェードイン =====
@@ -576,7 +582,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     );
   }
-
 
   // ===== その他フェードイン =====
   const fadeIns = document.querySelectorAll('.js-fade-in');
