@@ -21,7 +21,7 @@
   background-size: contain;
   width: rem(112);
   aspect-ratio: 112/113;
-  animation: ship 3s infinite;
+  // animation: ship 3s infinite;
 
   @include mq("md") {
     width: rem(156);
@@ -196,6 +196,7 @@
   content: "";
   position: absolute;
   inset: 0;
+  margin: auto;
   background-image: url("../images/pc/img_history-bg.jpg");
   background-repeat: no-repeat;
   background-position: center;

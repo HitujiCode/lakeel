@@ -240,6 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // スライダー初期化
   initEpisodeSwiper('.js-top-swiper');
   initEpisodeSwiper('.js-bottom-swiper', {
+    initialSlide: 9,
     autoplay: {
       delay: 0,
       reverseDirection: true,
