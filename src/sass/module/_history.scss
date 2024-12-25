@@ -11,7 +11,7 @@
 }
 
 .history::after {
-  content: "";
+  // content: "";
   position: absolute;
   right: calc(50% - min(180/375*100vw, rem(348)));
   top: rem(-84);

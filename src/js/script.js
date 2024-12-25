@@ -566,22 +566,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ===== 船のフェードイン =====
-  const ship = document.querySelector(".js-fade-ship");
-  if (ship) {
-    gsap.fromTo(
-      ship,
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 0.7,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ship,
-          start: 'top 80%',
-        },
-      }
-    );
-  }
+  // const ship = document.querySelector(".js-fade-ship");
+  // if (ship) {
+  //   gsap.fromTo(
+  //     ship,
+  //     { opacity: 0 },
+  //     {
+  //       opacity: 1,
+  //       duration: 0.7,
+  //       ease: "power2.out",
+  //       scrollTrigger: {
+  //         trigger: ship,
+  //         start: 'top 80%',
+  //       },
+  //     }
+  //   );
+  // }
 
   // ===== その他フェードイン =====
   const fadeIns = document.querySelectorAll('.js-fade-in');
