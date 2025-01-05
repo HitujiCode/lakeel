@@ -28,7 +28,7 @@
     left: min(63/1440*100vw, 63px);
   }
 
-  @include mq("xl") {
+  @include mq("xxl") {
     left: 0;
     width: min(890/1920*100vw, 1200px);
   }

@@ -15,7 +15,7 @@
     top: rem(-80);
   }
 
-  @include mq("xl") {
+  @include mq("xxl") {
     right: calc(50% - min(650/1920*100vw, 750px));
     top: calc(-80/1920*100vw);
   }
