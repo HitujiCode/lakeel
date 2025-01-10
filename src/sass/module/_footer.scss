@@ -78,7 +78,7 @@
 .footer__totop-button {
   display: inline-grid;
   place-items: center;
-  width: rem(50);
+  width: rem(60);
   aspect-ratio: 1/1;
   background-color: var(--tertiary);
   border-radius: 50%;
@@ -92,7 +92,7 @@
 
 .footer__totop-button::after {
   content: "";
-  width: rem(18);
+  width: rem(28);
   aspect-ratio: 29/22;
   background-color: var(--white);
   mask-image: url(../images/common/arrow.svg);

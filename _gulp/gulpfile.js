@@ -26,6 +26,7 @@ const srcPath = {
   img: "../src/images/**/*",
   font: "../src/fonts/**/*",
   library: "../src/library/**/*",
+  pdf: "../src/pdf/**/*",
   html: ["../src/**/*.html", "!./node_modules/**"],
 };
 
@@ -37,6 +38,7 @@ const destPath = {
   img: "../dist/assets/images/",
   font: "../dist/assets/fonts/",
   library: "../dist/assets/library/",
+  pdf: "../dist/assets/pdf/",
   html: "../dist/",
 };
 
@@ -55,6 +57,11 @@ const fontCopy = () => {
 // ライブラリコピー
 const libraryCopy = () => {
   return src(srcPath.library).pipe(dest(destPath.library));
+};
+
+// pdfコピー
+const pdfCopy = () => {
+  return src(srcPath.pdf).pipe(dest(destPath.pdf));
 };
 
 const cssSass = () => {
@@ -195,14 +202,15 @@ const watchFiles = () => {
   watch(srcPath.img, series(imgImagemin, browserSyncReload));
   watch(srcPath.font, series(fontCopy, browserSyncReload));
   watch(srcPath.library, series(libraryCopy, browserSyncReload));
+  watch(srcPath.pdf, series(pdfCopy, browserSyncReload));
   watch(srcPath.html, series(htmlCopy, browserSyncReload));
 };
 
 // 開発用タスク
 exports.default = series(
-  series(cssSass, jsUglify, imgImagemin, htmlCopy, fontCopy, libraryCopy),
+  series(cssSass, jsUglify, imgImagemin, htmlCopy, fontCopy, libraryCopy, pdfCopy),
   parallel(watchFiles, browserSyncFunc)
 );
 
 // 本番用タスク
-exports.build = series(clean, cssSass, jsUglify, imgImagemin, htmlCopy, fontCopy, libraryCopy);
+exports.build = series(clean, cssSass, jsUglify, imgImagemin, htmlCopy, fontCopy, libraryCopy, pdfCopy);

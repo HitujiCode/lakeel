@@ -1,42 +1,62 @@
 @use "global" as *;
 
 .coming-soon {
+  overflow-x: clip;
   position: relative;
-  padding-block: rem(325) rem(130);
+  padding-block: rem(255) rem(92);
 
   @include mq("md") {
-    padding-block: rem(296) rem(260);
+    padding-block: rem(365) rem(208);
   }
 }
 
 .coming-soon__inner.inner {
   padding-inline: rem(17.5);
+
+  @include mq("md") {
+    padding-inline: $padding-pc;
+  }
+}
+
+.coming-soon__wrap {
+  @include mq("md") {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    // padding-right: rem(68);
+  }
 }
 
 .coming-soon__bubble {
   text-align: center;
-  background-color: var(--light-blue);
-  padding: rem(56) rem(84.5);
-  border-radius: 50%;
+  padding: rem(56) rem(56) rem(65);
   position: relative;
-  width: fit-content;
+  width: min(100%, rem(304));
+  aspect-ratio: 300/289;
   margin-inline: auto;
+  display: grid;
+  place-items: center;
 
   @include mq("md") {
-    padding: rem(90) rem(76);
+    margin-inline: initial;
+    width: min(100%, rem(450));
+    padding-bottom: rem(54);
   }
 }
 
-.coming-soon__bubble::after {
+.coming-soon__bubble::before {
   content: "";
   position: absolute;
-  top: 98%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: rem(48);
-  aspect-ratio: 48/24;
-  background-color: inherit;
-  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+  inset: 0;
+  transform: rotate(-30deg);
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/common/blob2.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  z-index: -1;
 }
 
 .coming-soon__text {
@@ -55,12 +75,17 @@
 }
 
 .coming-soon__img {
-  margin-top: rem(46);
+  margin-top: rem(-75);
   margin-inline: auto;
   width: min(100%, rem(268));
 
   @include mq("md") {
-    margin-top: rem(50);
+    order: -1;
+    margin-top: initial;
+    margin-left: initial;
+    margin-right: rem(-56);
+    position: relative;
+    z-index: 1;
   }
 }
 

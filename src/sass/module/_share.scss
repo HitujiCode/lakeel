@@ -2,10 +2,10 @@
 
 .share {
   position: relative;
-  padding-bottom: rem(60);
+  padding-bottom: rem(90);
 
   @include mq("md") {
-    padding-bottom: rem(163);
+    padding-bottom: rem(160);
   }
 }
 
