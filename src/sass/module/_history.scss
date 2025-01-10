@@ -259,8 +259,6 @@
   width: var(--width);
   margin-left: var(--marginLeft);
   z-index: var(--z-index);
-
-  @include mq("md") {}
 }
 
 .history__timeline-img {
