@@ -22,11 +22,22 @@
   position: relative;
   left: calc(50% - min(205/375*100vw, rem(250)));
 
+  // 縮小した場合
   @include mq("md") {
     height: inherit;
-    width: clamp(580px, 890/1440*100vw, 890px);
+    width: clamp(520px, 730/1440*100vw, 890px);
     left: min(63/1440*100vw, 63px);
   }
+
+  // @include mq("md") {
+  //   height: inherit;
+  //   width: clamp(580px, 890/1440*100vw, 890px);
+  //   left: min(63/1440*100vw, 63px);
+  // }
+
+  // @media screen and (min-width: 960px) and (max-width: 1440px) and (max-height: 640px) {
+  //   width: clamp(593px, 700/1440*100vw, 890px);
+  // }
 
   @include mq("xxl") {
     left: 0;
@@ -45,89 +56,6 @@
   }
 }
 
-// .mv__catchphrase {
-//   position: absolute;
-//   top: min(184 / 375* 100vw, rem(210));
-//   left: calc(50% - min(90/375*100vw, rem(120)));
-//   z-index: 1;
-//   color: var(--white);
-//   width: min-content;
-
-//   @include mq("md") {
-//     top: min(190/1440*100vw);
-//     left: calc(50% - min(170/1440*100vw));
-//     display: inline-grid;
-//     place-items: center;
-//   }
-// }
-
-// .mv__catchphrase-top {
-//   display: inline-block;
-//   font-size: rem(14);
-//   font-weight: var(--bold);
-//   line-height: calc(36/14);
-//   letter-spacing: 0.1em;
-//   border-bottom: rem(2) solid var(--white);
-
-//   @include mq("md") {
-//     font-size: rem(24);
-//     line-height: calc(36/24);
-//   }
-// }
-
-// .mv__catchphrase-main {
-//   font-weight: var(--bold);
-//   font-family: var(--poppins-font);
-//   filter: drop-shadow(0 rem(4) rem(24) rgba(0, 0, 0, 0.25));
-// }
-
-// .mv__catchphrase-large {
-//   font-size: rem(100);
-//   line-height: 1;
-
-//   @include mq("md") {
-//     font-size: rem(200);
-//   }
-// }
-
-// .mv__catchphrase-middle {
-//   font-size: rem(70);
-//   line-height: 1;
-
-//   @include mq("md") {
-//     font-size: rem(140);
-//   }
-// }
-
-// .mv__catchphrase-text {
-//   display: inline-block;
-//   font-size: rem(25);
-//   line-height: 1;
-//   letter-spacing: 0.05em;
-//   text-transform: uppercase;
-//   position: relative;
-//   top: rem(-8);
-//   left: rem(4);
-
-//   @include mq("md") {
-//     top: rem(-12);
-//     font-size: rem(51);
-//   }
-// }
-
-// .mv__catchphrase-bottom {
-//   margin-top: rem(-8);
-//   font-size: rem(16);
-//   font-weight: var(--medium);
-//   font-family: var(--poppins-font);
-//   line-height: 1.5;
-//   text-align: center;
-
-//   @include mq("md") {
-//     font-size: rem(20);
-//   }
-// }
-
 .mv__countdown {
   position: absolute;
   top: calc(50% + rem(183));
@@ -135,9 +63,28 @@
 
   @include mq("md") {
     right: calc(50% - min(578 / 1440* 100vw, 578px));
+    right: calc(50% - min(578 / 1440* 100vw, 730px));
     top: initial;
-    bottom: min(456/1440*100vw, 456px);
+    bottom: min(440/1440*100vw, 440px);
+
+    //縮小した場合
+    // bottom: min(56.3vh, 440px);
+    // bottom: clamp(390px, 56.3vh, 440px);
+    bottom: initial;
+    top: clamp(330px, 56vh, min(440/1440*100vw, 440px));
   }
+
+  // 縮小した場合
+
+  @include mq("xxl") {
+    top: initial;
+    bottom: rem(440);
+  }
+
+
+  // @media screen and (min-width: 960px) and (max-width: 1440px) and (max-height: 640px) {
+  //   bottom: min(400/1440*100vw, 400px);
+  // }
 }
 
 .mv__scroll {

@@ -360,35 +360,55 @@ document.addEventListener("DOMContentLoaded", function () {
   enableSmoothMouseDragScroll(".js-scroll");
 
   // ===== パーティクル初期化 =====
-  function initializeParticlesJS(elementId, colors) {
-    particlesJS(elementId, {
-      "particles": {
-        "number": {
-          "value": 30,
-          "density": {
-            "enable": true,
-            "value_area": 3000
-          }
-        },
-        "color": {
-          "value": colors
-        },
-        "size": {
-          "value": 25,
-          "random": true
-        },
-        "move": {
+  particlesJS("js-particle-secondary", {
+    "particles": {
+      "number": {
+        "value": 50,
+        "density": {
           "enable": true,
-          "speed": 2,
-          "out_mode": "out"
+          "value_area": 2500
         }
       },
-      "retina_detect": true
-    });
-  }
+      "color": {
+        "value": ['#004664', '#002F43', '#E7F1F5', '#CCDAE0']
+      },
+      "size": {
+        "value": 25,
+        "random": true
+      },
+      "move": {
+        "enable": true,
+        "speed": 2,
+        "out_mode": "out"
+      }
+    },
+    "retina_detect": true
+  });
 
-  initializeParticlesJS("js-particle-secondary", ['#004664', '#002F43', '#E7F1F5', '#CCDAE0']);
-  initializeParticlesJS("js-particle-primary", ['#AC0C2D', '#c5556c', '#b72a47', '#EDCCD4']);
+  particlesJS("js-particle-primary", {
+    "particles": {
+      "number": {
+        "value": 30,
+        "density": {
+          "enable": true,
+          "value_area": 3000
+        }
+      },
+      "color": {
+        "value": ['#AC0C2D', '#c5556c', '#b72a47', '#EDCCD4']
+      },
+      "size": {
+        "value": 25,
+        "random": true
+      },
+      "move": {
+        "enable": true,
+        "speed": 2,
+        "out_mode": "out"
+      }
+    },
+    "retina_detect": true
+  });
 
   // ===== ヘッダーの現在地表示 =====
   const sections = document.querySelectorAll('section');
@@ -476,7 +496,7 @@ document.addEventListener("DOMContentLoaded", function () {
     title: document.querySelector(".history__title"),
     bg: document.querySelector(".history__wrapper"),
     icon: document.querySelector(".history__scroll-guide"),
-    list: document.querySelector(".history__timeline"),
+    list: document.querySelector(".history__content"),
   };
 
   if (historyElements.title && historyElements.bg && historyElements.icon && historyElements.list) {

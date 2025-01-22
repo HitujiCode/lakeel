@@ -10,31 +10,6 @@
   }
 }
 
-.history::after {
-  // content: "";
-  position: absolute;
-  right: calc(50% - min(180/375*100vw, rem(348)));
-  top: rem(-84);
-  background-image: url(../images/common/ship.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  width: rem(112);
-  aspect-ratio: 112/113;
-  // animation: ship 3s infinite;
-
-  @include mq("md") {
-    width: rem(156);
-    right: calc(50% - min(650/1440*100vw, 650px));
-    top: rem(-80);
-  }
-
-  @include mq("xl") {
-    right: calc(50% - min(650/1920*100vw, 750px));
-    top: calc(-80/1920*100vw);
-  }
-}
-
 .history__inner.inner {
   position: relative;
   padding-inline: rem(24);

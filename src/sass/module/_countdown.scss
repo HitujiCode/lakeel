@@ -32,6 +32,10 @@
   transform: translate(-50%, -50%);
   animation: circle 20s linear infinite;
 
+  @include mq("md") {
+    width: rem(200);
+  }
+
   @include mq("xxl") {
     width: min(228/1920*100vw, 300px);
   }
