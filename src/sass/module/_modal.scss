@@ -1,0 +1,94 @@
+@use "global" as *;
+
+.episode__modal {}
+
+.modal {
+  --duration: 0.5s;
+  --gutter: max(5vi, 20px);
+  --background: var(--black);
+  --background-backdrop: color-mix(in srgb, var(--background), transparent 20%);
+
+  width: 90%;
+  height: 90%;
+  background-color: var(--background);
+  box-shadow: 0 0 0 100vmax var(--background-backdrop);
+  transition: opacity var(--duration), scale var(--duration);
+  contain: strict;
+}
+
+.modal:not([data-active="true"]) {
+  opacity: 0;
+  scale: 0.95;
+}
+
+.modal::backdrop {
+  transition: opacity 0.5s;
+}
+
+.modal:not([data-active="true"])::backdrop {
+  opacity: 0;
+}
+
+.modal__container {
+  block-size: 100%;
+  padding: 1lh;
+  overflow: auto;
+  overscroll-behavior: contain;
+  background-color: var(--white);
+}
+
+.modal__title {}
+
+.modal__content {}
+
+.modal__text {}
+
+.modal__close {
+  --background: var(--black);
+  --background-active: color-mix(in srgb, var(--background) 80%, white);
+  --icon-color: var(--white);
+
+  position: absolute;
+  inset-block-start: 4px;
+  inset-inline-end: 4px;
+  z-index: 1;
+  inline-size: 3em;
+  aspect-ratio: 1;
+  appearance: none;
+  cursor: pointer;
+  background-color: var(--background);
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 12px 0 rgb(0 0 0 / 20%);
+  transition: background-color 0.3s;
+
+  &::before,
+  &::after {
+    position: absolute;
+    inset: 0;
+    display: inline-block;
+    width: 45%;
+    height: 2px;
+    margin: auto;
+    content: "";
+    background-color: var(--color-white);
+  }
+
+  &::before {
+    rotate: 45deg;
+  }
+
+  &::after {
+    rotate: 135deg;
+  }
+
+  &:focus-visible {
+    background-color: var(--background-active);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: var(--background-active);
+    }
+  }
+}

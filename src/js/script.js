@@ -603,4 +603,94 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     );
   });
+
+
+  // ===== モーダル =====
+  const openTriggers = document.querySelectorAll('[data-modal-open]');
+  const closeTriggers = document.querySelectorAll('[data-modal-close]');
+  let isModalAnimating = false; // 連打防止フラグ
+
+  // バックドロップクリックイベントのハンドリング
+  function handleBackdropClick(event) {
+    if (event.target.tagName === 'DIALOG') {
+      closeModal(event.target);
+    }
+  }
+
+  // キーボードイベントのハンドリング
+  function handleKeyDown(event) {
+    if (event.key === 'Escape') {
+      event.preventDefault(); // デフォルト動作を無効化
+      const modal = document.querySelector('dialog[data-active="true"]');
+      if (modal) {
+        closeModal(modal);
+      }
+    }
+  }
+
+  // モーダルを開く関数
+  async function openModal(modal) {
+    if (isModalAnimating || modal.dataset.active === "true") return;
+    isModalAnimating = true;
+
+    modal.showModal(); // モーダルを表示
+    requestAnimationFrame(() => {
+      modal.dataset.active = "true"; // 次のレンダリングサイクルでアクティブ状態に設定
+    });
+
+    // イベントリスナーを追加
+    document.addEventListener('keydown', handleKeyDown);
+    modal.addEventListener('click', handleBackdropClick);
+
+    // アニメーションの終了を待つ
+    await Promise.all(modal.getAnimations().map(animation => animation.finished));
+
+    isModalAnimating = false;
+  }
+
+  // モーダルを閉じる関数
+  async function closeModal(modal) {
+    if (isModalAnimating || modal.dataset.active !== "true") return;
+    isModalAnimating = true;
+
+    modal.dataset.active = "false"; // アクティブ状態を解除
+
+    // アニメーションの終了を待つ
+    await Promise.all(modal.getAnimations().map(animation => animation.finished));
+
+    modal.close(); // モーダルを閉じる
+
+    // イベントリスナーを削除
+    document.removeEventListener('keydown', handleKeyDown);
+    modal.removeEventListener('click', handleBackdropClick);
+
+    isModalAnimating = false;
+  }
+
+  // モーダルを開くイベントの設定
+  openTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const modalId = trigger.getAttribute('data-modal-open');
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        openModal(modal);
+      }
+    });
+  });
+
+  // モーダルを閉じるイベントの設定
+  closeTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const modal = trigger.closest('dialog');
+      if (modal) {
+        closeModal(modal);
+      }
+    });
+  });
+
+
+
+
+
+
 });

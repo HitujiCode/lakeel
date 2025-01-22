@@ -9,7 +9,8 @@
   <meta name="robots" content="noindex" />
   <!-- meta情報 -->
   <title>ラキール創立20周年 特設サイト</title>
-  <meta name="description" content="株式会社ラキールの創立20周年特設サイトです。いつも支えてくださっているすべての皆様へ感謝の気持ちをこめて、「これまでの歩みとこれからの挑戦」についてご紹介します。" />
+  <meta name="description"
+    content="株式会社ラキールの創立20周年特設サイトです。いつも支えてくださっているすべての皆様へ感謝の気持ちをこめて、「これまでの歩みとこれからの挑戦」についてご紹介します。" />
   <meta name="keywords" content="" />
   <!-- ogp -->
   <meta property="og:title" content="ラキール創立20周年 特設サイト" />
@@ -17,7 +18,8 @@
   <meta property="og:url" content="https://lakeel.prev1.jp/" />
   <meta property="og:image" content="https://lakeel.prev1.jp/assets/images/common/thumbnail.jpg" />
   <meta property="og:site_name" content="ラキール創立20周年 特設サイト" />
-  <meta property="og:description" content="株式会社ラキールの創立20周年特設サイトです。いつも支えてくださっているすべての皆様へ感謝の気持ちをこめて、「これまでの歩みとこれからの挑戦」についてご紹介します。" />
+  <meta property="og:description"
+    content="株式会社ラキールの創立20周年特設サイトです。いつも支えてくださっているすべての皆様へ感謝の気持ちをこめて、「これまでの歩みとこれからの挑戦」についてご紹介します。" />
   <meta name="twitter:card" content="summary_large_image">
   <!-- ファビコン -->
   <link rel="icon" href="./assets/images/common/favicon.ico" />
@@ -584,7 +586,7 @@
               <div class="episode__slider swiper js-top-swiper">
                 <ul class="episode__list swiper-wrapper">
                   <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2005.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card" data-modal-open="modal2005">
                       <div class="flip-card__inner">
                         <div class="flip-card__front">
                           <p class="flip-card__year">2005</p>
@@ -595,10 +597,10 @@
                           <p class="flip-card__title flip-card__title--back">ピンチはチャンス</p>
                         </div>
                       </div>
-                    </a>
+                    </div>
                   </li>
                   <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2006.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                    <div class="flip-card" data-modal-open="modal2006">
                       <div class="flip-card__inner">
                         <div class="flip-card__front">
                           <p class="flip-card__year">2006</p>
@@ -609,7 +611,7 @@
                           <p class="flip-card__title flip-card__title--back">夢なきものに成功なし</p>
                         </div>
                       </div>
-                    </a>
+                    </div>
                   </li>
                   <li class="episode__item swiper-slide">
                     <a href="./assets/pdf/l_2007.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
@@ -620,7 +622,8 @@
                         </div>
                         <div class="flip-card__back">
                           <p class="flip-card__year">2007</p>
-                          <p class="flip-card__title flip-card__title--back flip-card__title--small">意思を持って動いた時、<br>誰の力もラキールを大きく<br>動かす力になる</p>
+                          <p class="flip-card__title flip-card__title--back flip-card__title--small">
+                            意思を持って動いた時、<br>誰の力もラキールを大きく<br>動かす力になる</p>
                         </div>
                       </div>
                     </a>
@@ -802,11 +805,13 @@
                       <div class="flip-card__inner">
                         <div class="flip-card__front">
                           <p class="flip-card__year">2020</p>
-                          <p class="flip-card__title flip-card__title--small">個人の利益より、チームの利益。<br>チームの利益より、組織の利益。<br>組織の利益より、会社全体の利益。</p>
+                          <p class="flip-card__title flip-card__title--small">
+                            個人の利益より、チームの利益。<br>チームの利益より、組織の利益。<br>組織の利益より、会社全体の利益。</p>
                         </div>
                         <div class="flip-card__back">
                           <p class="flip-card__year">2020</p>
-                          <p class="flip-card__title flip-card__title--back flip-card__title--small">個人の利益より、チームの利益。<br>チームの利益より、組織の利益。<br>組織の利益より、会社全体の利益。</p>
+                          <p class="flip-card__title flip-card__title--back flip-card__title--small">
+                            個人の利益より、チームの利益。<br>チームの利益より、組織の利益。<br>組織の利益より、会社全体の利益。</p>
                         </div>
                       </div>
                     </a>
@@ -869,6 +874,31 @@
                   </li>
                 </ul>
               </div>
+              <!-- modal -->
+              <dialog id="modal2005" class="episode__modal modal" aria-labelledby="headline1" aria-describedby="desc1"
+                autofocus>
+                <div class="modal__container">
+                  <h3 class="modal__title">title</h3>
+                  <div class="modal__content">
+                    <p class="modal__text">text</p>
+                  </div>
+                </div>
+                <button class="modal__close" aria-labelledby="close1" data-modal-close>
+                  <span id="close1" style="display:none">モーダルを閉じる</span>
+                </button>
+              </dialog>
+              <dialog id="modal2006" class="episode__modal modal" aria-labelledby="headline2" aria-describedby="desc2"
+                autofocus>
+                <div class="modal__container">
+                  <h3 class="modal__title">titletitle</h3>
+                  <div class="modal__content">
+                    <p class="modal__text">texttext</p>
+                  </div>
+                </div>
+                <button class="modal__close" aria-labelledby="close2" data-modal-close>
+                  <span id="close2" style="display:none">モーダルを閉じる</span>
+                </button>
+              </dialog>
             </div>
             <figure class="episode__compass">
               <img src="./assets/images/common/compass.svg" alt="金茶のコンパス" width="190" height="190" loading="lazy" />
@@ -930,7 +960,8 @@
                   <a href="" class="button" target="_blank" rel="noopener noreferrer">キャラクター誕生物語</a>
                 </div>
                 <div class="character__button">
-                  <a href="https://line.me/S/sticker/29070912" class="button" target="_blank" rel="noopener noreferrer">LINEスタンプのダウンロードはこちら</a>
+                  <a href="https://line.me/S/sticker/29070912" class="button" target="_blank"
+                    rel="noopener noreferrer">LINEスタンプのダウンロードはこちら</a>
                 </div>
               </div>
             </div>

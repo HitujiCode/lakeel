@@ -57,6 +57,7 @@ body {
   line-height: 1.5;
 }
 
-body.is-noscroll {
+body.is-noscroll,
+body:has(dialog[open]) {
   overflow: hidden;
 }

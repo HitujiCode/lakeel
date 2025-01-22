@@ -79,6 +79,17 @@ img:not([alt]) {
   filter: blur(10px);
 }
 
+:where(dialog) {
+  width: unset;
+  max-width: unset;
+  height: unset;
+  max-height: unset;
+  padding: unset;
+  color: unset;
+  background-color: unset;
+  border: unset;
+  overflow: unset;
+}
 
 /* フォームリセット */
 input,
