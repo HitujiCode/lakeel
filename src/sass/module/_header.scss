@@ -15,6 +15,12 @@
   }
 }
 
+.header.is-scroll {
+  @include mq("md") {
+    height: rem(65);
+  }
+}
+
 .header__inner {
   height: inherit;
   padding-inline: rem(20);
@@ -90,7 +96,7 @@
     aspect-ratio: 1/1;
     background-color: var(--tertiary);
     border-radius: 50%;
-    bottom: rem(20);
+    bottom: rem(12);
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
@@ -222,6 +228,7 @@
 }
 
 @media (any-hover: hover) {
+
   .header__nav-item a:hover,
   .header__drawer-item a:hover {
     color: var(--primary);

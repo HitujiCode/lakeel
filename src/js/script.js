@@ -410,6 +410,18 @@ document.addEventListener("DOMContentLoaded", function () {
     "retina_detect": true
   });
 
+  // ===== スクロールしたらヘッダーにクラス付与 =====
+  document.addEventListener('scroll', function () {
+    const header = document.querySelector('.js-header');
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    if (scrollTop > 0) {
+      header.classList.add('is-scroll');
+    } else {
+      header.classList.remove('is-scroll');
+    }
+  });
+
   // ===== ヘッダーの現在地表示 =====
   const sections = document.querySelectorAll('section');
   const navItems = document.querySelectorAll('.header__nav-item');

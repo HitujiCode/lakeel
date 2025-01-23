@@ -163,7 +163,9 @@
   margin-inline: calc(50% - 50vw);
 
   @include mq("md") {
-    margin-top: rem(62);
+    // margin-top: rem(62);
+    // margin-top: min(62/1440*100vw, rem(62));
+    margin-top: min(50/1440*100vw, rem(62));
   }
 }
 
@@ -205,6 +207,10 @@
   padding-top: rem(40);
   overflow-x: auto;
   scrollbar-width: none;
+
+  @include mq("md") {
+    padding-top: min(30/1440*100vw, rem(40));
+  }
 }
 
 .history__content::-webkit-scrollbar {
@@ -232,7 +238,9 @@
   position: relative;
   flex-shrink: 0;
   width: var(--width);
+  width: clamp(var(--width)*0.6px, (var(--width)/1440*100vw)*0.85, var(--width)*1px);
   margin-left: var(--marginLeft);
+  margin-left: clamp(var(--marginLeft)*0.6px, (var(--marginLeft)/1440*100vw)*0.85, var(--marginLeft)*1px);
   z-index: var(--z-index);
 }
 
@@ -256,7 +264,7 @@
 
   @include mq("md") {
     font-size: 36px;
-    font-size: clamp(32px, calc(36 / 1440 * 100vw), 36px);
+    font-size: clamp(28px, calc(36 / 1440 * 100vw), 36px);
     ;
   }
 }
