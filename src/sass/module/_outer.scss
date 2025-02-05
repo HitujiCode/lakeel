@@ -3,3 +3,9 @@
 .outer {
   opacity: 0;
 }
+
+.outer:has(dialog[open]) {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+

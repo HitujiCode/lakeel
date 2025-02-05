@@ -38,14 +38,16 @@
     rel="stylesheet" media="all" onload="this.media='all'" />
   <!-- css -->
   <link rel="stylesheet" href="./assets/library/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="./assets/css/style.css?ver=1.1.5" />
+  <link rel="stylesheet" href="./assets/library/splide-core.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css?ver=1.1.7" />
   <!-- JavaScript -->
   <!-- <script defer src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
   <script defer src="./assets/library/gsap.min.js"></script>
   <script defer src="./assets/library/ScrollTrigger.min.js"></script>
   <script defer src="./assets/library/swiper-bundle.min.js"></script>
+  <script defer src="./assets/library/splide.min.js"></script>
   <script defer src="./assets/library/particles.min.js"></script>
-  <script defer src="./assets/js/script.js?ver=1.0.5"></script>
+  <script defer src="./assets/js/script.js?ver=1.0.6"></script>
 </head>
 
 <body>
@@ -80,7 +82,7 @@
             </li>
           </ul>
         </nav>
-        <button class="header__hamburger js-hamburger" aria-expanded="false" aria-label="メニューを開く">
+        <button type="button" class="header__hamburger js-hamburger" aria-expanded="false" aria-label="メニューを開く">
           <span></span>
           <span></span>
           <span></span>
@@ -303,262 +305,1058 @@
             <div class="history__wrapper">
               <div class="history__content js-scroll">
                 <ul class="history__timeline">
-                  <li data-id="2005" class="history__timeline-item"
-                    style="--width: 1237; --marginLeft: 0; --z-index: 1;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2005</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2005.webp" type="image/webp" width="1237"
-                          height="605">
-                        <img src="./assets/images/pc/history2005.png"
-                          alt="2005年のタイムライン。4月に「八重洲のレンタル会議室で公保社より経営計画の説明を受ける」、6月に「設立、新川のある会社のオフィスを借りて運営を開始する」、9月に「イーシーワンチャイナを子会社化」、11月に「第1回社員旅行 群馬水上温泉」を実施。"
-                          width="1237" height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2005</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          八重洲のレンタル会議室で公保社より経営計画の説明を受ける
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2">
+                          設立、新川のある会社のオフィスを借りて運営を開始する
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          株式会社イーシー・ワンを子会社化
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="4">
+                          第1回社員旅行 群馬水上温泉
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2006" class="history__timeline-item"
-                    style="--width: 1173; --marginLeft: -35; --z-index: initial;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2006</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2006.webp" type="image/webp" width="1173"
-                          height="605">
-                        <img src="./assets/images/pc/history2006.png"
-                          alt="2006年のタイムライン。3月に「八丁堀に移転」、6月に「弊社が開発を手掛けたgirls shoppingのサイトがオープン」、7月に「弊社が開発を手掛けたfashionwalkerのサイトがオープン」、8月に「弊社の製品第1号LaKeel Frameworkの販売開始」、11月に「第2回社員旅行 沖縄」を実施。"
-                          width="1173" height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2006</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          八丁堀に移転
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2">
+                          弊社が開発を手掛けた「girls shopping」のサイトがオープン
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          弊社が開発を手掛けた「fashionwalker」のサイトがオープン
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="4">
+                          弊社の製品第1号「LaKeel Framework」の販売開始
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="5">
+                          第2回社員旅行 沖縄
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2007" class="history__timeline-item"
-                    style="--width: 1289; --marginLeft: 29; --z-index: 1;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2007</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2007.webp" type="image/webp" width="1289"
-                          height="605">
-                        <img src="./assets/images/pc/history2007.png"
-                          alt="2007年のタイムライン。5月に「初の新卒社員入社」、7月に「参院選で自民党が歴史的惨敗」、12月に「第3回社員旅行 修善寺」を実施。" width="1289"
-                          height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2007</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                        <p class="history__timeline-month-event text-primary" data-position="1">
+                          初の新卒社員入社
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                        <p class="history__timeline-month-event text-secondary" data-position="2">
+                          参院選で自民党が歴史的惨敗
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          第3回社員旅行　修善寺
+                        </p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2008" class="history__timeline-item"
-                    style="--width: 1151; --marginLeft: -97; --z-index: initial;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2008</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2008.webp" type="image/webp" width="1151"
-                          height="605">
-                        <img src="./assets/images/pc/history2008.png"
-                          alt="2008年のタイムライン。1月に「プライバシーマークを取得」、2月に「ディメンジョンゼロを吸収合併　従業員数50名突破」、4月に「キックオフ後の懇親会開始」、5月に「四川大地震」、9月に「リーマンブラザーズ破綻→リーマンショック」、10月に「第4回社員旅行　サイパン」を実施。"
-                          width="1151" height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2008</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                        <p class="history__timeline-month-event text-primary" data-position="1">
+                          プライバシーマークを取得
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2">
+                          ディメンジョンゼロを吸収合併　<span class="text-primary">従業員数50名突破</span>
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          キックオフ後の懇親会開始
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                        <p class="history__timeline-month-event text-secondary" data-position="4">
+                          四川大地震
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                        <p class="history__timeline-month-event text-secondary" data-position="4-2">
+                          リーマンブラザーズ破綻→リーマンショック
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="5">
+                          第4回社員旅行　サイパン
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2009" class="history__timeline-item"
-                    style="--width: 1173; --marginLeft: 62; --z-index: initial;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2009</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2009.webp" type="image/webp" width="1173"
-                          height="605">
-                        <img src="./assets/images/pc/history2009.png"
-                          alt="2009年のタイムライン。8月に「衆院選で民主党圧勝。政権交代で鳩山政権誕生」、11月に「第5回社員旅行　鴨川」を実施。" width="1173" height="605"
-                          loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2009</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                        <p class="history__timeline-month-event text-secondary" data-position="1">
+                          衆院選で民主党圧勝。政権交代で鳩山政権誕生
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2">
+                          第5回社員旅行　鴨川
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2010" class="history__timeline-item"
-                    style="--width: 1138; --marginLeft: 25; --z-index: initial;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2010</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2010.webp" type="image/webp" width="1138"
-                          height="605">
-                        <img src="./assets/images/pc/history2010.png" alt="2010年のタイムライン。この年のイベントは特に記載なし。" width="1138"
-                          height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2010</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2011" class="history__timeline-item"
-                    style="--width: 1298; --marginLeft: 62; --z-index: 1;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2011</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2011.webp" type="image/webp" width="1298"
-                          height="605">
-                        <img src="./assets/images/pc/history2011.png"
-                          alt="2011年のタイムライン。2月に「虎の門に移転」、3月に「東日本大震災」、4月に「新卒採用4名」、6月に「LaKeel EC販売開始」、8月に「株式会社ワークスソリューションズと吸収分割契約により事業統合」、10月に「Java道場開始」を実施。"
-                          width="1298" height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2011</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          本社を東京都港区虎ノ門へ移転
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                        <p class="history__timeline-month-event text-secondary" data-position="2">
+                          東日本大震災
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          新卒採用4名
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="4">
+                          「LaKeel EC」販売開始
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="4-2">
+                          株式会社ワークスソリューションズと吸収分割契約により事業統合
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="5">
+                          「Java道場」開始
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2012" class="history__timeline-item"
-                    style="--width: 1138; --marginLeft: -98; --z-index: initial;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2012</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2012.webp" type="image/webp" width="1138"
-                          height="605">
-                        <img src="./assets/images/pc/history2012.png"
-                          alt="2012年のタイムライン。5月に「新卒採用枠拡大40名規模へ　新卒採用15名」、7月に「エンジニアオリンピック参加」、8月に「LaKeel Messengerの販売開始」を実施。"
-                          width="1138" height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2012</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                        <p class="history__timeline-month-event text-primary" data-position="1">
+                          新卒採用15名
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2">
+                          エンジニアオリンピック参加
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          「LaKeel Messenger」の販売開始
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2013" class="history__timeline-item"
-                    style="--width: 1138; --marginLeft: 62; --z-index: initial;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2013</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2013.webp" type="image/webp" width="1138"
-                          height="605">
-                        <img src="./assets/images/pc/history2013.png"
-                          alt="2013年のタイムライン。4月に「新卒採用13名」、9月に「LaKeel BIの販売開始」を実施。" width="1138" height="605"
-                          loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2013</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                        <p class="history__timeline-month-event text-primary" data-position="1">
+                          新卒採用13名
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2">
+                          「LaKeel BI」の販売開始
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2014" class="history__timeline-item"
-                    style="--width: 1138; --marginLeft: 62; --z-index: initial;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2014</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2014.webp" type="image/webp" width="1138"
-                          height="605">
-                        <img src="./assets/images/pc/history2014.png" alt="2014年のタイムライン。4月に「新卒採用27名」を実施。" width="1138"
-                          height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2014</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                        <p class="history__timeline-month-event text-primary" data-position="1">
+                          新卒採用27名
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2015" class="history__timeline-item"
-                    style="--width: 1138; --marginLeft: 48; --z-index: initial;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2015</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2015.webp" type="image/webp" width="1138"
-                          height="605">
-                        <img src="./assets/images/pc/history2015.png"
-                          alt="2015年のタイムライン。1月に「衆院選で民主党圧勝。政権交代で鳩山政権誕生」、4月に「新卒採用40名」、8月に「創立10周年パーティー」を実施。" width="1138"
-                          height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2015</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          食品安全衛生eラーニング「FSOP」の販売開始（LOMの前身）
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                        <p class="history__timeline-month-event text-primary" data-position="2">
+                          新卒採用40名
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          創立10周年パーティー
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2016" class="history__timeline-item"
-                    style="--width: 1140; --marginLeft: 62; --z-index: initial;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2016</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2016.webp" type="image/webp" width="1140"
-                          height="605">
-                        <img src="./assets/images/pc/history2016.png" alt="2016年のタイムライン。6月に「港区赤坂へ本社移転」を実施。" width="1140"
-                          height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2016</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          本社を東京都港区赤坂へ移転
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2017" class="history__timeline-item"
-                    style="--width: 1238; --marginLeft: 62; --z-index: 2;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2017</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2017.webp" type="image/webp" width="1238"
-                          height="605">
-                        <img src="./assets/images/pc/history2017.png"
-                          alt="2017年のタイムライン。10月に「株式会社ワークスアプリケーションズからのマネジメント・バイアウト（MBO）」を実施。" width="1238" height="605"
-                          loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2017</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          株式会社ワークスアプリケーションズからの<br>マネジメント・バイアウト（MBO）
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2018" class="history__timeline-item"
-                    style="--width: 1510; --marginLeft: -38; --z-index: 1;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2018</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2018.webp" type="image/webp" width="1510"
-                          height="605">
-                        <img src="./assets/images/pc/history2018.png"
-                          alt="2018年のタイムライン。4月に「採用ブログスタート」、9月に「全国社会人ゴルフ選手権（現ラキールカップ）の大会主催開始」、10月に「2日間ハッカソン開催」、12月に「株式会社マーベリック・株式会社ZESTを完全子会社化」を実施。"
-                          width="1510" height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2018</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          採用ブログスタート
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2">
+                          全国社会人ゴルフ選手権（現ラキールカップ）の大会主催開始
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          2日間ハッカソン開催
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="4">
+                          株式会社マーベリック・株式会社ZESTを完全子会社化
+                        </p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2019" class="history__timeline-item"
-                    style="--width: 1142; --marginLeft: -310; --z-index: initial;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2019</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2019.webp" type="image/webp" width="1142"
-                          height="605">
-                        <img src="./assets/images/pc/history2019.png"
-                          alt="2019年のタイムライン。5月に「港区赤坂へ本社移転、LaKeel DXリリース」、11月に「社名を株式会社ラキールに変更」を実施。" width="1142"
-                          height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2019</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          本社を東京都港区愛宕へ移転<br>「LaKeel DX」リリース
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2" style="top:38%">
+                          社名を株式会社ラキールに変更
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2020" class="history__timeline-item"
-                    style="--width: 1140; --marginLeft: 60; --z-index: initial;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2020</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2020.webp" type="image/webp" width="1140"
-                          height="605">
-                        <img src="./assets/images/pc/history2020.png"
-                          alt="2020年のタイムライン。3月に「オフィス拡大 愛宕グリーンヒルズ31階も増床」、4月に「コロナ蔓延 緊急事態宣言」、6月に「食品安全衛生eラーニング「FSOP」の販売開始（LOMの前身）」を実施。"
-                          width="1140" height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2020</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          オフィス拡大　愛宕グリーンヒルズ31階も増床
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                        <p class="history__timeline-month-event text-secondary" data-position="2">
+                          コロナ蔓延 緊急事態宣言
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          データ分析・統合基盤「LaKeel Data Insight」リリース
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2021" class="history__timeline-item"
-                    style="--width: 1398; --marginLeft: 62; --z-index: 3;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2021</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2021.webp" type="image/webp" width="1398"
-                          height="605">
-                        <img src="./assets/images/pc/history2021.png"
-                          alt="2021年のタイムライン。4月に「LaKeel Visual Mosaicで特許取得」、7月に「東京証券取引所マザーズ（現グロース）に上場」、9月に「「LaKeel HR」をリリース」、11月に「ホワイト企業アワード「健康経営部門」受賞」と「ASPICクラウドアワード奨励賞にLaKeel HRが受賞」。"
-                          width="1398" height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2021</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          「LaKeel DX」の機能であるLaKeel Visual Mosaicで特許取得
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2">
+                          東京証券取引所マザーズ（現グロース）に上場
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          「LaKeel HR」をリリース
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="4">
+                          ・ホワイト企業アワード「健康経営部門」受賞<br>
+                          ・ASPICクラウドアワード奨励賞に「LaKeel HR」が受賞
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2022" class="history__timeline-item"
-                    style="--width: 1325; --marginLeft: -198; --z-index: 2;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2022</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2022.webp" type="image/webp" width="1325"
-                          height="605">
-                        <img src="./assets/images/pc/history2022.png"
-                          alt="2022年のタイムライン。3月に「LaKeel Synergy Logicで特許取得」、6月に「公式Facebook開始」、11月に「YouTube社長対談企画「My Voyage」開始」。"
-                          width="1325" height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2022</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          「LaKeel DX」の機能であるLaKeel Synergy Logicで特許取得
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2">
+                          公式Facebook開始
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          YouTube社長対談企画「My Voyage」開始
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2023" class="history__timeline-item"
-                    style="--width: 1263; --marginLeft: -125; --z-index: 1;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2023</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2023.webp" type="image/webp" width="1263"
-                          height="605">
-                        <img src="./assets/images/pc/history2023.png"
-                          alt="2023年のタイムライン。2月に「Techブログ開始」、6月に「DX認定」、7月に「都市対抗野球協賛開始」、8月に「夕食ビュッフェ「LaMeal」開始、「LaKeel eDocument」をリリース」、12月に「グローバル採用開始」を実施。"
-                          width="1263" height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2023</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          Techブログ開始
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2">
+                          DX認定
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          都市対抗野球協賛開始
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="4">
+                          夕食ビュッフェ「LaMeal」開始<br>
+                          「LaKeel eDocument」をリリース
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="5">
+                          グローバル採用開始
+                        </p>
+                      </div>
+                    </div>
                   </li>
-                  <li data-id="2024" class="history__timeline-item"
-                    style="--width: 1207; --marginLeft: -63; --z-index: initial;">
-                    <figure class="history__timeline-img">
-                      <figcaption class="history__timeline-year">2024</figcaption>
-                      <picture>
-                        <source srcset="./assets/images/pc/history2024.webp" type="image/webp" width="1207"
-                          height="605">
-                        <img src="./assets/images/pc/history2024.png"
-                          alt="2024年のタイムライン。3月に「ブランド研修開始」、4月に「新卒採用58名」、7月に「LaKeel DXがAI活用による開発を開始」、10月に「公式キャラクター誕生。名前を社内募集」を実施。"
-                          width="1207" height="605" loading="lazy" />
-                      </picture>
-                    </figure>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2024</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          ブランド研修開始
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2">
+                          新卒採用58名
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="3">
+                          「LaKeel DX」がAI活用による開発を開始<br>
+                          生成AIを活用したLaKeelシリーズを続々とリリース
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="4" style="top: 72%">
+                          公式キャラクター誕生。名前を社内募集
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="history__timeline-item">
+                    <p class="history__timeline-head">2025</p>
+                    <div class="history__timeline-year">
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">1<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">2<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">3<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">4<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">5<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">6<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">7<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">8<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="1">
+                          創立20周年記念パーティー開催
+                        </p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">9<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">10<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">11<span>月</span></p>
+                      </div>
+                      <div class="history__timeline-month">
+                        <p class="history__timeline-month-head">12<span>月</span></p>
+                      </div>
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -883,7 +1681,7 @@
                     <p class="modal__text">text</p>
                   </div>
                 </div>
-                <button class="modal__close" aria-labelledby="close1" data-modal-close>
+                <button type="button" class="modal__close" aria-labelledby="close1" data-modal-close>
                   <span id="close1" style="display:none">モーダルを閉じる</span>
                 </button>
               </dialog>
@@ -895,7 +1693,7 @@
                     <p class="modal__text">texttext</p>
                   </div>
                 </div>
-                <button class="modal__close" aria-labelledby="close2" data-modal-close>
+                <button type="button" class="modal__close" aria-labelledby="close2" data-modal-close>
                   <span id="close2" style="display:none">モーダルを閉じる</span>
                 </button>
               </dialog>
@@ -911,25 +1709,25 @@
         <figure class="character__img1">
           <picture>
             <source srcset="./assets/images/common/character-02.webp" type="image/webp" width="280" height="243">
-            <img src="./assets/images/common/character-02.png" alt="キャラクター画像" width="200" height="174" loading="lazy" />
+            <img src="./assets/images/common/character-02.png" alt="らきまる" width="200" height="174" loading="lazy" />
           </picture>
         </figure>
         <figure class="character__img2">
           <picture>
             <source srcset="./assets/images/common/character-03.webp" type="image/webp" width="260" height="225">
-            <img src="./assets/images/common/character-03.png" alt="キャラクター画像" width="180" height="156" loading="lazy" />
+            <img src="./assets/images/common/character-03.png" alt="らきまる" width="180" height="156" loading="lazy" />
           </picture>
         </figure>
         <figure class="character__img3">
           <picture>
             <source srcset="./assets/images/common/character-04.webp" type="image/webp" width="230" height="199">
-            <img src="./assets/images/common/character-04.png" alt="キャラクター画像" width="150" height="130" loading="lazy" />
+            <img src="./assets/images/common/character-04.png" alt="らきまる" width="150" height="130" loading="lazy" />
           </picture>
         </figure>
         <figure class="character__img4">
           <picture>
             <source srcset="./assets/images/common/character-05.webp" type="image/webp" width="260" height="225">
-            <img src="./assets/images/common/character-05.png" alt="キャラクター画像" width="180" height="156" loading="lazy" />
+            <img src="./assets/images/common/character-05.png" alt="らきまる" width="180" height="156" loading="lazy" />
           </picture>
         </figure>
         <div class="character__inner inner">
@@ -937,27 +1735,27 @@
             <figure class="character__main-img">
               <picture>
                 <source srcset="./assets/images/common/character-01.webp" type="image/webp" width="373" height="475">
-                <img src="./assets/images/common/character-01.png" alt="キャラクター画像" width="320" height="408"
-                  loading="lazy" />
+                <img src="./assets/images/common/character-01.png" alt="らきまる" width="320" height="408" loading="lazy" />
               </picture>
               <figcaption class="character__caption">
-                <p class="character__name">キャラクター名</p>
+                <p class="character__name">らきまる</p>
               </figcaption>
             </figure>
             <div class="character__body">
               <div class="character__title">
                 <hgroup class="section-title section-title--character">
-                  <p class="section-title__en"><span class="section-title__circle">Character</span></p>
+                  <p class="section-title__en"><span class="section-title__circle">らきまる</span></p>
                   <h2 class="section-title__ja section-title__ja">20周年記念キャラクター</h2>
                 </hgroup>
               </div>
               <p class="character__text">
-                常に集団で行動するペンギンのなかでも、天敵がいるかもしれない海へ、魚を求めて真っ先に飛びこむペンギンをファーストペンギンと呼び、ビジネスにおいては新しい分野でもリスクを恐れず挑戦する精神を持った人をそう呼びます。当社の大切にする精神と一致するためペンギンにしました。<br>みんなの心に「Deep
+                常に集団で行動するペンギンのなかでも、天敵がいるかもしれない海へ魚を求めて真っ先に飛びこむペンギンをファーストペンギンと呼び、ビジネスにおいては新しい分野でもリスクを恐れず挑戦する精神を持った人をそう呼びます。その姿が当社の大切にする精神と一致するためペンギンのキャラクターを採用しました。<br>みんなの心に「Deep
                 Dive！」
               </p>
               <div class="character__buttons">
                 <div class="character__button">
-                  <a href="" class="button" target="_blank" rel="noopener noreferrer">キャラクター誕生物語</a>
+                  <a href="./assets/pdf/birth_story.pdf" class="button" target="_blank"
+                    rel="noopener noreferrer">キャラクター誕生物語</a>
                 </div>
                 <div class="character__button">
                   <a href="https://line.me/S/sticker/29070912" class="button" target="_blank"
@@ -1003,7 +1801,7 @@
               <figure class="coming-soon__img js-fade-in">
                 <picture>
                   <source srcset="./assets/images/common/character-06.webp" type="image/webp" width="268" height="268">
-                  <img src="./assets/images/common/character-06.jpg" alt="キャラクター画像" width="268" height="268"
+                  <img src="./assets/images/common/character-06.jpg" alt="らきまる" width="268" height="268"
                     loading="lazy" />
                 </picture>
               </figure>
@@ -1058,7 +1856,7 @@
         </div>
       </div>
       <div class="footer__totop">
-        <button class="footer__totop-button js-totop"></button>
+        <button type="button" class="footer__totop-button js-totop"></button>
       </div>
     </footer>
   </div>

@@ -45,7 +45,6 @@ $padding-sp: 27.5px;
   --z-index-header: 900;
 }
 
-
 ////////////////////
 // グローバルスタイル
 ////////////////////
@@ -55,6 +54,7 @@ body {
   color: var(--black);
   font-weight: var(--medium);
   line-height: 1.5;
+  overflow-y: scroll;
 }
 
 body.is-noscroll,

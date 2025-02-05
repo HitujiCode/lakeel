@@ -190,6 +190,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
   initHamburgerMenu();
 
+  // ===== パーティクル初期化 =====
+  particlesJS("js-particle-secondary", {
+    "particles": {
+      "number": {
+        "value": 50,
+        "density": {
+          "enable": true,
+          "value_area": 2500
+        }
+      },
+      "color": {
+        "value": ['#004664', '#002F43', '#E7F1F5', '#CCDAE0']
+      },
+      "size": {
+        "value": 25,
+        "random": true
+      },
+      "move": {
+        "enable": true,
+        "speed": 2,
+        "out_mode": "out"
+      }
+    },
+    "retina_detect": true
+  });
+
+  particlesJS("js-particle-primary", {
+    "particles": {
+      "number": {
+        "value": 30,
+        "density": {
+          "enable": true,
+          "value_area": 3000
+        }
+      },
+      "color": {
+        "value": ['#AC0C2D', '#c5556c', '#b72a47', '#EDCCD4']
+      },
+      "size": {
+        "value": 25,
+        "random": true
+      },
+      "move": {
+        "enable": true,
+        "speed": 2,
+        "out_mode": "out"
+      }
+    },
+    "retina_detect": true
+  });
+
   // ===== カウントダウン =====
   function showRestTime() {
     const now = new Date();
@@ -214,69 +265,61 @@ document.addEventListener("DOMContentLoaded", function () {
     setInterval(showRestTime, 24 * 60 * 60 * 1000);
   }, timeUntilNextMidnight);
 
-  // ===== Episodeスライダー =====
-  function initEpisodeSwiper(swiperName, options = {}) {
-    const defaultOptions = {
-      loop: true,
-      slidesPerView: "auto",
-      spaceBetween: 20,
-      speed: 6000,
-      autoplay: {
-        delay: 0,
-        disableOnInteraction: false,
-      },
-      breakpoints: {
-        768: {
-          spaceBetween: 24,
-        },
-      },
-    };
+  // ===== スクロールしたらヘッダーにクラス付与 =====
+  document.addEventListener('scroll', function () {
+    const header = document.querySelector('.js-header');
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-    const swiperOptions = { ...defaultOptions, ...options };
-    const swiper = new Swiper(swiperName, swiperOptions);
-    const swiperElement = document.querySelector(swiperName);
-
-    if (swiperElement) {
-      let currentTranslate = 0;
-
-      swiperElement.addEventListener("mouseenter", () => {
-        currentTranslate = swiper.getTranslate();
-        swiper.setTranslate(currentTranslate);
-        swiper.setTransition(0);
-        swiper.autoplay.stop();
-      });
-
-      swiperElement.addEventListener("mouseleave", () => {
-        const activeSlide = swiperElement.querySelector(".swiper-slide-active");
-        if (activeSlide) {
-          const slideStyle = window.getComputedStyle(activeSlide);
-          const slideWidth = activeSlide.offsetWidth;
-          const marginLeft = parseFloat(slideStyle.marginLeft) || 0;
-          const marginRight = parseFloat(slideStyle.marginRight) || 0;
-          const totalSlideWidth = slideWidth + marginLeft + marginRight;
-          const isReverse = swiperOptions.autoplay.reverseDirection === true;
-          const directionMultiplier = isReverse ? 1 : -1;
-
-          // 停止位置から再開の位置を計算
-          const diff = directionMultiplier * totalSlideWidth - (currentTranslate % totalSlideWidth);
-          const diffTime = Math.abs(diff / totalSlideWidth);
-
-          swiper.setTranslate(currentTranslate + diff);
-          swiper.setTransition(swiperOptions.speed * diffTime);
-        }
-        swiper.autoplay.start();
-      });
+    if (scrollTop > 0) {
+      header.classList.add('is-scroll');
+    } else {
+      header.classList.remove('is-scroll');
     }
-  }
+  });
 
-  // スライダー初期化
-  initEpisodeSwiper('.js-top-swiper');
-  initEpisodeSwiper('.js-bottom-swiper', {
-    initialSlide: 9,
-    autoplay: {
-      delay: 0,
-      reverseDirection: true,
-    },
+  // ===== ヘッダーの現在地表示 =====
+  const sections = document.querySelectorAll('section');
+  const navItems = document.querySelectorAll('.header__nav-item');
+
+  const updateCurrentNav = () => {
+    let currentSection = null;
+
+    // 現在のセクションを検出
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+        currentSection = section.id;
+      }
+    });
+
+    navItems.forEach((item) => {
+      const link = item.querySelector('a');
+      if (link && link.getAttribute('href').substring(1) === currentSection) {
+        item.classList.add('is-current');
+      } else {
+        item.classList.remove('is-current');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', updateCurrentNav);
+  window.addEventListener('resize', updateCurrentNav);
+
+  updateCurrentNav();
+
+  // ===== ページ内リンクのスムーススクロール =====
+  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+    anchor.addEventListener("click", function (event) {
+      event.preventDefault();
+      const headerHeight = document.querySelector(".js-header").offsetHeight;
+      const href = anchor.getAttribute("href");
+      const target = href === "#" || href === "" ? document.documentElement : document.querySelector(href);
+
+      if (target) {
+        const position = target.offsetTop - headerHeight;
+        window.scrollTo({ top: position, behavior: "smooth" });
+      }
+    });
   });
 
   // ===== ドラッグスクロール有効化 =====
@@ -359,112 +402,153 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   enableSmoothMouseDragScroll(".js-scroll");
 
-  // ===== パーティクル初期化 =====
-  particlesJS("js-particle-secondary", {
-    "particles": {
-      "number": {
-        "value": 50,
-        "density": {
-          "enable": true,
-          "value_area": 2500
-        }
-      },
-      "color": {
-        "value": ['#004664', '#002F43', '#E7F1F5', '#CCDAE0']
-      },
-      "size": {
-        "value": 25,
-        "random": true
-      },
-      "move": {
-        "enable": true,
-        "speed": 2,
-        "out_mode": "out"
-      }
-    },
-    "retina_detect": true
-  });
+  // ===== モーダル =====
+  const openTriggers = document.querySelectorAll('[data-modal-open]');
+  const closeTriggers = document.querySelectorAll('[data-modal-close]');
+  let isModalAnimating = false;
 
-  particlesJS("js-particle-primary", {
-    "particles": {
-      "number": {
-        "value": 30,
-        "density": {
-          "enable": true,
-          "value_area": 3000
-        }
-      },
-      "color": {
-        "value": ['#AC0C2D', '#c5556c', '#b72a47', '#EDCCD4']
-      },
-      "size": {
-        "value": 25,
-        "random": true
-      },
-      "move": {
-        "enable": true,
-        "speed": 2,
-        "out_mode": "out"
-      }
-    },
-    "retina_detect": true
-  });
-
-  // ===== スクロールしたらヘッダーにクラス付与 =====
-  document.addEventListener('scroll', function () {
-    const header = document.querySelector('.js-header');
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-
-    if (scrollTop > 0) {
-      header.classList.add('is-scroll');
-    } else {
-      header.classList.remove('is-scroll');
+  // バックドロップクリックイベントのハンドリング
+  function handleBackdropClick(event) {
+    if (event.target.tagName === 'DIALOG') {
+      closeModal(event.target);
     }
+  }
+
+  // キーボードイベントのハンドリング
+  function handleKeyDown(event) {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      const modal = document.querySelector('dialog[data-active="true"]');
+      if (modal) {
+        closeModal(modal);
+      }
+    }
+  }
+
+  // モーダルを開く関数
+  async function openModal(modal) {
+    if (isModalAnimating || modal.dataset.active === "true") return;
+    isModalAnimating = true;
+
+    modal.showModal();
+    requestAnimationFrame(() => {
+      modal.dataset.active = "true";
+    });
+
+    // イベントリスナーを追加
+    document.addEventListener('keydown', handleKeyDown);
+    modal.addEventListener('click', handleBackdropClick);
+
+    // アニメーションの終了を待つ
+    await Promise.all(modal.getAnimations().map(animation => animation.finished));
+
+    isModalAnimating = false;
+  }
+
+  // モーダルを閉じる関数
+  async function closeModal(modal) {
+    if (isModalAnimating || modal.dataset.active !== "true") return;
+    isModalAnimating = true;
+
+    modal.dataset.active = "false";
+
+    // アニメーションの終了を待つ
+    await Promise.all(modal.getAnimations().map(animation => animation.finished));
+
+    modal.close();
+
+    // イベントリスナーを削除
+    document.removeEventListener('keydown', handleKeyDown);
+    modal.removeEventListener('click', handleBackdropClick);
+
+    isModalAnimating = false;
+  }
+
+  // モーダルを開くイベントの設定
+  openTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const modalId = trigger.getAttribute('data-modal-open');
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        openModal(modal);
+      }
+    });
   });
 
-  // ===== ヘッダーの現在地表示 =====
-  const sections = document.querySelectorAll('section');
-  const navItems = document.querySelectorAll('.header__nav-item');
-
-  const updateCurrentNav = () => {
-    let currentSection = null;
-
-    // 現在のセクションを検出
-    sections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
-      if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
-        currentSection = section.id;
+  // モーダルを閉じるイベントの設定
+  closeTriggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const modal = trigger.closest('dialog');
+      if (modal) {
+        closeModal(modal);
       }
     });
+  });
 
-    navItems.forEach((item) => {
-      const link = item.querySelector('a');
-      if (link && link.getAttribute('href').substring(1) === currentSection) {
-        item.classList.add('is-current');
-      } else {
-        item.classList.remove('is-current');
-      }
-    });
-  };
+  // ===== Episodeスライダー =====
+  function initEpisodeSwiper(swiperName, options = {}) {
+    const defaultOptions = {
+      loop: true,
+      slidesPerView: "auto",
+      spaceBetween: 20,
+      speed: 6000,
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+      },
+      pauseOnMouseEnter: false,
+      breakpoints: {
+        768: {
+          spaceBetween: 24,
+        },
+      },
+    };
 
-  window.addEventListener('scroll', updateCurrentNav);
-  window.addEventListener('resize', updateCurrentNav);
+    const swiperOptions = { ...defaultOptions, ...options };
+    const swiper = new Swiper(swiperName, swiperOptions);
+    const swiperElement = document.querySelector(swiperName);
 
-  updateCurrentNav();
+    if (swiperElement) {
+      let currentTranslate = 0;
 
-  // ===== ページ内リンクのスムーススクロール =====
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener("click", function (event) {
-      event.preventDefault();
-      const headerHeight = document.querySelector(".js-header").offsetHeight;
-      const href = anchor.getAttribute("href");
-      const target = href === "#" || href === "" ? document.documentElement : document.querySelector(href);
+      swiperElement.addEventListener("mouseenter", () => {
+        currentTranslate = swiper.getTranslate();
+        swiper.setTranslate(currentTranslate);
+        swiper.setTransition(0);
+        swiper.autoplay.stop();
+      });
 
-      if (target) {
-        const position = target.offsetTop - headerHeight;
-        window.scrollTo({ top: position, behavior: "smooth" });
-      }
-    });
+      swiperElement.addEventListener("mouseleave", () => {
+        const activeSlide = swiperElement.querySelector(".swiper-slide-active");
+        if (activeSlide) {
+          const slideStyle = window.getComputedStyle(activeSlide);
+          const slideWidth = activeSlide.offsetWidth;
+          const marginLeft = parseFloat(slideStyle.marginLeft) || 0;
+          const marginRight = parseFloat(slideStyle.marginRight) || 0;
+          const totalSlideWidth = slideWidth + marginLeft + marginRight;
+          const isReverse = swiperOptions.autoplay.reverseDirection === true;
+          const directionMultiplier = isReverse ? 1 : -1;
+
+          // 停止位置から再開の位置を計算
+          const diff = directionMultiplier * totalSlideWidth - (currentTranslate % totalSlideWidth);
+          const diffTime = Math.abs(diff / totalSlideWidth);
+
+          swiper.setTranslate(currentTranslate + diff);
+          swiper.setTransition(swiperOptions.speed * diffTime);
+        }
+        swiper.autoplay.start();
+      });
+    }
+  }
+
+  // スライダー初期化
+  initEpisodeSwiper('.js-top-swiper');
+  initEpisodeSwiper('.js-bottom-swiper', {
+    initialSlide: 9,
+    autoplay: {
+      delay: 0,
+      reverseDirection: true,
+    },
   });
 
   // ===== メッセージ関連フェードイン =====
@@ -615,94 +699,5 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     );
   });
-
-
-  // ===== モーダル =====
-  const openTriggers = document.querySelectorAll('[data-modal-open]');
-  const closeTriggers = document.querySelectorAll('[data-modal-close]');
-  let isModalAnimating = false; // 連打防止フラグ
-
-  // バックドロップクリックイベントのハンドリング
-  function handleBackdropClick(event) {
-    if (event.target.tagName === 'DIALOG') {
-      closeModal(event.target);
-    }
-  }
-
-  // キーボードイベントのハンドリング
-  function handleKeyDown(event) {
-    if (event.key === 'Escape') {
-      event.preventDefault(); // デフォルト動作を無効化
-      const modal = document.querySelector('dialog[data-active="true"]');
-      if (modal) {
-        closeModal(modal);
-      }
-    }
-  }
-
-  // モーダルを開く関数
-  async function openModal(modal) {
-    if (isModalAnimating || modal.dataset.active === "true") return;
-    isModalAnimating = true;
-
-    modal.showModal(); // モーダルを表示
-    requestAnimationFrame(() => {
-      modal.dataset.active = "true"; // 次のレンダリングサイクルでアクティブ状態に設定
-    });
-
-    // イベントリスナーを追加
-    document.addEventListener('keydown', handleKeyDown);
-    modal.addEventListener('click', handleBackdropClick);
-
-    // アニメーションの終了を待つ
-    await Promise.all(modal.getAnimations().map(animation => animation.finished));
-
-    isModalAnimating = false;
-  }
-
-  // モーダルを閉じる関数
-  async function closeModal(modal) {
-    if (isModalAnimating || modal.dataset.active !== "true") return;
-    isModalAnimating = true;
-
-    modal.dataset.active = "false"; // アクティブ状態を解除
-
-    // アニメーションの終了を待つ
-    await Promise.all(modal.getAnimations().map(animation => animation.finished));
-
-    modal.close(); // モーダルを閉じる
-
-    // イベントリスナーを削除
-    document.removeEventListener('keydown', handleKeyDown);
-    modal.removeEventListener('click', handleBackdropClick);
-
-    isModalAnimating = false;
-  }
-
-  // モーダルを開くイベントの設定
-  openTriggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const modalId = trigger.getAttribute('data-modal-open');
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        openModal(modal);
-      }
-    });
-  });
-
-  // モーダルを閉じるイベントの設定
-  closeTriggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const modal = trigger.closest('dialog');
-      if (modal) {
-        closeModal(modal);
-      }
-    });
-  });
-
-
-
-
-
 
 });
