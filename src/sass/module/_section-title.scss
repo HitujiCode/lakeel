@@ -154,8 +154,13 @@
   }
 }
 
+.section-title--character .section-title__en {
+  font-family: var(--base-font);
+}
+
 .section-title--character .section-title__ja {
   font-size: rem(16);
+
 
   @include mq("md") {
     padding-bottom: rem(16);

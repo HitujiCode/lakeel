@@ -37,15 +37,14 @@
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400..700&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet" media="all" onload="this.media='all'" />
   <!-- css -->
-  <link rel="stylesheet" href="./assets/library/swiper-bundle.min.css" />
   <link rel="stylesheet" href="./assets/library/splide-core.min.css">
   <link rel="stylesheet" href="./assets/css/style.css?ver=1.1.7" />
   <!-- JavaScript -->
   <!-- <script defer src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
   <script defer src="./assets/library/gsap.min.js"></script>
   <script defer src="./assets/library/ScrollTrigger.min.js"></script>
-  <script defer src="./assets/library/swiper-bundle.min.js"></script>
   <script defer src="./assets/library/splide.min.js"></script>
+  <script defer src="./assets/library/splide-extension-auto-scroll.min.js"></script>
   <script defer src="./assets/library/particles.min.js"></script>
   <script defer src="./assets/js/script.js?ver=1.0.6"></script>
 </head>
@@ -1381,296 +1380,301 @@
             <p class="episode__read">各年度 入社メンバー1名ずつ<span class="text-block">エピソードを聞きました！</span>
             </p>
             <div class="episode__content">
-              <div class="episode__slider swiper js-top-swiper">
-                <ul class="episode__list swiper-wrapper">
-                  <li class="episode__item swiper-slide">
-                    <div class="flip-card" data-modal-open="modal2005">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2005</p>
-                          <p class="flip-card__title">ピンチはチャンス</p>
-                        </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2005</p>
-                          <p class="flip-card__title flip-card__title--back">ピンチはチャンス</p>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <div class="flip-card" data-modal-open="modal2006">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2006</p>
-                          <p class="flip-card__title">夢なきものに成功なし</p>
-                        </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2006</p>
-                          <p class="flip-card__title flip-card__title--back">夢なきものに成功なし</p>
+              <div class="episode__wrapper splide js-top-swiper">
+                <div class="episode__slider splide__track">
+                  <ul class="episode__list splide__list">
+                    <li class="episode__item splide__slide">
+                      <div class="flip-card" data-modal-open="modal2005">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2005</p>
+                            <p class="flip-card__title">ピンチはチャンス</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2005</p>
+                            <p class="flip-card__title flip-card__title--back">ピンチはチャンス</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2007.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2007</p>
-                          <p class="flip-card__title flip-card__title--small">意思を持って動いた時、<br>誰の力もラキールを大きく<br>動かす力になる</p>
-                        </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2007</p>
-                          <p class="flip-card__title flip-card__title--back flip-card__title--small">
-                            意思を持って動いた時、<br>誰の力もラキールを大きく<br>動かす力になる</p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2008.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2008</p>
-                          <p class="flip-card__title">何事も「Give And Take」</p>
-                        </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2008</p>
-                          <p class="flip-card__title flip-card__title--back">何事も「Give And Take」</p>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <div class="flip-card" data-modal-open="modal2006">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2006</p>
+                            <p class="flip-card__title">夢なきものに成功なし</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2006</p>
+                            <p class="flip-card__title flip-card__title--back">夢なきものに成功なし</p>
+                          </div>
                         </div>
                       </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2009.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2009</p>
-                          <p class="flip-card__title">思い込みは<br>記憶を改ざんする</p>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2007.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2007</p>
+                            <p class="flip-card__title flip-card__title--small">意思を持って動いた時、<br>誰の力もラキールを大きく<br>動かす力になる
+                            </p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2007</p>
+                            <p class="flip-card__title flip-card__title--back flip-card__title--small">
+                              意思を持って動いた時、<br>誰の力もラキールを大きく<br>動かす力になる</p>
+                          </div>
                         </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2009</p>
-                          <p class="flip-card__title flip-card__title--back">思い込みは<br>記憶を改ざんする</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2008.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2008</p>
+                            <p class="flip-card__title">何事も「Give And Take」</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2008</p>
+                            <p class="flip-card__title flip-card__title--back">何事も「Give And Take」</p>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2010.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2010</p>
-                          <p class="flip-card__title">仕事は段取りがすべて</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2009.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2009</p>
+                            <p class="flip-card__title">思い込みは<br>記憶を改ざんする</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2009</p>
+                            <p class="flip-card__title flip-card__title--back">思い込みは<br>記憶を改ざんする</p>
+                          </div>
                         </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2010</p>
-                          <p class="flip-card__title flip-card__title--back">仕事は段取りがすべて</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2010.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2010</p>
+                            <p class="flip-card__title">仕事は段取りがすべて</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2010</p>
+                            <p class="flip-card__title flip-card__title--back">仕事は段取りがすべて</p>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2011.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2011</p>
-                          <p class="flip-card__title">笑顔で対応！</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2011.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2011</p>
+                            <p class="flip-card__title">笑顔で対応！</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2011</p>
+                            <p class="flip-card__title flip-card__title--back">笑顔で対応！</p>
+                          </div>
                         </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2011</p>
-                          <p class="flip-card__title flip-card__title--back">笑顔で対応！</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2012.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2012</p>
+                            <p class="flip-card__title">考えることが<br>仕事の第一歩</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2012</p>
+                            <p class="flip-card__title flip-card__title--back">考えることが<br>仕事の第一歩</p>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2012.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2012</p>
-                          <p class="flip-card__title">考えることが<br>仕事の第一歩</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2013.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2013</p>
+                            <p class="flip-card__title">優先順位をつけて<br>すぐ着手</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2013</p>
+                            <p class="flip-card__title flip-card__title--back">優先順位をつけて<br>すぐ着手</p>
+                          </div>
                         </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2012</p>
-                          <p class="flip-card__title flip-card__title--back">考えることが<br>仕事の第一歩</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2014.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2014</p>
+                            <p class="flip-card__title">適材適所</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2014</p>
+                            <p class="flip-card__title flip-card__title--back">適材適所</p>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2013.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2013</p>
-                          <p class="flip-card__title">優先順位をつけて<br>すぐ着手</p>
-                        </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2013</p>
-                          <p class="flip-card__title flip-card__title--back">優先順位をつけて<br>すぐ着手</p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2014.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2014</p>
-                          <p class="flip-card__title">適材適所</p>
-                        </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2014</p>
-                          <p class="flip-card__title flip-card__title--back">適材適所</p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div class="episode__slider swiper js-bottom-swiper">
-                <ul class="episode__list swiper-wrapper">
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2015.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2015</p>
-                          <p class="flip-card__title">心配は今出し切れ！<br>後に残すな！</p>
+              <div class="episode__wrapper splide js-bottom-swiper">
+                <div class="episode__slider splide__track">
+                  <ul class="episode__list splide__list">
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2015.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2015</p>
+                            <p class="flip-card__title">心配は今出し切れ！<br>後に残すな！</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2015</p>
+                            <p class="flip-card__title flip-card__title--back">心配は今出し切れ！<br>後に残すな！</p>
+                          </div>
                         </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2015</p>
-                          <p class="flip-card__title flip-card__title--back">心配は今出し切れ！<br>後に残すな！</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2016.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2016</p>
+                            <p class="flip-card__title">他人に期待しない</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2016</p>
+                            <p class="flip-card__title flip-card__title--back">他人に期待しない</p>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2016.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2016</p>
-                          <p class="flip-card__title">他人に期待しない</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2017.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2017</p>
+                            <p class="flip-card__title">情けは人の為ならず</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2017</p>
+                            <p class="flip-card__title flip-card__title--back">情けは人の為ならず</p>
+                          </div>
                         </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2016</p>
-                          <p class="flip-card__title flip-card__title--back">他人に期待しない</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2018.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2018</p>
+                            <p class="flip-card__title">お客様が出世するような<br>仕事をする！</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2018</p>
+                            <p class="flip-card__title flip-card__title--back">お客様が出世するような<br>仕事をする！</p>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2017.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2017</p>
-                          <p class="flip-card__title">情けは人の為ならず</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2019.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2019</p>
+                            <p class="flip-card__title">覚悟を決める</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2019</p>
+                            <p class="flip-card__title flip-card__title--back">覚悟を決める</p>
+                          </div>
                         </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2017</p>
-                          <p class="flip-card__title flip-card__title--back">情けは人の為ならず</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2020.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2020</p>
+                            <p class="flip-card__title flip-card__title--small">
+                              個人の利益より、チームの利益。<br>チームの利益より、組織の利益。<br>組織の利益より、会社全体の利益。</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2020</p>
+                            <p class="flip-card__title flip-card__title--back flip-card__title--small">
+                              個人の利益より、チームの利益。<br>チームの利益より、組織の利益。<br>組織の利益より、会社全体の利益。</p>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2018.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2018</p>
-                          <p class="flip-card__title">お客様が出世するような<br>仕事をする！</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2021.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2021</p>
+                            <p class="flip-card__title">信頼とは期待を超えた質</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2021</p>
+                            <p class="flip-card__title flip-card__title--back">信頼とは期待を超えた質</p>
+                          </div>
                         </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2018</p>
-                          <p class="flip-card__title flip-card__title--back">お客様が出世するような<br>仕事をする！</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2022.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2022</p>
+                            <p class="flip-card__title">頑張り無くしてお金無し</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2022</p>
+                            <p class="flip-card__title flip-card__title--back">頑張り無くしてお金無し</p>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2019.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2019</p>
-                          <p class="flip-card__title">覚悟を決める</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2023.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2023</p>
+                            <p class="flip-card__title">誰かの明日のため</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2023</p>
+                            <p class="flip-card__title flip-card__title--back">誰かの明日のため</p>
+                          </div>
                         </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2019</p>
-                          <p class="flip-card__title flip-card__title--back">覚悟を決める</p>
+                      </a>
+                    </li>
+                    <li class="episode__item splide__slide">
+                      <a href="./assets/pdf/l_2024.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                        <div class="flip-card__inner">
+                          <div class="flip-card__front">
+                            <p class="flip-card__year">2024</p>
+                            <p class="flip-card__title">まずは試す</p>
+                          </div>
+                          <div class="flip-card__back">
+                            <p class="flip-card__year">2024</p>
+                            <p class="flip-card__title flip-card__title--back">まずは試す</p>
+                          </div>
                         </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2020.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2020</p>
-                          <p class="flip-card__title flip-card__title--small">
-                            個人の利益より、チームの利益。<br>チームの利益より、組織の利益。<br>組織の利益より、会社全体の利益。</p>
-                        </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2020</p>
-                          <p class="flip-card__title flip-card__title--back flip-card__title--small">
-                            個人の利益より、チームの利益。<br>チームの利益より、組織の利益。<br>組織の利益より、会社全体の利益。</p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2021.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2021</p>
-                          <p class="flip-card__title">信頼とは期待を超えた質</p>
-                        </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2021</p>
-                          <p class="flip-card__title flip-card__title--back">信頼とは期待を超えた質</p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2022.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2022</p>
-                          <p class="flip-card__title">頑張り無くしてお金無し</p>
-                        </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2022</p>
-                          <p class="flip-card__title flip-card__title--back">頑張り無くしてお金無し</p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2023.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2023</p>
-                          <p class="flip-card__title">誰かの明日のため</p>
-                        </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2023</p>
-                          <p class="flip-card__title flip-card__title--back">誰かの明日のため</p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="episode__item swiper-slide">
-                    <a href="./assets/pdf/l_2024.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
-                      <div class="flip-card__inner">
-                        <div class="flip-card__front">
-                          <p class="flip-card__year">2024</p>
-                          <p class="flip-card__title">まずは試す</p>
-                        </div>
-                        <div class="flip-card__back">
-                          <p class="flip-card__year">2024</p>
-                          <p class="flip-card__title flip-card__title--back">まずは試す</p>
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
               <!-- modal -->
               <dialog id="modal2005" class="episode__modal modal" aria-labelledby="headline1" aria-describedby="desc1"

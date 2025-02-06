@@ -402,6 +402,28 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   enableSmoothMouseDragScroll(".js-scroll");
 
+  // ===== Episodeスライダー =====
+  Splide.defaults = {
+    type: 'loop',
+    fixedWidth: 330,
+    focus: 'center',
+    arrows: false,
+    gap: 20,
+  };
+
+  let splideInstances = [];
+
+  // Splide を初期化して配列に格納
+  document.querySelectorAll('.splide').forEach(splide => {
+    const instance = new Splide(splide, {
+      autoScroll: {
+        speed: splide.classList.contains('js-top-swiper') ? 1 : -1,
+      },
+    }).mount(window.splide.Extensions);
+
+    splideInstances.push(instance);
+  });
+
   // ===== モーダル =====
   const openTriggers = document.querySelectorAll('[data-modal-open]');
   const closeTriggers = document.querySelectorAll('[data-modal-close]');
@@ -430,6 +452,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (isModalAnimating || modal.dataset.active === "true") return;
     isModalAnimating = true;
 
+    // スライダーを一時停止
+    splideInstances.forEach(instance => instance.Components.AutoScroll.pause());
+
     modal.showModal();
     requestAnimationFrame(() => {
       modal.dataset.active = "true";
@@ -449,6 +474,9 @@ document.addEventListener("DOMContentLoaded", function () {
   async function closeModal(modal) {
     if (isModalAnimating || modal.dataset.active !== "true") return;
     isModalAnimating = true;
+
+    // スライダーを再開
+    splideInstances.forEach(instance => instance.Components.AutoScroll.play());
 
     modal.dataset.active = "false";
 
@@ -483,72 +511,6 @@ document.addEventListener("DOMContentLoaded", function () {
         closeModal(modal);
       }
     });
-  });
-
-  // ===== Episodeスライダー =====
-  function initEpisodeSwiper(swiperName, options = {}) {
-    const defaultOptions = {
-      loop: true,
-      slidesPerView: "auto",
-      spaceBetween: 20,
-      speed: 6000,
-      autoplay: {
-        delay: 0,
-        disableOnInteraction: false,
-      },
-      pauseOnMouseEnter: false,
-      breakpoints: {
-        768: {
-          spaceBetween: 24,
-        },
-      },
-    };
-
-    const swiperOptions = { ...defaultOptions, ...options };
-    const swiper = new Swiper(swiperName, swiperOptions);
-    const swiperElement = document.querySelector(swiperName);
-
-    if (swiperElement) {
-      let currentTranslate = 0;
-
-      swiperElement.addEventListener("mouseenter", () => {
-        currentTranslate = swiper.getTranslate();
-        swiper.setTranslate(currentTranslate);
-        swiper.setTransition(0);
-        swiper.autoplay.stop();
-      });
-
-      swiperElement.addEventListener("mouseleave", () => {
-        const activeSlide = swiperElement.querySelector(".swiper-slide-active");
-        if (activeSlide) {
-          const slideStyle = window.getComputedStyle(activeSlide);
-          const slideWidth = activeSlide.offsetWidth;
-          const marginLeft = parseFloat(slideStyle.marginLeft) || 0;
-          const marginRight = parseFloat(slideStyle.marginRight) || 0;
-          const totalSlideWidth = slideWidth + marginLeft + marginRight;
-          const isReverse = swiperOptions.autoplay.reverseDirection === true;
-          const directionMultiplier = isReverse ? 1 : -1;
-
-          // 停止位置から再開の位置を計算
-          const diff = directionMultiplier * totalSlideWidth - (currentTranslate % totalSlideWidth);
-          const diffTime = Math.abs(diff / totalSlideWidth);
-
-          swiper.setTranslate(currentTranslate + diff);
-          swiper.setTransition(swiperOptions.speed * diffTime);
-        }
-        swiper.autoplay.start();
-      });
-    }
-  }
-
-  // スライダー初期化
-  initEpisodeSwiper('.js-top-swiper');
-  initEpisodeSwiper('.js-bottom-swiper', {
-    initialSlide: 9,
-    autoplay: {
-      delay: 0,
-      reverseDirection: true,
-    },
   });
 
   // ===== メッセージ関連フェードイン =====
