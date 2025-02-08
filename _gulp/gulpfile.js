@@ -1,53 +1,101 @@
-const { src, dest, watch, series, parallel } = require("gulp"); // Gulpの基本関数をインポート
-const sass = require("gulp-sass")(require("sass")); // SCSSをCSSにコンパイルするためのモジュール
-const plumber = require("gulp-plumber"); // エラーが発生してもタスクを続行するためのモジュール
-const notify = require("gulp-notify"); // エラーやタスク完了の通知を表示するためのモジュール
-const sassGlob = require("gulp-sass-glob-use-forward"); // SCSSのインポートを簡略化するためのモジュール
-const mmq = require("gulp-merge-media-queries"); // メディアクエリをマージするためのモジュール
-const postcss = require("gulp-postcss"); // CSSの変換処理を行うためのモジュール
-const autoprefixer = require("autoprefixer"); // ベンダープレフィックスを自動的に追加するためのモジュール
-const cssdeclsort = require("css-declaration-sorter"); // CSSの宣言をソートするためのモジュール
-const postcssPresetEnv = require("postcss-preset-env"); // 最新のCSS構文を使用可能にするためのモジュール
-const sourcemaps = require("gulp-sourcemaps"); // ソースマップを作成するためのモジュール
-const babel = require("gulp-babel"); // ES6+のJavaScriptをES5に変換するためのモジュール
-const imageminSvgo = require("imagemin-svgo"); // SVGを最適化するためのモジュール
-const browserSync = require("browser-sync"); // ブラウザの自動リロード機能を提供するためのモジュール
-const imagemin = require("gulp-imagemin"); // 画像を最適化するためのモジュール
-const imageminMozjpeg = require("imagemin-mozjpeg"); // JPEGを最適化するためのモジュール
-const imageminPngquant = require("imagemin-pngquant"); // PNGを最適化するためのモジュール
-const changed = require("gulp-changed"); // 変更されたファイルのみを対象にするためのモジュール
-const del = require("del"); // ファイルやディレクトリを削除するためのモジュール
-const webp = require('gulp-webp');//webp変換
+const { src, dest, watch, series, parallel } = require("gulp"); // Gulpの基本関数
+const sass = require("gulp-sass")(require("sass")); // SCSS→CSSコンパイル
+const plumber = require("gulp-plumber"); // エラー発生時もタスク継続
+const notify = require("gulp-notify"); // エラー・完了通知
+const sassGlob = require("gulp-sass-glob-use-forward"); // SCSSインポート簡略化
+const mmq = require("gulp-merge-media-queries"); // メディアクエリのマージ
+const postcss = require("gulp-postcss"); // CSS変換処理
+const autoprefixer = require("autoprefixer"); // ベンダープレフィックス自動付与
+const cssdeclsort = require("css-declaration-sorter"); // CSS宣言のソート
+const postcssPresetEnv = require("postcss-preset-env"); // 未来のCSS構文対応
+const sourcemaps = require("gulp-sourcemaps"); // ソースマップ生成
+const babel = require("gulp-babel"); // ES6+→ES5変換
+const imageminSvgo = require("imagemin-svgo"); // SVG最適化
+const browserSync = require("browser-sync"); // ブラウザ自動リロード
+const imagemin = require("gulp-imagemin"); // 画像圧縮
+const imageminMozjpeg = require("imagemin-mozjpeg"); // JPEG圧縮
+const imageminPngquant = require("imagemin-pngquant"); // PNG圧縮
+const changed = require("gulp-changed"); // 変更ファイルのみ処理
+const del = require("del"); // ファイル・ディレクトリ削除
+const webp = require("gulp-webp"); // WebP変換
 
-// 読み込み先
+// JSONとHTMLテンプレート用プラグイン
+const data = require("gulp-data");
+const nunjucksRender = require("gulp-nunjucks-render");
+const fs = require("fs");
+const path = require("path");
+
+// 各種ソースファイルのパス設定
 const srcPath = {
   css: "../src/sass/**/*.scss",
   js: "../src/js/**/*",
   img: "../src/images/**/*",
-  font: "../src/fonts/**/*",
   library: "../src/library/**/*",
   pdf: "../src/pdf/**/*",
+  data: "../src/data/**/*",
+  // HTMLファイル（テンプレート含む） ※必要に応じて分ける
   html: ["../src/**/*.html", "!./node_modules/**"],
+  // nunjucks用テンプレートファイルの配置場所（例：dialog出力用）
+  templates: "../src/*.html"
 };
 
-// html反映用
+// 出力先パス設定
 const destPath = {
   all: "../dist/**/*",
   css: "../dist/assets/css/",
   js: "../dist/assets/js/",
   img: "../dist/assets/images/",
-  font: "../dist/assets/fonts/",
   library: "../dist/assets/library/",
   pdf: "../dist/assets/pdf/",
-  html: "../dist/",
+  data: "../dist/data/",
+  html: "../dist/"
 };
 
-const browsers = ["last 2 versions", "> 5%", "ie = 11", "not ie <= 10", "ios >= 8", "and_chr >= 5", "Android >= 5"];
+const browsers = [
+  "last 2 versions",
+  "> 5%",
+  "ie = 11",
+  "not ie <= 10",
+  "ios >= 8",
+  "and_chr >= 5",
+  "Android >= 5"
+];
 
-// HTMLファイルのコピー
-const htmlCopy = () => {
-  return src(srcPath.html).pipe(dest(destPath.html));
+// ===================================================================
+// HTML関連タスク
+// ===================================================================
+
+// HTMLをNunjucksでコンパイルし、JSON(modalData.json)の内容をテンプレートに埋め込むタスク
+const htmlNunjucks = () => {
+  return src(srcPath.templates)
+    .pipe(
+      data(function (file) {
+        // JSONデータのパス（プロジェクト構成に合わせて適宜変更）
+        return {
+          modals: JSON.parse(
+            fs.readFileSync(
+              path.join(__dirname, "../src/data/modalData.json")
+            )
+          )
+        };
+      })
+    )
+    .pipe(
+      nunjucksRender({
+        path: ["../src/"]
+      })
+    )
+    .pipe(dest(destPath.html));
 };
+
+// 必要に応じて、その他HTMLのコピータスクも残しておく（ここではコメントアウト）
+// const htmlCopy = () => {
+//   return src(srcPath.html).pipe(dest(destPath.html));
+// };
+
+// ===================================================================
+// その他のファイルコピータスク
+// ===================================================================
 
 // フォントコピー
 const fontCopy = () => {
@@ -59,158 +107,160 @@ const libraryCopy = () => {
   return src(srcPath.library).pipe(dest(destPath.library));
 };
 
-// pdfコピー
+// PDFコピー
 const pdfCopy = () => {
   return src(srcPath.pdf).pipe(dest(destPath.pdf));
 };
 
+// dataコピー
+// const dataCopy = () => {
+//   return src(srcPath.data).pipe(dest(destPath.data));
+// };
+
+// ===================================================================
+// SCSSコンパイルタスク
+// ===================================================================
 const cssSass = () => {
-  // ソースファイルを指定
-  return (
-    src(srcPath.css)
-      // ソースマップを初期化
-      .pipe(sourcemaps.init())
-      // エラーハンドリングを設定
-      .pipe(
-        plumber({
-          errorHandler: notify.onError("Error:<%= error.message %>"),
+  return src(srcPath.css)
+    .pipe(sourcemaps.init())
+    .pipe(
+      plumber({
+        errorHandler: notify.onError("Error:<%= error.message %>")
+      })
+    )
+    .pipe(sassGlob())
+    .pipe(
+      sass.sync({
+        includePaths: ["src/sass"],
+        outputStyle: "expanded"
+      })
+    )
+    .pipe(
+      postcss([
+        postcssPresetEnv(),
+        autoprefixer({
+          grid: true
         })
+      ])
+    )
+    .pipe(
+      postcss(
+        [cssdeclsort({ order: "alphabetical" })],
+        postcssPresetEnv({ browsers: "last 2 versions" })
       )
-      // Sassのパーシャル（_ファイル）を自動的にインポート
-      .pipe(sassGlob())
-      // SassをCSSにコンパイル
-      .pipe(
-        sass.sync({
-          includePaths: ["src/sass"],
-          outputStyle: "expanded", // コンパイル後のCSSの書式（expanded or compressed）
-        })
-      )
-      // ベンダープレフィックスを自動付与
-      .pipe(
-        postcss([
-          postcssPresetEnv(),
-          autoprefixer({
-            grid: true,
-          }),
-        ])
-      )
-      // CSSプロパティをアルファベット順にソートし、未来のCSS構文を使用可能に
-      .pipe(
-        postcss([cssdeclsort({
-          order: "alphabetical"
-        })]
-        ),
-        postcssPresetEnv({ browsers: 'last 2 versions' })
-      )
-      // メディアクエリを統合
-      .pipe(mmq())
-      // ソースマップを書き出し
-      .pipe(sourcemaps.write("./"))
-      // コンパイル済みのCSSファイルを出力先に保存
-      .pipe(dest(destPath.css))
-      // Sassコンパイルが完了したことを通知
-      .pipe(
-        notify({
-          message: "Sassをコンパイルしました！",
-          onLast: true,
-        })
-      )
-  );
+    )
+    .pipe(mmq())
+    .pipe(sourcemaps.write("./"))
+    .pipe(dest(destPath.css))
+    .pipe(
+      notify({
+        message: "Sassをコンパイルしました！",
+        onLast: true
+      })
+    );
 };
 
-// 画像圧縮
+// ===================================================================
+// 画像圧縮タスク
+// ===================================================================
 const imgImagemin = () => {
-  // 画像ファイルを指定
-  return (
-    src(srcPath.img)
-      // 変更があった画像のみ処理対象に
-      .pipe(changed(destPath.img))
-      // 画像を圧縮
-      .pipe(
-        imagemin(
-          [
-            // JPEG画像の圧縮設定
-            imageminMozjpeg({
-              quality: 80, // 圧縮品質（0〜100）
-            }),
-            // PNG画像の圧縮設定
-            imageminPngquant(),
-            // SVG画像の圧縮設定
-            imageminSvgo({
-              plugins: [
-                {
-                  removeViewbox: false, // viewBox属性を削除しない
-                },
-              ],
-            }),
-          ],
-          {
-            verbose: true, // 圧縮情報を表示
-          }
-        )
+  return src(srcPath.img)
+    .pipe(changed(destPath.img))
+    .pipe(
+      imagemin(
+        [
+          imageminMozjpeg({
+            quality: 80
+          }),
+          imageminPngquant(),
+          imageminSvgo({
+            plugins: [
+              {
+                removeViewbox: false
+              }
+            ]
+          })
+        ],
+        {
+          verbose: true
+        }
       )
-      .pipe(dest(destPath.img))
-      .pipe(webp())//webpに変換
-      // 圧縮済みの画像ファイルを出力先に保存
-      .pipe(dest(destPath.img))
-  );
+    )
+    .pipe(dest(destPath.img))
+    .pipe(webp())
+    .pipe(dest(destPath.img));
 };
 
-// js圧縮
+// ===================================================================
+// JavaScriptコンパイルタスク
+// ===================================================================
 const jsUglify = () => {
-  // JavaScriptファイルを指定
-  return (
-    src(srcPath.js)
-      // エラーハンドリングを設定
-      .pipe(
-        plumber({
-          errorHandler: notify.onError("Error: <%= error.message %>"),
-        })
-      )
-      // Babelでトランスパイル（ES6からES5へ変換）
-      .pipe(
-        babel({
-          presets: ["@babel/preset-env"],
-        })
-      )
-      // 圧縮済みのファイルを出力先に保存
-      .pipe(dest(destPath.js))
-  );
+  return src(srcPath.js)
+    .pipe(
+      plumber({
+        errorHandler: notify.onError("Error: <%= error.message %>")
+      })
+    )
+    .pipe(
+      babel({
+        presets: ["@babel/preset-env"]
+      })
+    )
+    .pipe(dest(destPath.js));
 };
 
-// ブラウザーシンク
+// ===================================================================
+// BrowserSync関連タスク
+// ===================================================================
 const browserSyncOption = {
   notify: false,
-  server: "../dist/",
+  server: "../dist/"
 };
+
 const browserSyncFunc = () => {
   browserSync.init(browserSyncOption);
 };
+
 const browserSyncReload = (done) => {
   browserSync.reload();
   done();
 };
 
-// ファイルの削除
+// ===================================================================
+// クリーンタスク
+// ===================================================================
 const clean = () => {
   return del(destPath.all, { force: true });
 };
-// ファイルの監視
+
+// ===================================================================
+// ファイル監視タスク
+// ===================================================================
 const watchFiles = () => {
   watch(srcPath.css, series(cssSass, browserSyncReload));
   watch(srcPath.js, series(jsUglify, browserSyncReload));
   watch(srcPath.img, series(imgImagemin, browserSyncReload));
-  watch(srcPath.font, series(fontCopy, browserSyncReload));
   watch(srcPath.library, series(libraryCopy, browserSyncReload));
   watch(srcPath.pdf, series(pdfCopy, browserSyncReload));
-  watch(srcPath.html, series(htmlCopy, browserSyncReload));
+  // テンプレート（およびHTML）の変更を監視
+  watch(srcPath.templates, series(htmlNunjucks, browserSyncReload));
+  watch(srcPath.html, series(htmlNunjucks, browserSyncReload));
 };
 
-// 開発用タスク
+// ===================================================================
+// タスクのエクスポート（default, build）
+// ===================================================================
 exports.default = series(
-  series(cssSass, jsUglify, imgImagemin, htmlCopy, fontCopy, libraryCopy, pdfCopy),
+  series(cssSass, jsUglify, imgImagemin, htmlNunjucks, libraryCopy, pdfCopy),
   parallel(watchFiles, browserSyncFunc)
 );
 
-// 本番用タスク
-exports.build = series(clean, cssSass, jsUglify, imgImagemin, htmlCopy, fontCopy, libraryCopy, pdfCopy);
+exports.build = series(
+  clean,
+  cssSass,
+  jsUglify,
+  imgImagemin,
+  htmlNunjucks,
+  libraryCopy,
+  pdfCopy
+);

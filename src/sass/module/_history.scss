@@ -204,14 +204,9 @@
 }
 
 .history__content {
-  padding-top: rem(40);
+  padding-block: rem(40);
   overflow-x: auto;
   scrollbar-width: none;
-  border-bottom: 2px solid rgb(255, 255, 255, 0.5);
-
-  @include mq("md") {
-    padding-top: min(30/1440*100vw, rem(40));
-  }
 }
 
 .history__content::-webkit-scrollbar {
@@ -222,16 +217,9 @@
   --_gap: 40px;
   display: flex;
   gap: var(--_gap);
-  // padding-inline: rem(70);
   cursor: ew-resize;
-
-  @include mq("md") {
-    // padding-inline: rem(102) rem(94);
-  }
-
-  @include mq("xl") {
-    // padding-inline: rem(75);
-  }
+  width: max-content;
+  border-bottom: 2px solid rgb(255, 255, 255, 0.5);
 }
 
 .history__timeline-item {}
@@ -261,7 +249,7 @@
 }
 
 .history__timeline-head {
-  font-size: rem(32);
+  font-size: max(28px, rem(32));
   font-weight: var(--bold);
   font-family: var(--poppins-font);
   color: var(--white);
@@ -278,7 +266,7 @@
 .history__timeline-month {
   position: relative;
   display: grid;
-  grid-template-rows: fit-content(100%) 330px;
+  grid-template-rows: fit-content(100%) 370px;
   justify-items: center;
 }
 
@@ -290,14 +278,14 @@
 }
 
 .history__timeline-month:first-child::after {
-  width: 3px;
+  width: 4px;
   background-color: var(--white);
 }
 
 .history__timeline-month-head {
-  width: 40px;
+  width: 44px;
   text-align: center;
-  font-size: 24px;
+  font-size: max(25px, rem(28));
   font-weight: var(--medium);
   font-family: var(--poppins-font);
   color: var(--white);
@@ -305,11 +293,12 @@
 }
 
 .history__timeline-month-head span {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: var(--bold);
   font-family: var(--base-font);
   line-height: 1;
 }
+
 
 .history__timeline-month-event {
   position: absolute;
@@ -317,7 +306,7 @@
   white-space: nowrap;
   justify-self: flex-start;
   background-color: var(--white);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: var(--medium);
   line-height: calc(23/16);
   padding-block: 0.55em 0.6em;
@@ -330,7 +319,7 @@
   display: block;
   position: absolute;
   top: 0;
-  left: 15px;
+  left: 17px;
   transform: translateY(-90%);
   width: 10px;
   aspect-ratio: 15/12;
@@ -357,88 +346,4 @@
 
 .history__timeline-month-event[data-position="5"] {
   top: 82.5%;
-}
-
-// .history__timeline {
-//   position: relative;
-//   display: flex;
-//   border-bottom: 2px solid rgb(255, 255, 255, 0.5);
-//   width: max-content;
-
-
-//   cursor: ew-resize;
-//   padding-inline: rem(70);
-
-//   @include mq("md") {
-//     padding-inline: rem(102) rem(94);
-//   }
-
-//   @include mq("xl") {
-//     padding-inline: rem(75);
-//   }
-// }
-
-// .history__timeline-item {
-//   position: relative;
-//   flex-shrink: 0;
-//   width: calc((var(--width)*1px));
-//   margin-left: calc((var(--marginLeft)*1px));
-//   z-index: var(--z-index);
-
-//   @include mq("md") {
-//     width: calc((var(--width)*1px));
-//     // width: clamp(var(--width)*0.6px, (var(--width)/1440*100vw), var(--width)*1px);
-//     width: min(var(--width)/1440*100vw, var(--width)*1px);
-//     // margin-left: var(--marginLeft);
-//     margin-left: calc((var(--marginLeft)*1px));
-//     // margin-left: clamp(var(--marginLeft)*0.6px, (var(--marginLeft)/1440*100vw), var(--marginLeft)*1px);
-//     margin-left: min(var(--marginLeft)/1440*100vw, var(--marginLeft)*1px);
-//   }
-// }
-
-// .history__timeline-item[data-year="2006"] {
-//   // margin-left: clamp(var(--marginLeft)*0.2px, (var(--marginLeft)/1440*100vw)*1.2, var(--marginLeft)*1px);
-// }
-
-// .history__timeline-img {
-//   display: grid;
-//   gap: rem(4);
-// }
-
-// .history__timeline-img img {
-//   object-fit: contain;
-// }
-
-// .history__timeline-year {
-//   width: fit-content;
-//   font-size: rem(36);
-//   font-weight: var(--bold);
-//   font-family: var(--poppins-font);
-//   color: var(--white);
-//   line-height: 1.5;
-//   transform: translateX(-33%);
-
-//   @include mq("md") {
-//     font-size: 36px;
-//     font-size: clamp(28px, calc(36 / 1440 * 100vw), 36px);
-//     ;
-//   }
-// }
-
-.history__scroll-guide {
-  margin-top: rem(29);
-  margin-inline: auto;
-  padding-bottom: rem(40);
-  position: relative;
-  width: rem(98);
-
-  @include mq("md") {
-    margin-top: rem(30);
-    padding-bottom: rem(30);
-  }
-}
-
-.history__scroll-guide img {
-  aspect-ratio: 98/37;
-  object-fit: contain;
 }

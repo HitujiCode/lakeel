@@ -31,7 +31,7 @@ $padding-sp: 27.5px;
   --tertiary: #AE8C6A;
   --light-tertiary: #F3E9DE;
   --brown: #B19375;
-  --light-blue: #E7F1F5;
+  --secondary-5percent: #E7F1F5;
   --light-gray: #F5F5F5;
   --light-gray2: #DCDFE4;
   --primary-gradation: linear-gradient(to bottom, #AC0C2D 0%, #D33556 100%);
@@ -43,6 +43,7 @@ $padding-sp: 27.5px;
 ////////////////////
 :root {
   --z-index-header: 900;
+  --z-index-modal: 1000;
 }
 
 ////////////////////
@@ -58,6 +59,6 @@ body {
 }
 
 body.is-noscroll,
-body:has(dialog[open]) {
+body:has(.modal[data-active="true"]) {
   overflow: hidden;
 }

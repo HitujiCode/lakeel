@@ -38,7 +38,7 @@
     rel="stylesheet" media="all" onload="this.media='all'" />
   <!-- css -->
   <link rel="stylesheet" href="./assets/library/splide-core.min.css">
-  <link rel="stylesheet" href="./assets/css/style.css?ver=1.1.7" />
+  <link rel="stylesheet" href="./assets/css/style.css?ver=1.2.0" />
   <!-- JavaScript -->
   <!-- <script defer src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
   <script defer src="./assets/library/gsap.min.js"></script>
@@ -46,7 +46,7 @@
   <script defer src="./assets/library/splide.min.js"></script>
   <script defer src="./assets/library/splide-extension-auto-scroll.min.js"></script>
   <script defer src="./assets/library/particles.min.js"></script>
-  <script defer src="./assets/js/script.js?ver=1.0.6"></script>
+  <script defer src="./assets/js/script.js?ver=1.0.9"></script>
 </head>
 
 <body>
@@ -374,15 +374,15 @@
                       </div>
                       <div class="history__timeline-month">
                         <p class="history__timeline-month-head">4<span>月</span></p>
+                        <p class="history__timeline-month-event" data-position="2">
+                          弊社が開発を手掛けた「girls shopping」のサイトがオープン
+                        </p>
                       </div>
                       <div class="history__timeline-month">
                         <p class="history__timeline-month-head">5<span>月</span></p>
                       </div>
                       <div class="history__timeline-month">
                         <p class="history__timeline-month-head">6<span>月</span></p>
-                        <p class="history__timeline-month-event" data-position="2">
-                          弊社が開発を手掛けた「girls shopping」のサイトがオープン
-                        </p>
                       </div>
                       <div class="history__timeline-month">
                         <p class="history__timeline-month-head">7<span>月</span></p>
@@ -1359,10 +1359,6 @@
                   </li>
                 </ul>
               </div>
-              <figure class="history__scroll-guide">
-                <img src="./assets/images/common/scroll-arrow.svg" alt="左右にスクロールできることを促すアイコン" width="98" height="37"
-                  loading="lazy">
-              </figure>
             </div>
           </div>
         </div>
@@ -1380,7 +1376,7 @@
             <p class="episode__read">各年度 入社メンバー1名ずつ<span class="text-block">エピソードを聞きました！</span>
             </p>
             <div class="episode__content">
-              <div class="episode__wrapper splide js-top-swiper">
+              <div class="episode__wrapper splide js-top-slider" aria-label="ラキールのエピソード|2005年～2014年">
                 <div class="episode__slider splide__track">
                   <ul class="episode__list splide__list">
                     <li class="episode__item splide__slide">
@@ -1412,7 +1408,7 @@
                       </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2007.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2007">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2007</p>
@@ -1425,10 +1421,10 @@
                               意思を持って動いた時、<br>誰の力もラキールを大きく<br>動かす力になる</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2008.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2008">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2008</p>
@@ -1439,10 +1435,10 @@
                             <p class="flip-card__title flip-card__title--back">何事も「Give And Take」</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2009.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2009">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2009</p>
@@ -1453,10 +1449,10 @@
                             <p class="flip-card__title flip-card__title--back">思い込みは<br>記憶を改ざんする</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2010.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2010">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2010</p>
@@ -1467,10 +1463,10 @@
                             <p class="flip-card__title flip-card__title--back">仕事は段取りがすべて</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2011.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2011">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2011</p>
@@ -1481,10 +1477,10 @@
                             <p class="flip-card__title flip-card__title--back">笑顔で対応！</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2012.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2012">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2012</p>
@@ -1495,10 +1491,10 @@
                             <p class="flip-card__title flip-card__title--back">考えることが<br>仕事の第一歩</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2013.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2013">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2013</p>
@@ -1509,10 +1505,10 @@
                             <p class="flip-card__title flip-card__title--back">優先順位をつけて<br>すぐ着手</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2014.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2014">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2014</p>
@@ -1523,16 +1519,16 @@
                             <p class="flip-card__title flip-card__title--back">適材適所</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                   </ul>
                 </div>
               </div>
-              <div class="episode__wrapper splide js-bottom-swiper">
+              <div class="episode__wrapper splide js-bottom-slider" aria-label="ラキールのエピソード|2015年～2024年">
                 <div class="episode__slider splide__track">
                   <ul class="episode__list splide__list">
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2015.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2015">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2015</p>
@@ -1543,10 +1539,10 @@
                             <p class="flip-card__title flip-card__title--back">心配は今出し切れ！<br>後に残すな！</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2016.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2016">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2016</p>
@@ -1557,10 +1553,10 @@
                             <p class="flip-card__title flip-card__title--back">他人に期待しない</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2017.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2017">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2017</p>
@@ -1571,10 +1567,10 @@
                             <p class="flip-card__title flip-card__title--back">情けは人の為ならず</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2018.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2018">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2018</p>
@@ -1585,10 +1581,10 @@
                             <p class="flip-card__title flip-card__title--back">お客様が出世するような<br>仕事をする！</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2019.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2019">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2019</p>
@@ -1599,10 +1595,10 @@
                             <p class="flip-card__title flip-card__title--back">覚悟を決める</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2020.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2020">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2020</p>
@@ -1615,10 +1611,10 @@
                               個人の利益より、チームの利益。<br>チームの利益より、組織の利益。<br>組織の利益より、会社全体の利益。</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2021.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2021">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2021</p>
@@ -1629,10 +1625,10 @@
                             <p class="flip-card__title flip-card__title--back">信頼とは期待を超えた質</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2022.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2022">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2022</p>
@@ -1643,10 +1639,10 @@
                             <p class="flip-card__title flip-card__title--back">頑張り無くしてお金無し</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2023.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2023">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2023</p>
@@ -1657,10 +1653,10 @@
                             <p class="flip-card__title flip-card__title--back">誰かの明日のため</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                     <li class="episode__item splide__slide">
-                      <a href="./assets/pdf/l_2024.pdf" class="flip-card" target="_blank" rel="noopener noreferrer">
+                      <div class="flip-card" data-modal-open="modal2024">
                         <div class="flip-card__inner">
                           <div class="flip-card__front">
                             <p class="flip-card__year">2024</p>
@@ -1671,36 +1667,11 @@
                             <p class="flip-card__title flip-card__title--back">まずは試す</p>
                           </div>
                         </div>
-                      </a>
+                      </div>
                     </li>
                   </ul>
                 </div>
               </div>
-              <!-- modal -->
-              <dialog id="modal2005" class="episode__modal modal" aria-labelledby="headline1" aria-describedby="desc1"
-                autofocus>
-                <div class="modal__container">
-                  <h3 class="modal__title">title</h3>
-                  <div class="modal__content">
-                    <p class="modal__text">text</p>
-                  </div>
-                </div>
-                <button type="button" class="modal__close" aria-labelledby="close1" data-modal-close>
-                  <span id="close1" style="display:none">モーダルを閉じる</span>
-                </button>
-              </dialog>
-              <dialog id="modal2006" class="episode__modal modal" aria-labelledby="headline2" aria-describedby="desc2"
-                autofocus>
-                <div class="modal__container">
-                  <h3 class="modal__title">titletitle</h3>
-                  <div class="modal__content">
-                    <p class="modal__text">texttext</p>
-                  </div>
-                </div>
-                <button type="button" class="modal__close" aria-labelledby="close2" data-modal-close>
-                  <span id="close2" style="display:none">モーダルを閉じる</span>
-                </button>
-              </dialog>
             </div>
             <figure class="episode__compass">
               <img src="./assets/images/common/compass.svg" alt="金茶のコンパス" width="190" height="190" loading="lazy" />
@@ -1708,6 +1679,46 @@
           </div>
         </div>
       </section>
+      <!-- Episode-modal -->
+      {%- for modal in modals %}
+      <div id="{{ modal.id }}" class="modal" aria-labelledby="headline-{{ modal.id }}"
+        aria-describedby="desc-{{ modal.id }}" data-active="false" autofocus>
+        <div class="modal__inner">
+          <div class="modal__container">
+            <div class="modal__head">
+              <p class="modal__name">{{ modal.name }}</p>
+              <p class="modal__affiliation">{{ modal.affiliation }}</p>
+            </div>
+            <ul class="modal__content">
+              <li class="modal__item">
+                <p class="modal__question">
+                  <span>Q1</span>
+                  過去に仕事において最も大きな試練は何でしたか？<br>それをどのように克服されましたか？
+                </p>
+                <p class="modal__answer">{{ modal.content[0].answer | safe }}</p>
+              </li>
+              <li class="modal__item">
+                <p class="modal__question">
+                  <span>Q2</span>
+                  当社の「変化を創り出す」<wbr>「挑戦し続ける」という重要な価値観を仕事や職場の仲間を通じた感じたエピソードがあれば教えてください。
+                </p>
+                <p class="modal__answer">{{ modal.content[1].answer | safe }}</p>
+              </li>
+              <li class="modal__item">
+                <p class="modal__question">
+                  <span>Q3</span>
+                  働く自分のモットーは？
+                </p>
+                <p class="modal__answer">{{ modal.content[2].answer | safe }}</p>
+              </li>
+            </ul>
+          </div>
+          <button type="button" class="modal__close" aria-label="モーダルを閉じる" data-modal-close>
+            <span style="display:none">モーダルを閉じる</span>
+          </button>
+        </div>
+      </div>
+      {%- endfor %}
       <!-- Character -->
       <section id="character" class="character layout-character js-fade-character">
         <figure class="character__img1">

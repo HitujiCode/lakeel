@@ -405,7 +405,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // ===== Episodeスライダー =====
   Splide.defaults = {
     type: 'loop',
-    fixedWidth: 330,
+    fixedWidth: "20.625rem",
     focus: 'center',
     arrows: false,
     gap: 20,
@@ -417,7 +417,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll('.splide').forEach(splide => {
     const instance = new Splide(splide, {
       autoScroll: {
-        speed: splide.classList.contains('js-top-swiper') ? 1 : -1,
+        speed: splide.classList.contains('js-top-slider') ? 1 : -1,
       },
     }).mount(window.splide.Extensions);
 
@@ -425,93 +425,89 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ===== モーダル =====
-  const openTriggers = document.querySelectorAll('[data-modal-open]');
-  const closeTriggers = document.querySelectorAll('[data-modal-close]');
-  let isModalAnimating = false;
+    const flipCards = document.querySelectorAll(".flip-card");
+    const modals = document.querySelectorAll(".modal");
+    const closeButtons = document.querySelectorAll(".modal__close");
+    let isModalAnimating = false;
 
-  // バックドロップクリックイベントのハンドリング
-  function handleBackdropClick(event) {
-    if (event.target.tagName === 'DIALOG') {
-      closeModal(event.target);
-    }
-  }
-
-  // キーボードイベントのハンドリング
-  function handleKeyDown(event) {
-    if (event.key === 'Escape') {
-      event.preventDefault();
-      const modal = document.querySelector('dialog[data-active="true"]');
-      if (modal) {
-        closeModal(modal);
+    // バックドロップクリックでモーダルを閉じる
+    function handleBackdropClick(event) {
+      if (event.target.classList.contains('modal')) {
+        closeModal(event.target);
       }
     }
-  }
 
-  // モーダルを開く関数
-  async function openModal(modal) {
-    if (isModalAnimating || modal.dataset.active === "true") return;
-    isModalAnimating = true;
-
-    // スライダーを一時停止
-    splideInstances.forEach(instance => instance.Components.AutoScroll.pause());
-
-    modal.showModal();
-    requestAnimationFrame(() => {
-      modal.dataset.active = "true";
-    });
-
-    // イベントリスナーを追加
-    document.addEventListener('keydown', handleKeyDown);
-    modal.addEventListener('click', handleBackdropClick);
-
-    // アニメーションの終了を待つ
-    await Promise.all(modal.getAnimations().map(animation => animation.finished));
-
-    isModalAnimating = false;
-  }
-
-  // モーダルを閉じる関数
-  async function closeModal(modal) {
-    if (isModalAnimating || modal.dataset.active !== "true") return;
-    isModalAnimating = true;
-
-    // スライダーを再開
-    splideInstances.forEach(instance => instance.Components.AutoScroll.play());
-
-    modal.dataset.active = "false";
-
-    // アニメーションの終了を待つ
-    await Promise.all(modal.getAnimations().map(animation => animation.finished));
-
-    modal.close();
-
-    // イベントリスナーを削除
-    document.removeEventListener('keydown', handleKeyDown);
-    modal.removeEventListener('click', handleBackdropClick);
-
-    isModalAnimating = false;
-  }
-
-  // モーダルを開くイベントの設定
-  openTriggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const modalId = trigger.getAttribute('data-modal-open');
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        openModal(modal);
+    // キーボードのEscキーでモーダルを閉じる
+    function handleKeyDown(event) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        const modal = document.querySelector('.modal[data-active="true"]');
+        if (modal) {
+          closeModal(modal);
+        }
       }
-    });
-  });
+    }
 
-  // モーダルを閉じるイベントの設定
-  closeTriggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const modal = trigger.closest('dialog');
-      if (modal) {
-        closeModal(modal);
-      }
+    // モーダルを開く関数
+    async function openModal(modal) {
+      if (isModalAnimating || modal.dataset.active === "true") return;
+      isModalAnimating = true;
+
+      // スライダーを一時停止
+      splideInstances.forEach(instance => instance.Components.AutoScroll.pause());
+
+      modals.forEach(m => m.removeAttribute("data-active"));
+      modal.setAttribute("data-active", "true");
+
+      // イベントリスナーを追加
+      document.addEventListener('keydown', handleKeyDown);
+      modal.addEventListener('click', handleBackdropClick);
+
+      // CSSアニメーションの時間に合わせる
+      await new Promise(resolve => setTimeout(resolve, 300));
+      isModalAnimating = false;
+    }
+
+    // モーダルを閉じる関数
+    async function closeModal(modal) {
+      if (isModalAnimating || modal.dataset.active !== "true") return;
+      isModalAnimating = true;
+
+      // スライダーを再開
+      splideInstances.forEach(instance => instance.Components.AutoScroll.play());
+
+      modal.removeAttribute("data-active");
+
+      // CSSアニメーションの時間に合わせる
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // イベントリスナーを削除
+      document.removeEventListener('keydown', handleKeyDown);
+      modal.removeEventListener('click', handleBackdropClick);
+
+      isModalAnimating = false;
+    }
+
+    // モーダルを開くイベントの設定
+    flipCards.forEach(card => {
+      card.addEventListener("click", () => {
+        const modalId = card.getAttribute("data-modal-open");
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          openModal(modal);
+        }
+      });
     });
-  });
+
+    // モーダルを閉じるイベントの設定
+    closeButtons.forEach(button => {
+      button.addEventListener("click", (event) => {
+        const modal = event.target.closest(".modal");
+        if (modal) {
+          closeModal(modal);
+        }
+      });
+    });
 
   // ===== メッセージ関連フェードイン =====
   const messageElements = {
@@ -553,11 +549,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const historyElements = {
     title: document.querySelector(".history__title"),
     bg: document.querySelector(".history__wrapper"),
-    icon: document.querySelector(".history__scroll-guide"),
     list: document.querySelector(".history__content"),
   };
 
-  if (historyElements.title && historyElements.bg && historyElements.icon && historyElements.list) {
+  if (historyElements.title && historyElements.bg && historyElements.list) {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: historyElements.title,
@@ -575,7 +570,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .add(() => {
         historyElements.bg.classList.add("js-fade-bg");
       }, "-=0.5")
-      .from(historyElements.icon, {}, "-=0.6")
       .from(historyElements.list, {}, "-=0.2");
   }
 

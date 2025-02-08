@@ -46,7 +46,7 @@
 
 .flip-card__front {
   @extend %flipBase;
-  background-color: var(--light-blue);
+  background-color: var(--secondary-5percent);
   transform: rotateX(0deg);
   color: var(--secondary);
   z-index: 2;
