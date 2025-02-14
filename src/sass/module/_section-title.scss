@@ -147,10 +147,11 @@
 
 .section-title--character .section-title__circle::before {
   top: 0;
+  left: rem(-10);
 
   @include mq("md") {
-    top: rem(6);
-    left: rem(-16);
+    top: rem(8);
+    left: rem(-6);
   }
 }
 
