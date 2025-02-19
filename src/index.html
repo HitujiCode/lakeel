@@ -46,7 +46,7 @@
   <script defer src="./assets/library/splide.min.js"></script>
   <script defer src="./assets/library/splide-extension-auto-scroll.min.js"></script>
   <script src="./assets/library/particles.min.js"></script>
-  <script defer src="./assets/js/script.js?ver=1.0.9"></script>
+  <script defer src="./assets/js/script.js?ver=1.1.2"></script>
 </head>
 
 <body>
@@ -120,7 +120,7 @@
               <picture>
                 <source srcset="./assets/images/pc/mv-flag.svg" media="(min-width: 768px)" width="890" height="1111">
                 <source srcset="./assets/images/sp/mv-flag.webp" type="image/webp" width="508" height="757">
-                <img src="./assets/images/sp/mv-flag.png" alt="おかげさまで20周年！20thAnniversary2005>>>2024" width="508"
+                <img src="./assets/images/sp/mv-flag.png" alt="おかげさまで20周年！20thAnniversary2005>>>2025" width="508"
                   height="757">
               </picture>
             </figure>
@@ -319,7 +319,7 @@
                       <div class="history__timeline-month">
                         <p class="history__timeline-month-head">4<span>月</span></p>
                         <p class="history__timeline-month-event" data-position="1">
-                          八重洲のレンタル会議室で公保社より経営計画の説明を受ける
+                          八重洲のレンタル会議室で久保社長より経営計画の説明を受ける
                         </p>
                       </div>
                       <div class="history__timeline-month">
@@ -340,7 +340,7 @@
                       <div class="history__timeline-month">
                         <p class="history__timeline-month-head">9<span>月</span></p>
                         <p class="history__timeline-month-event" data-position="3">
-                          株式会社イーシー・ワンを子会社化
+                          EC-One China Holding, Inc.を子会社化
                         </p>
                       </div>
                       <div class="history__timeline-month">
@@ -430,7 +430,7 @@
                       </div>
                       <div class="history__timeline-month">
                         <p class="history__timeline-month-head">5<span>月</span></p>
-                        <p class="history__timeline-month-event text-primary" data-position="1">
+                        <p class="history__timeline-month-event" data-position="1">
                           初の新卒社員入社
                         </p>
                       </div>
@@ -468,14 +468,14 @@
                     <div class="history__timeline-year">
                       <div class="history__timeline-month">
                         <p class="history__timeline-month-head">1<span>月</span></p>
-                        <p class="history__timeline-month-event text-primary" data-position="1">
+                        <p class="history__timeline-month-event" data-position="1">
                           プライバシーマークを取得
                         </p>
                       </div>
                       <div class="history__timeline-month">
                         <p class="history__timeline-month-head">2<span>月</span></p>
                         <p class="history__timeline-month-event" data-position="2">
-                          ディメンジョンゼロを吸収合併　<span class="text-primary">従業員数50名突破</span>
+                          株式会社ディメンジョンゼロを吸収合併　<span class="text-primary">従業員数50名突破</span>
                         </p>
                       </div>
                       <div class="history__timeline-month">
@@ -630,7 +630,7 @@
                       </div>
                       <div class="history__timeline-month">
                         <p class="history__timeline-month-head">4<span>月</span></p>
-                        <p class="history__timeline-month-event" data-position="3">
+                        <p class="history__timeline-month-event text-primary" data-position="3">
                           新卒採用4名
                         </p>
                       </div>
@@ -1276,7 +1276,7 @@
                       </div>
                       <div class="history__timeline-month">
                         <p class="history__timeline-month-head">4<span>月</span></p>
-                        <p class="history__timeline-month-event" data-position="2">
+                        <p class="history__timeline-month-event text-primary" data-position="2">
                           新卒採用58名
                         </p>
                       </div>
@@ -1690,27 +1690,19 @@
               <p class="modal__affiliation">{{ modal.affiliation }}</p>
             </div>
             <ul class="modal__content">
+              {%- set q_number = 1 %}
+              {% for item in modal.content %}
+              {% if item.answer|trim %}
               <li class="modal__item">
                 <p class="modal__question">
-                  <span>Q1</span>
-                  過去に仕事において最も大きな試練は何でしたか？<br>それをどのように克服されましたか？
+                  <span>Q{{ q_number }}</span>
+                  {{ item.question | safe }}
                 </p>
-                <p class="modal__answer">{{ modal.content[0].answer | safe }}</p>
+                <p class="modal__answer">{{ item.answer | safe }}</p>
               </li>
-              <li class="modal__item">
-                <p class="modal__question">
-                  <span>Q2</span>
-                  当社の「変化を創り出す」<wbr>「挑戦し続ける」という重要な価値観を仕事や職場の仲間を通じた感じたエピソードがあれば教えてください。
-                </p>
-                <p class="modal__answer">{{ modal.content[1].answer | safe }}</p>
-              </li>
-              <li class="modal__item">
-                <p class="modal__question">
-                  <span>Q3</span>
-                  働く自分のモットーは？
-                </p>
-                <p class="modal__answer">{{ modal.content[2].answer | safe }}</p>
-              </li>
+              {% set q_number = q_number + 1 %}
+              {% endif %}
+              {% endfor %}
             </ul>
           </div>
           <button type="button" class="modal__close" aria-label="モーダルを閉じる" data-modal-close>

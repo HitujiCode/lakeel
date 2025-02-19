@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
   // ===== 初回ロード制御 =====
-  const isFirstLoad = sessionStorage.getItem('isFirstLoad');
+  // const isFirstLoad = sessionStorage.getItem('isFirstLoad');
 
   // ===== 初期要素取得 =====
   function getElements() {
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
     tl.fromTo(header, {
       opacity: 0,
     }, {
-      duration: 1,
+      duration: 0.8,
       opacity: 1,
       ease: "power3.inOut",
     })
@@ -42,8 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }, {
         duration: 1,
         opacity: 1,
-        ease: "power3.inOut",
-      }, "-=0.8")
+        ease: "power2.inOut",
+      }, "-=1.15")
       .fromTo(mvFlag, {
         opacity: 0,
         y: 40,
@@ -82,18 +82,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     gsap.set([header, particleMv, mvFlag, mvScroll, mvCountdown], { opacity: 0 });
 
-    if (!isFirstLoad) {
+    // if (!isFirstLoad) {
       loader.style.display = "grid";
       const tl = gsap.timeline();
 
       tl.to(loaderLogo, {
-        duration: 1.3,
+        duration: 0.8,
         opacity: 1,
         translateY: 0,
         ease: "power3.out",
       })
         .to(loader, {
-          duration: 1,
+          duration: 0.8,
           clipPath: "inset(0% 100% 0% 0%)",
           ease: "power2.inOut",
           onComplete: () => {
@@ -102,10 +102,10 @@ document.addEventListener("DOMContentLoaded", function () {
             sessionStorage.setItem('isFirstLoad', true);
           },
         });
-    } else {
-      loader.style.display = "none";
-      runMvAnimation(elements);
-    }
+    // } else {
+    //   loader.style.display = "none";
+    //   runMvAnimation(elements);
+    // }
   });
 
   // ===== ページトップへ戻る =====
