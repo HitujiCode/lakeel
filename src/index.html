@@ -38,7 +38,8 @@
     rel="stylesheet" media="all" onload="this.media='all'" />
   <!-- css -->
   <link rel="stylesheet" href="./assets/library/splide-core.min.css">
-  <link rel="stylesheet" href="./assets/css/style.css?ver=1.2.0" />
+  <link rel="stylesheet" href="./assets/library/scroll-hint.css">
+  <link rel="stylesheet" href="./assets/css/style.css?ver=1.2.1" />
   <!-- JavaScript -->
   <!-- <script defer src="https://code.jquery.com/jquery-3.7.1.js"></script> -->
   <script defer src="./assets/library/gsap.min.js"></script>
@@ -46,7 +47,8 @@
   <script defer src="./assets/library/splide.min.js"></script>
   <script defer src="./assets/library/splide-extension-auto-scroll.min.js"></script>
   <script src="./assets/library/particles.min.js"></script>
-  <script defer src="./assets/js/script.js?ver=1.1.2"></script>
+  <script defer src="./assets/library/scroll-hint.min.js"></script>
+  <script defer src="./assets/js/script.js?ver=1.1.3"></script>
 </head>
 
 <body>
@@ -161,26 +163,12 @@
                   <h2 class="section-title__ja section-title__ja">トップメッセージ</h2>
                 </hgroup>
               </div>
-              <figure class="message__top-img">
-                <picture>
-                  <source srcset="./assets/images/pc/message-02.webp" type="image/webp" width="241" height="160">
-                  <img src="./assets/images/pc/message-02.jpg" alt="オフィスで十数人の社員がPCで仕事をしている様子" width="144" height="96"
-                    loading="lazy">
-                </picture>
-              </figure>
               <div class="message__content">
                 <figure class="message__main-img">
                   <picture>
                     <source srcset="./assets/images/pc/message-01.webp" type="image/webp" width="619" height="320">
                     <img src="./assets/images/sp/message-01.jpg" alt="株式会社ラキール代表取締役社長 久保努" width="348" height="222"
                       loading="lazy">
-                  </picture>
-                </figure>
-                <figure class="message__bottom-img">
-                  <picture>
-                    <source srcset="./assets/images/pc/message-03.webp" type="image/webp" width="241" height="161">
-                    <img src="./assets/images/pc/message-03.jpg" alt="イベントに大企業向けHRシステムのブースを出店している様子" width="241"
-                      height="161" loading="lazy">
                   </picture>
                 </figure>
                 <div class="message__body">
@@ -209,7 +197,7 @@
         </section>
       </div>
       <!-- History -->
-      <section id="history" class="history layout-history js-fade-history">
+      <section id="history" class="history layout-history">
         <div class="history__ship js-fade-ship">
           <svg width="156" height="158" viewBox="0 0 156 158" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_262_902)">

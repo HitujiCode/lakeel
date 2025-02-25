@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   gsap.registerPlugin(ScrollTrigger);
 
   // ===== 初回ロード制御 =====
-  // const isFirstLoad = sessionStorage.getItem('isFirstLoad');
+  const isFirstLoad = sessionStorage.getItem('isFirstLoad');
 
   // ===== 初期要素取得 =====
   function getElements() {
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     gsap.set([header, particleMv, mvFlag, mvScroll, mvCountdown], { opacity: 0 });
 
-    // if (!isFirstLoad) {
+    if (!isFirstLoad) {
       loader.style.display = "grid";
       const tl = gsap.timeline();
 
@@ -102,10 +102,10 @@ document.addEventListener("DOMContentLoaded", function () {
             sessionStorage.setItem('isFirstLoad', true);
           },
         });
-    // } else {
-    //   loader.style.display = "none";
-    //   runMvAnimation(elements);
-    // }
+    } else {
+      loader.style.display = "none";
+      runMvAnimation(elements);
+    }
   });
 
   // ===== ページトップへ戻る =====
@@ -425,89 +425,89 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ===== モーダル =====
-    const flipCards = document.querySelectorAll(".flip-card");
-    const modals = document.querySelectorAll(".modal");
-    const closeButtons = document.querySelectorAll(".modal__close");
-    let isModalAnimating = false;
+  const flipCards = document.querySelectorAll(".flip-card");
+  const modals = document.querySelectorAll(".modal");
+  const closeButtons = document.querySelectorAll(".modal__close");
+  let isModalAnimating = false;
 
-    // バックドロップクリックでモーダルを閉じる
-    function handleBackdropClick(event) {
-      if (event.target.classList.contains('modal')) {
-        closeModal(event.target);
+  // バックドロップクリックでモーダルを閉じる
+  function handleBackdropClick(event) {
+    if (event.target.classList.contains('modal')) {
+      closeModal(event.target);
+    }
+  }
+
+  // キーボードのEscキーでモーダルを閉じる
+  function handleKeyDown(event) {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      const modal = document.querySelector('.modal[data-active="true"]');
+      if (modal) {
+        closeModal(modal);
       }
     }
+  }
 
-    // キーボードのEscキーでモーダルを閉じる
-    function handleKeyDown(event) {
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        const modal = document.querySelector('.modal[data-active="true"]');
-        if (modal) {
-          closeModal(modal);
-        }
+  // モーダルを開く関数
+  async function openModal(modal) {
+    if (isModalAnimating || modal.dataset.active === "true") return;
+    isModalAnimating = true;
+
+    // スライダーを一時停止
+    splideInstances.forEach(instance => instance.Components.AutoScroll.pause());
+
+    modals.forEach(m => m.removeAttribute("data-active"));
+    modal.setAttribute("data-active", "true");
+
+    // イベントリスナーを追加
+    document.addEventListener('keydown', handleKeyDown);
+    modal.addEventListener('click', handleBackdropClick);
+
+    // CSSアニメーションの時間に合わせる
+    await new Promise(resolve => setTimeout(resolve, 300));
+    isModalAnimating = false;
+  }
+
+  // モーダルを閉じる関数
+  async function closeModal(modal) {
+    if (isModalAnimating || modal.dataset.active !== "true") return;
+    isModalAnimating = true;
+
+    // スライダーを再開
+    splideInstances.forEach(instance => instance.Components.AutoScroll.play());
+
+    modal.removeAttribute("data-active");
+
+    // CSSアニメーションの時間に合わせる
+    await new Promise(resolve => setTimeout(resolve, 300));
+
+    // イベントリスナーを削除
+    document.removeEventListener('keydown', handleKeyDown);
+    modal.removeEventListener('click', handleBackdropClick);
+
+    isModalAnimating = false;
+  }
+
+  // モーダルを開くイベントの設定
+  flipCards.forEach(card => {
+    card.addEventListener("click", () => {
+      const modalId = card.getAttribute("data-modal-open");
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        openModal(modal);
       }
-    }
-
-    // モーダルを開く関数
-    async function openModal(modal) {
-      if (isModalAnimating || modal.dataset.active === "true") return;
-      isModalAnimating = true;
-
-      // スライダーを一時停止
-      splideInstances.forEach(instance => instance.Components.AutoScroll.pause());
-
-      modals.forEach(m => m.removeAttribute("data-active"));
-      modal.setAttribute("data-active", "true");
-
-      // イベントリスナーを追加
-      document.addEventListener('keydown', handleKeyDown);
-      modal.addEventListener('click', handleBackdropClick);
-
-      // CSSアニメーションの時間に合わせる
-      await new Promise(resolve => setTimeout(resolve, 300));
-      isModalAnimating = false;
-    }
-
-    // モーダルを閉じる関数
-    async function closeModal(modal) {
-      if (isModalAnimating || modal.dataset.active !== "true") return;
-      isModalAnimating = true;
-
-      // スライダーを再開
-      splideInstances.forEach(instance => instance.Components.AutoScroll.play());
-
-      modal.removeAttribute("data-active");
-
-      // CSSアニメーションの時間に合わせる
-      await new Promise(resolve => setTimeout(resolve, 300));
-
-      // イベントリスナーを削除
-      document.removeEventListener('keydown', handleKeyDown);
-      modal.removeEventListener('click', handleBackdropClick);
-
-      isModalAnimating = false;
-    }
-
-    // モーダルを開くイベントの設定
-    flipCards.forEach(card => {
-      card.addEventListener("click", () => {
-        const modalId = card.getAttribute("data-modal-open");
-        const modal = document.getElementById(modalId);
-        if (modal) {
-          openModal(modal);
-        }
-      });
     });
+  });
 
-    // モーダルを閉じるイベントの設定
-    closeButtons.forEach(button => {
-      button.addEventListener("click", (event) => {
-        const modal = event.target.closest(".modal");
-        if (modal) {
-          closeModal(modal);
-        }
-      });
+  // モーダルを閉じるイベントの設定
+  closeButtons.forEach(button => {
+    button.addEventListener("click", (event) => {
+      const modal = event.target.closest(".modal");
+      if (modal) {
+        closeModal(modal);
+      }
     });
+  });
 
   // ===== メッセージ関連フェードイン =====
   const messageElements = {
@@ -656,4 +656,11 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   });
 
+  // ===== スクロールヒント =====
+  const scrollHint = new ScrollHint('.js-scroll', {
+    i18n: {
+      scrollable: 'スクロール',
+    },
+    // scrollHintIconAppendClass: "scroll-hint-icon-white",
+  });
 });
