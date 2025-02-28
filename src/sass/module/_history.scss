@@ -214,17 +214,12 @@
 }
 
 .history__timeline {
-  --_gap: 40px;
+  --_gap: 60px;
   display: flex;
   gap: var(--_gap);
   cursor: ew-resize;
   width: max-content;
   border-bottom: 2px solid rgb(255, 255, 255, 0.5);
-}
-
-.history__timeline-item {}
-
-.history__timeline-item:first-child {
   padding-left: rem(70);
 
   @include mq("md") {
@@ -232,19 +227,36 @@
   }
 
   @include mq("xl") {
-    padding-left: rem(75);
+    padding-left: rem(120);
   }
 }
 
-.history__timeline-item:last-child {
-  padding-right: rem(70);
+.history__timeline-item {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 370px;
 
   @include mq("md") {
-    padding-right: rem(94);
+    // width: 520px;
+    width: 420px;
   }
+}
 
-  @include mq("xl") {
-    padding-right: rem(75);
+.history__timeline-item::after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 100%;
+  background-color: var(--white);
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.history__timeline-item:last-child {
+  width: 280px;
+
+  @include mq("md") {
+    width: 330px;
   }
 }
 
@@ -254,67 +266,39 @@
   font-family: var(--poppins-font);
   color: var(--white);
   line-height: 1;
-  transform: translateX(-25%);
+  transform: translateX(-49%);
   width: fit-content;
 }
 
-.history__timeline-year {
+.history__timeline-events {
   display: flex;
-  gap: var(--_gap);
+  flex-direction: column;
+  gap: 20px;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  padding-block: rem(60) rem(40);
+  min-height: 300px;
 }
 
-.history__timeline-month {
+.history__timeline-event {
   position: relative;
-  display: grid;
-  grid-template-rows: fit-content(100%) 370px;
-  justify-items: center;
-}
-
-.history__timeline-month::after {
-  content: "";
-  width: 2px;
-  height: 100%;
-  background-color: rgb(255, 255, 255, 0.5);
-}
-
-.history__timeline-month:first-child::after {
-  width: 4px;
-  background-color: var(--white);
-}
-
-.history__timeline-month-head {
-  width: 44px;
-  text-align: center;
-  font-size: max(25px, rem(28));
-  font-weight: var(--medium);
-  font-family: var(--poppins-font);
-  color: var(--white);
-  line-height: calc(45/30);
-}
-
-.history__timeline-month-head span {
-  font-size: 16px;
-  font-weight: var(--bold);
-  font-family: var(--base-font);
-  line-height: 1;
-}
-
-
-.history__timeline-month-event {
-  position: absolute;
-  z-index: 1;
+  left: -20px;
   white-space: nowrap;
-  justify-self: flex-start;
+  align-self: start;
   background-color: var(--white);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: var(--medium);
   line-height: calc(23/16);
   padding-block: 0.55em 0.6em;
   padding-inline: 0.8em;
   border-radius: rem(5);
+
+  @include mq("md") {
+    font-size: 15px;
+  }
 }
 
-.history__timeline-month-event::before {
+.history__timeline-event::before {
   content: "";
   display: block;
   position: absolute;
@@ -326,24 +310,4 @@
   background-color: var(--white);
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   transition: background-color 0.3s ease;
-}
-
-.history__timeline-month-event[data-position="1"] {
-  top: 16.5%;
-}
-
-.history__timeline-month-event[data-position="2"] {
-  top: 33%;
-}
-
-.history__timeline-month-event[data-position="3"] {
-  top: 49.5%;
-}
-
-.history__timeline-month-event:is([data-position="4"], [data-position="4-2"]) {
-  top: 66%;
-}
-
-.history__timeline-month-event[data-position="5"] {
-  top: 82.5%;
 }

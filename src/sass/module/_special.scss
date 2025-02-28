@@ -6,26 +6,16 @@
   overflow-x: clip;
 }
 
-.special__slider {
-  display: flex;
-}
+.special__slider {}
 
 .special__img {
-  width: rem(4337);
-  flex-shrink: 0;
-  animation: loop 76s linear infinite;
-
-  @include mq("md") {
-    animation-duration: 90s;
-  }
-
-  @include mq("xl") {
-    width: rem(4407);
-  }
+  width: var(--width);
 }
 
 .special__img img {
-  aspect-ratio: 4337/270;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .special__title {
@@ -38,7 +28,8 @@
   grid-template-rows: auto rem(100);
 
   @include mq("md") {
-    top: 74.5%;
+    top: 70.5%;
+    // top: rem(200);
     padding-inline: $padding-pc;
   }
 }
@@ -85,14 +76,4 @@
   grid-row: 2;
   grid-column: 1;
   animation: 2s scroll linear infinite;
-}
-
-@keyframes loop {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
 }

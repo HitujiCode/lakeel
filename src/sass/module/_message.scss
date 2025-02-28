@@ -50,6 +50,8 @@
 }
 
 .message__main-img {
+  position: relative;
+  z-index: 1;
   border-radius: rem(10);
   margin-top: rem(25);
   margin-left: calc(50% - 50vw);
@@ -84,7 +86,35 @@
   }
 }
 
+.message__blur {
+  position: relative;
+}
+
+.message__blur::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 118%;
+  height: 118%;
+  mask-image:
+    linear-gradient(to top, rgb(255 255 255 / 100%) 90%, rgb(255 255 255 / 0%) 100%),
+    linear-gradient(to bottom, rgb(255 255 255 / 100%) 90%, rgb(255 255 255 / 0%) 100%),
+    linear-gradient(to left, rgb(255 255 255 / 100%) 90%, rgb(255 255 255 / 0%) 100%),
+    linear-gradient(to right, rgb(255 255 255 / 100%) 90%, rgb(255 255 255 / 0%) 100%);
+  mask-composite: intersect;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+
+  @include mq("md") {
+    width: 125%;
+    height: 125%;
+  }
+}
+
 .message__text-wrap {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   font-size: rem(16);
@@ -109,8 +139,10 @@
 }
 
 .message__sign {
+  position: relative;
   margin-top: rem(20);
   text-align: right;
+  z-index: 1;
 
   @include mq("md") {
     margin-top: rem(14);

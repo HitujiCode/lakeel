@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       },
       "color": {
-        "value": ['#004664', '#002F43', '#E7F1F5', '#CCDAE0']
+        "value": ['#4491B0', '#E7F1F5', '#CCDAE0']
       },
       "size": {
         "value": 25,
@@ -403,19 +403,16 @@ document.addEventListener("DOMContentLoaded", function () {
   enableSmoothMouseDragScroll(".js-scroll");
 
   // ===== Episodeスライダー =====
-  Splide.defaults = {
-    type: 'loop',
-    fixedWidth: "20.625rem",
-    focus: 'center',
-    arrows: false,
-    gap: 20,
-  };
-
   let splideInstances = [];
 
-  // Splide を初期化して配列に格納
-  document.querySelectorAll('.splide').forEach(splide => {
+  document.querySelectorAll('.splide:not(.js-special-slider)').forEach(splide => {
     const instance = new Splide(splide, {
+      type: 'loop',
+      fixedWidth: "20.625rem",
+      focus: 'center',
+      arrows: false,
+      pagination: false,
+      gap: 20,
       autoScroll: {
         speed: splide.classList.contains('js-top-slider') ? 1 : -1,
       },
@@ -423,6 +420,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     splideInstances.push(instance);
   });
+
+  // ===== 20周年スライダー =====
+  const specialSlider = new Splide('.js-special-slider', {
+    type: 'loop',
+    autoWidth: true,
+    height: '270px',
+    arrows: false,
+    pagination: false,
+    drag: false,
+    autoScroll: {
+      pauseOnHover: false,
+    },
+  }).mount(window.splide.Extensions);
+
 
   // ===== モーダル =====
   const flipCards = document.querySelectorAll(".flip-card");
