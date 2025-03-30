@@ -648,6 +648,44 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // ===== ブック関連フェードイン =====
+  const bookElements = {
+    title: document.querySelector(".js-book .book__title"),
+    caption: document.querySelector(".js-book .book__caption"),
+    img: document.querySelector(".js-book .book__img"),
+    text: document.querySelector(".js-book .book__text"),
+    button: document.querySelector(".js-book .book__buttons"),
+    note: document.querySelector(".js-book .book__note"),
+  };
+
+  if (bookElements.title && bookElements.caption && bookElements.img && bookElements.text && bookElements.button && bookElements.note) {
+    const isSP = window.matchMedia("(max-width: 767px)").matches;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: bookElements.title,
+        start: "top 80%",
+      },
+      defaults: {
+        y: 30,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power2.out",
+      },
+    });
+
+    // アニメーションの順番を設定
+    const animationOrder = isSP
+      ? [bookElements.title, bookElements.caption, bookElements.img, bookElements.text, [bookElements.button, bookElements.note]]
+      : [bookElements.img, bookElements.title, [bookElements.caption, bookElements.text], [bookElements.button, bookElements.note]];
+
+
+    // アニメーションを順番に適用
+    animationOrder.forEach((element, index) => {
+      tl.from(element, {}, index === 0 ? undefined : "-=0.4");
+    });
+  }
+
   // ===== その他フェードイン =====
   const fadeIns = document.querySelectorAll('.js-fade-in');
   fadeIns.forEach(fadeIn => {
