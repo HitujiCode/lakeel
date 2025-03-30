@@ -33,7 +33,7 @@
 
 .footer__nav-link-blank {
   @extend %footerLink;
-  border-right: 2px solid var(--light-gray2);
+  // border-right: 2px solid var(--light-gray2);
   position: relative;
   display: grid;
   grid-template-columns: 1fr auto;

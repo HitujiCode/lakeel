@@ -28,7 +28,7 @@
   grid-template-rows: auto rem(100);
 
   @include mq("md") {
-    top: 70.5%;
+    top: 72.5%;
     // top: rem(200);
     padding-inline: $padding-pc;
   }

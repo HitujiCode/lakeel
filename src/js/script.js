@@ -216,30 +216,30 @@ document.addEventListener("DOMContentLoaded", function () {
     "retina_detect": true
   });
 
-  particlesJS("js-particle-primary", {
-    "particles": {
-      "number": {
-        "value": 30,
-        "density": {
-          "enable": true,
-          "value_area": 3000
-        }
-      },
-      "color": {
-        "value": ['#AC0C2D', '#c5556c', '#b72a47', '#EDCCD4']
-      },
-      "size": {
-        "value": 25,
-        "random": true
-      },
-      "move": {
-        "enable": true,
-        "speed": 2,
-        "out_mode": "out"
-      }
-    },
-    "retina_detect": true
-  });
+  // particlesJS("js-particle-primary", {
+  //   "particles": {
+  //     "number": {
+  //       "value": 30,
+  //       "density": {
+  //         "enable": true,
+  //         "value_area": 3000
+  //       }
+  //     },
+  //     "color": {
+  //       "value": ['#AC0C2D', '#c5556c', '#b72a47', '#EDCCD4']
+  //     },
+  //     "size": {
+  //       "value": 25,
+  //       "random": true
+  //     },
+  //     "move": {
+  //       "enable": true,
+  //       "speed": 2,
+  //       "out_mode": "out"
+  //     }
+  //   },
+  //   "retina_detect": true
+  // });
 
   // ===== カウントダウン =====
   function showRestTime() {

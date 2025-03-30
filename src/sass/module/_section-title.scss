@@ -168,3 +168,28 @@
     white-space: nowrap;
   }
 }
+
+.section-title--book {
+  @include mq("md") {
+    margin-left: auto;
+    flex-direction: row-reverse;
+    column-gap: rem(16);
+    row-gap: initial;
+  }
+}
+
+.section-title--book .section-title__ja {
+  @include mq("md") {
+    padding-bottom: rem(20);
+  }
+}
+
+.section-title--book .section-title__circle::before {
+  top: rem(-6);
+  left: rem(-12);
+
+  @include mq("md") {
+    top: 0;
+    left: rem(-16);
+  }
+}

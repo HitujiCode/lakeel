@@ -3,13 +3,13 @@
 .button {
   position: relative;
   display: inline-grid;
-  grid-template-columns: 1fr rem(20);
+  grid-template-columns: fit-content(100%) rem(20);
   gap: rem(10);
   align-items: center;
   padding-block: rem(14);
   padding-inline: rem(28) rem(18);
   background-color: var(--white);
-  border: rem(2) solid;
+  border: rem(2) solid var(--primary);
   border-radius: 100vmax;
   font-size: rem(16);
   font-weight: var(--bold);
@@ -20,13 +20,21 @@
 
 .button::after {
   content: "";
+  width: rem(20);
+  aspect-ratio: 1/1;
   background-color: currentColor;
   mask-image: url(../images/common/chevron.svg);
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
-  aspect-ratio: 1/1;
   transition: background-color 0.3s ease;
+}
+
+.button--primary {
+  background-color: var(--primary);
+  color: var(--white);
+  min-width: rem(240);
+  justify-content: center;
 }
 
 @media (any-hover: hover) {

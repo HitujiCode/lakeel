@@ -1,0 +1,9 @@
+@use "global" as *;
+
+.layout-book {
+  margin-top: rem(205);
+
+  @include mq("md") {
+    margin-top: rem(240);
+  }
+}

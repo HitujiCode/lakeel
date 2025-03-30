@@ -1,0 +1,102 @@
+@use "global" as *;
+
+.book {}
+
+.book__inner.inner {}
+
+.book__container {
+  @include mq("md") {
+    display: grid;
+    grid-template-columns: 1fr calc(684/1123*100%);
+    column-gap: min(110/1440*100vw, rem(110));
+    grid-template-areas:
+      "img title"
+      "img caption"
+      "img text"
+      "img buttons"
+      "img note";
+    padding-left: rem(92);
+  }
+}
+
+.book__title {
+  grid-area: title;
+
+  @include mq("md") {
+    padding-right: rem(4);
+  }
+}
+
+.book__caption {
+  grid-area: caption;
+  margin-top: rem(38);
+  font-size: rem(20);
+  font-weight: var(--bold);
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+
+  @include mq("md") {
+    padding-left: 1em;
+    text-indent: -1em;
+  }
+}
+
+.book__img {
+  grid-area: img;
+  margin-top: rem(30);
+
+  @include mq("md") {
+    align-self: flex-end;
+    margin-top: initial;
+  }
+}
+
+.book__img img {
+  aspect-ratio: 320/463;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.book__text {
+  grid-area: text;
+  margin-top: rem(30);
+  font-size: rem(16);
+  font-weight: var(--medium);
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  line-break: strict;
+  text-align: justify;
+
+  @include mq("md") {
+    margin-top: rem(22);
+  }
+}
+
+.book__buttons {
+  grid-area: buttons;
+  margin-top: rem(42);
+  display: grid;
+  gap: rem(24);
+  justify-content: center;
+
+  @include mq("md") {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+.book__button {}
+
+.book__note {
+  grid-area: note;
+  margin-top: rem(24);
+  font-size: rem(14);
+  font-weight: var(--medium);
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  text-align: center;
+
+  @include mq("md") {
+    padding-bottom: rem(14);
+  }
+}
